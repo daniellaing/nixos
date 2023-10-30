@@ -7,11 +7,10 @@
         name = "Neomutt";
         genericName = "Email Client";
         comment = "Read and send emails";
-        exec = "neomutt %U";
+        exec = "${pkgs.neomutt}/bin/neomutt %U";
         icon = "mutt";
         terminal = true;
         categories = [ "Network" "Email" "ConsoleOnly" ];
-        type = "Application";
         mimeType = [ "x-scheme-handler/mailto" ];
       };
     };
