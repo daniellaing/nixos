@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./browser.nix
     ./git.nix
     ./music.nix
     ./picom.nix

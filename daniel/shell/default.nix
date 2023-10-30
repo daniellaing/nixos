@@ -40,7 +40,6 @@ in
       };
 
     sessionVariables = {
-      BROWSER = "${pkgs.librewolf}/bin/librewolf";
       TERMINAL = "${pkgs.alacritty}/bin/alacritty";
 
       LESSHISTFILE = "-";
