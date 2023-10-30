@@ -1,8 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   c = config.xdg.configHome;
   d = config.xdg.dataHome;
-  dl_ls = pkgs.writeShellScriptBin "dl-ls" ''
+  p = pkgs.writeShellScript "dl-ls" ''
     ${pkgs.lsd}/bin/lsd -v --group-dirs first $* && echo "$(${pkgs.lsd}/bin/lsd $* | wc -l) items"
   '';
 in
@@ -14,10 +14,9 @@ in
   ];
 
   home = {
-    packages = [ dl_ls ];
     shellAliases =
       {
-        ls = "${dl_ls} ";
+        ls = "${lib.getBin p} ";
         sudo = "sudo ";
         la = "ls -A";
         ll = "ls -lA";
