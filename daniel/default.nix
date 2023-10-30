@@ -18,19 +18,9 @@
 
   imports =
     [
-      ./xdg.nix
-
       ./shell
-
       ./email
-      ./music.nix
-
-      ./git.nix
-      ./picom.nix
-      ./rofi.nix
-      ./sxhkd.nix
-      ./syncthing.nix
-      ./zathura.nix
+      ./programs
     ];
 
   # Let home manager manage itself
