@@ -4,7 +4,6 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
-    syntaxHighlighting.enable = true;
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
     enableVteIntegration = true;
