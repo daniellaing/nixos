@@ -15,12 +15,10 @@ in
 {
   imports =
     [
-      ./hardware-configuration.nix
       ./nix-locate.nix
       ./zsh.nix
       ./mathematica.nix
       ./email
-      # ./wireguard.nix
     ];
 
   # Enable Nix commands
@@ -72,15 +70,9 @@ in
     options = "--delete-older-than 14d";
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.hostName = "nixos"; # Define your hostname.
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
@@ -91,7 +83,6 @@ in
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_GB.UTF-8";
     LC_IDENTIFICATION = "en_GB.UTF-8";
@@ -106,19 +97,18 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
   # Configure keymap in X11
   services.xserver = {
     layout = "gb";
     xkbVariant = "";
   };
-
   # Configure console keymap
   console.keyMap = "uk";
+
+  # Enable the KDE Plasma Desktop Environment.
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -132,12 +122,7 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    jack.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -146,9 +131,6 @@ in
     isNormalUser = true;
     description = "Daniel Laing";
     extraGroups = [ "networkmanager" "wheel" "adbusers" ];
-    packages = with pkgs; [
-      firefox
-    ];
   };
 
   # Allow unfree packages
@@ -174,7 +156,8 @@ in
     texlive.combined.scheme-full
     gnumake
     libreoffice
-  ] ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.kdeGear)
+  ]
+  ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.kdeGear)
   ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.kdeFrameworks)
   ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.plasma5);
   nixpkgs.config.allowAliases = false;
@@ -210,10 +193,6 @@ in
   };
   # services.mongodb.enable = true;
 
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
@@ -227,7 +206,6 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  programs.seahorse.enable = true;
   programs.ssh.askPassword = "/nix/store/pg42226jhbpjp47s03h0glzxyxq36h6i-ksshaskpass-5.27.7/bin/ksshaskpass";
 
   programs.adb.enable = true;

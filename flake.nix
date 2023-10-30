@@ -14,6 +14,7 @@
       "nixos" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ./hosts/dellG5.nix
           ./nixos/configuration.nix
 
           home-manager.nixosModules.home-manager
