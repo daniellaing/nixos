@@ -1,22 +1,24 @@
 { config, pkgs, ... }:
-
+let
+  h = config.home.homeDirectory;
+in
 {
   xdg = {
-    cacheHome = "${config.home.homeDirectory}/.cache";
-    configHome = "${config.home.homeDirectory}/.config";
-    dataHome = "${config.home.homeDirectory}/.local/share";
-    stateHome = "${config.home.homeDirectory}/.local/state";
+    cacheHome = h + "/.cache";
+    configHome = h + "/.config";
+    dataHome = h + "/.local/share";
+    stateHome = h + "/.local/state";
     userDirs = {
       enable = true;
       createDirectories = true;
-      desktop = "${config.home.homeDirectory}";
-      documents = "${config.home.homeDirectory}/archive";
-      download = "${config.home.homeDirectory}/downloads";
-      music = "${config.home.homeDirectory}/archive/media/audio/music";
-      pictures = "${config.home.homeDirectory}/archive/media/pictures";
-      publicShare = "${config.home.homeDirectory}/archive/public";
-      templates = "${config.home.homeDirectory}/archive/templates";
-      videos = "${config.home.homeDirectory}/archive/media/video";
+      desktop = h + "";
+      documents = h + "/archive";
+      download = h + "/downloads";
+      music = h + "/archive/media/audio/music";
+      pictures = h + "/archive/media/pictures";
+      publicShare = h + "/archive/public";
+      templates = h + "/archive/templates";
+      videos = h + "/archive/media/video";
     };
     desktopEntries = { };
   };
