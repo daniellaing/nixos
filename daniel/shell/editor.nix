@@ -1,6 +1,14 @@
-{ pkgs }:
+{ config, pkgs, ... }:
 
-pkgs.writeShellScriptBin "editor" ''
-    ${pkgs.neovim}/bin/nvim "$@"
-  # ${pkgs.neovide}/bin/neovide --multigrid "$@"
-''
+{
+  home = {
+    packages = with pkgs; [
+      neovim
+    ];
+
+    sessionVariables = {
+      EDITOR = "${pkgs.neovim}/bin/nvim";
+      SUDO_EDITOR = "${pkgs.neovim}/bin/nvim";
+    };
+  };
+}

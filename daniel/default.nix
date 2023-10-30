@@ -1,29 +1,30 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "daniel";
-  home.homeDirectory = "/home/daniel";
-  home.stateVersion = "23.05";
-  programs.home-manager.enable = true;
-
-  home.packages = with pkgs; [
-    btop
-    ferdium
-    musescore
-    yt-dlp
-  ];
+  home = {
+    username = "daniel";
+    homeDirectory = "/home/daniel";
+    stateVersion = "23.05";
+    packages = with pkgs; [
+      btop
+      ferdium
+      musescore
+      yt-dlp
+      nnn
+      keepassxc
+      librewolf
+    ];
+  };
 
   imports =
     [
       ./xdg.nix
 
       ./shell
-      ./zsh.nix
 
       ./email
       ./music.nix
 
-      ./alacritty.nix
       ./git.nix
       ./picom.nix
       ./rofi.nix
@@ -32,5 +33,6 @@
       ./zathura.nix
     ];
 
-  services.gnome-keyring.enable = true;
+  # Let home manager manage itself
+  programs.home-manager.enable = true;
 }

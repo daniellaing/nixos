@@ -157,28 +157,20 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
-    neovide
-    nnn
-    stow
     git
     gcc
     unzip
     wget
     xclip
     ripgrep
-    keepassxc
     gnupg
     pinentry-curses
     nerdfonts
     dmenu
     cargo
-    librewolf
-    brave
     (python3.withPackages pypkgs)
     findutils.locate
     wireguard-tools
-    albert
     texlive.combined.scheme-full
     gnumake
     libreoffice
