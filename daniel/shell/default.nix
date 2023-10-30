@@ -14,6 +14,7 @@ in
   ];
 
   home = {
+    packages = [ dl_ls ];
     shellAliases =
       {
         ls = "${dl_ls} ";
