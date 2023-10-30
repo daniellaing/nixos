@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
-
+{ pkgs, lib, ... }:
+let
+  p = pkgs.writeShellScript "dl-ls" ''
+    ${pkgs.lsd}/bin/lsd -v --group-dirs first $* && echo "$(${pkgs.lsd}/bin/lsd $* | wc -l) items"
+  '';
+in
 {
   sudo = "sudo ";
 

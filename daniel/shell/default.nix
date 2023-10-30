@@ -1,10 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }@inputs:
 let
   c = config.xdg.configHome;
   d = config.xdg.dataHome;
-  p = pkgs.writeShellScript "dl-ls" ''
-    ${pkgs.lsd}/bin/lsd -v --group-dirs first $* && echo "$(${pkgs.lsd}/bin/lsd $* | wc -l) items"
-  '';
 in
 {
   imports = [
@@ -14,7 +11,7 @@ in
   ];
 
   home = {
-    shellAliases = import ./aliases.nix;
+    shellAliases = import ./aliases.nix (inputs);
     sessionVariables = {
       LESSHISTFILE = "-";
       CARGO_HOME = d + "/cargo";
