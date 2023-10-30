@@ -1,0 +1,3 @@
+# Neomutt
+# SMTP Settings
+set smtp_authenticators     = "gssapi:login"                    # Method to login to smtp

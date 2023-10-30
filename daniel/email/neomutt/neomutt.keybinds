@@ -1,0 +1,107 @@
+# Neomutt
+# ---   Keybinds   ---
+
+# Remove some default keybinds
+bind index,pager        i           noop
+bind index,pager        g           noop
+bind index,pager        M           noop
+bind index,pager        C           noop
+bind index              \Cf         noop
+bind index              h           noop
+bind editor             <Space>     noop
+
+# Common binds
+bind index,pager,browser    gg          first-entry
+bind pager,browser          G           bottom-page
+
+# Index binds
+bind index              G           last-entry
+bind index              j           next-entry
+bind index              k           previous-entry
+bind index              d           delete-message
+bind index              u           undelete-message
+bind index              P           purge-message
+bind index              L           limit                   # Show only messages matching a pattern
+bind index              l           display-message
+bind index              <Space>     tag-entry
+bind index              H           view-raw-message
+bind index              S           sync-mailbox
+bind index              R           group-reply
+bind index              \031        previous-undeleted      # Mouse wheel
+bind index              \005        next-undeleted          # Mouse wheel
+
+# Pager binds
+bind pager              h           exit
+bind pager              j           next-line
+bind pager              k           previous-line
+bind pager              l           view-attachments
+bind pager              H           view-raw-message
+bind pager              u           half-up
+bind pager              d           half-down
+bind pager              S           sync-mailbox
+bind pager              R           group-reply
+bind pager              \031        previous-line           # Mouse wheel
+bind pager              \005        next-line               # Mouse wheel
+
+# Attachment menu binds
+bind attach             <Return>    view-mailcap            # View attachment with mailcap
+bind attach             l           view-mailcap
+bind attach             h           exit
+
+# Browser binds
+bind browser            l           select-entry
+bind browser            u           half-up
+bind browser            d           half-down
+
+# Query menu binds
+bind query              <Space>     tag-entry
+
+# Editor binds
+bind editor             <Tab>       complete-query
+
+# Sidebar keybinds
+bind index,pager        \Ck         sidebar-prev
+bind index,pager        \Cj         sidebar-next
+bind index,pager        \Co         sidebar-open
+bind index,pager        \Cp         sidebar-prev-new
+bind index,pager        \Cn         sidebar-next-new
+
+
+# ---   Macros   ---
+
+# Browser macros
+macro browser           h           '<change-dir><kill-line>..<Enter>'      "Go to parent folder"
+
+# Move emails
+macro index,pager       Mi          ";<save-message>=INBOX<Enter>"          "Move email to inbox"
+macro index,pager       Md          ";<save-message>=Drafts<Enter>"         "Move email to drafts"
+macro index,pager       Mj          ";<save-message>=Junk<Enter>"           "Move email to junk"
+macro index,pager       Mb          ";<save-message>=Bin<Enter>"            "Move email to the bin"
+macro index,pager       Ma          ";<save-message>=Archive<Enter>"        "Move email to the archive"
+macro index,pager       Ms          ";<save-message>=Sent<Enter>"           "Move email to sent"
+
+# Copy emails
+macro index,pager       Ci          "<copy-message>=INBOX<Enter>"           "Copy email to inbox"
+macro index,pager       Cd          "<copy-message>=Drafts<Enter>"          "Copy email to drafts"
+macro index,pager       Cj          "<copy-message>=Junk<Enter>"            "Copy email to junk"
+macro index,pager       Cb          "<copy-message>=Bin<Enter>"             "Copy email to the bin"
+macro index,pager       Ca          "<copy-message>=Archive<Enter>"         "Copy email to the archive"
+macro index,pager       Cs          "<copy-message>=Sent<Enter>"            "Copy email to sent"
+
+# Go to
+macro index,pager       gi          ";<change-folder>=INBOX<Enter>"         "Go to inbox"
+macro index,pager       gd          ";<change-folder>=Drafts<Enter>"        "Go to drafts"
+macro index,pager       gj          ";<change-folder>=Junk<Enter>"          "Go to junk"
+macro index,pager       gb          ";<change-folder>=Bin<Enter>"           "Go to the bin"
+macro index,pager       ga          ";<change-folder>=Archive<Enter>"       "Go to the archive"
+macro index,pager       gs          ";<change-folder>=Sent<Enter>"          "Go to sent"
+
+# Misc
+macro index,pager       a           \
+    "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<Enter><pipe-message>abook --add-email<Enter><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<Enter>" \
+    "Add sender to abook"
+macro index             \CN         "T~U<Enter><tag-prefix><clear-flag>N<untag-pattern>.<Enter>"        "Mark all messages as read"
+macro index             A           "<limit>all\n"                          "Show all messages (undo limit)"
+macro index             O           "<shell-escape>sync-email<Enter>"     "Sync all email"
+
+macro index,pager       ic          "<enter-command>source ~/.config/neomutt/switchaccounts.macro<enter>"      "Switch accounts"

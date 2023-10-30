@@ -1,0 +1,23 @@
+# Neomuttrc for daniellaing@talktalk.net
+
+set realname                = "Daniel Laing"
+set hostname                = "talktalk.net"
+set from                    = "daniellaing@talktalk.net"
+set sendmail                = "msmtp -a TalkTalk"
+set folder                  = "~/.local/share/email/daniellaing@talktalk.net"
+set header_cache            = "~/.cache/email/daniellaing@talktalk.net/headers"
+set message_cachedir        = "~/.cache/email/daniellaing@talktalk.net/bodies"
+set mbox_type               = Maildir
+#set pgp_default_key         = "daniellaing@talktalk.net"          # Default key for PGP
+
+my_hdr Cc: daniellaing@talktalk.net
+set spoolfile               = +Inbox
+set postponed               = +Drafts
+set trash                   = +Trash
+set record                  = +Sent
+
+mailboxes `get-mailboxes -a daniellaing@talktalk.net -i mail.talktalk.net -I 993`
+
+macro index         o       "<shell-escape>sync-email daniellaing@talktalk.net<Enter>"      "Sync daniellaing@talktalk.net"
+
+alias me Daniel Laing <daniellaing@talktalk.net>

@@ -1,0 +1,14 @@
+exec sync-mailbox
+
+unset hostname
+unmy_hdr Organization
+unmailboxes *
+unalternates *
+unset signature
+
+source $my_configdir/accounts/`neomutt-account-switcher`
+push <change-folder>!<enter>
+#exec change-folder ! <enter>
+exec check-stats
+
+#macro index,pager       BB          "<sync-mailbox><enter-command>source $my_configdir/accounts/`neomutt-account-switcher`<enter><change-folder>!<enter>;<check-stats>"         "Switch accounts"
