@@ -41,4 +41,6 @@
       };
     };
   };
+
+  home.sessionVariables.TERMINAL = "${pkgs.alacritty}/bin/alacritty";
 }
