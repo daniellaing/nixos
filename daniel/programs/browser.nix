@@ -17,7 +17,7 @@
         genericName = "Web Browser";
         comment = "Surf the web";
         exec = "${pkgs.librewolf}/bin/librewolf %U";
-        categories = [ "Network" "Browser" "GUI" ];
+        categories = [ "Network" "WebBrowser" ];
         mimeType = [ "x-scheme-handler/http" "x-scheme-handler/https" ];
       };
       firefox = {
@@ -25,7 +25,7 @@
         genericName = "Web Browser";
         comment = "Surf the web";
         exec = "${pkgs.firefox}/bin/firefox %U";
-        categories = [ "Network" "Browser" "GUI" ];
+        categories = [ "Network" "WebBrowser" ];
         mimeType = [ "x-scheme-handler/http" "x-scheme-handler/https" ];
       };
     };
