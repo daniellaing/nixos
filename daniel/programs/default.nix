@@ -6,6 +6,7 @@
     ./git.nix
     ./music.nix
     ./picom.nix
+    ./R.nix
     ./rofi.nix
     ./sxhkd.nix
     ./syncthing.nix

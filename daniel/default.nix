@@ -6,8 +6,6 @@
     homeDirectory = "/home/daniel";
     stateVersion = "23.05";
     packages = with pkgs; [
-      R
-      rstudio
       btop
       ferdium
       musescore
