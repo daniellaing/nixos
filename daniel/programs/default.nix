@@ -9,6 +9,7 @@
     ./R.nix
     ./rofi.nix
     ./sxhkd.nix
+    ./sxiv.nix
     ./syncthing.nix
     ./xdg.nix
     ./zathura.nix
