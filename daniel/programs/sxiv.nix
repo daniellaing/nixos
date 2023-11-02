@@ -15,7 +15,7 @@
         comment = "Simple X Image Viewer";
         exec = "sxiv %U";
         icon = "sxiv";
-        categories = [ "Utility" ];
+        categories = [ "Graphics" "Viewer" ];
         type = "Application";
         mimeType = [ "image/*" ];
       };
