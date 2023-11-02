@@ -14,6 +14,9 @@ in
     shellAliases = import ./aliases.nix (inputs);
     sessionVariables = {
       LESSHISTFILE = "-";
+      XCOMPOSEFILE = c + "/X11/xcompose";
+      XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
+
       CARGO_HOME = d + "/cargo";
 
       # TeX
