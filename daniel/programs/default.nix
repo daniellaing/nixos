@@ -4,6 +4,7 @@
   imports = [
     ./browser.nix
     ./git.nix
+    ./mpv.nix
     ./music.nix
     ./picom.nix
     ./R.nix
