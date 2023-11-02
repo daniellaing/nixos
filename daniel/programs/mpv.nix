@@ -18,7 +18,7 @@
         icon = "mpv";
         type = "Application";
         categories = [ "Player" "Video" ];
-        mime_type = [ "video/*" ];
+        mimeType = [ "video/*" ];
       };
     };
     mimeApps.defaultApplications = {
