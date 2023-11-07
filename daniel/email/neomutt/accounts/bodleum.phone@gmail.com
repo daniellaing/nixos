@@ -11,7 +11,7 @@ set mbox_type               = Maildir
 #set pgp_default_key         = "bodleum.phone@gmail.com"          # Default key for PGP
 
 my_hdr Cc: bodleum.phone@gmail.com
-set spoolfile               = +Inbox
+set spoolfile               = +INBOX
 set postponed               = +Drafts
 set trash                   = +Trash
 set record                  = +Sent

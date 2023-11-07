@@ -12,7 +12,7 @@ set crypt_autosign          = yes                               # Automatically 
 set pgp_default_key         = "daniel@daniellaing.com"          # Default key for PGP
 
 my_hdr Cc: daniel@daniellaing.com
-set spoolfile               = =Inbox
+set spoolfile               = =INBOX
 set postponed               = =Drafts
 set trash                   = =Bin
 set record                  = =Sent
