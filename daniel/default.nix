@@ -12,7 +12,8 @@
       yt-dlp
       nnn
       keepassxc
-      librewolf
+      pipes
+      nitch # Fetch utility
     ];
   };
 
