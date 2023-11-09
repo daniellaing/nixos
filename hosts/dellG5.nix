@@ -42,6 +42,10 @@
   # Protect hard drive if laptop falls
   services.hdapsd.enable = true;
 
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
