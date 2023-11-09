@@ -10,6 +10,6 @@
   environment.systemPackages = with pkgs; [
     xclip
     dmenu
-  ]
+  ];
 
-    }
+}
