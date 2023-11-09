@@ -16,6 +16,8 @@ in
   imports =
     [
       ./email
+      ./hyprland.nix
+      ./kde.nix
       ./mathematica.nix
       ./nix-locate.nix
       ./X11.nix
@@ -132,12 +134,10 @@ in
     gcc
     unzip
     wget
-    xclip
     ripgrep
     gnupg
     pinentry-curses
     nerdfonts
-    dmenu
     cargo
     (python3.withPackages pypkgs)
     findutils.locate
@@ -145,10 +145,7 @@ in
     texlive.combined.scheme-full
     gnumake
     libreoffice
-  ]
-  ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.kdeGear)
-  ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.kdeFrameworks)
-  ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.plasma5);
+  ];
   nixpkgs.config.allowAliases = false;
 
 
