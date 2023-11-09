@@ -15,10 +15,11 @@ in
 {
   imports =
     [
-      ./nix-locate.nix
-      ./zsh.nix
-      ./mathematica.nix
       ./email
+      ./mathematica.nix
+      ./nix-locate.nix
+      ./X11.nix
+      ./zsh.nix
     ];
 
   # Enable Nix commands
@@ -95,20 +96,8 @@ in
     LC_TIME = "en_GB.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "gb";
-    xkbVariant = "";
-  };
   # Configure console keymap
   console.keyMap = "uk";
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
