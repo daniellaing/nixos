@@ -31,7 +31,7 @@ in
         };
       };
       folders = {
-        inbox = "Inbox";
+        inbox = "INBOX";
         drafts = "Drafts";
         trash = "Bin";
         sent = "Sent";
@@ -72,7 +72,7 @@ in
         };
       };
       folders = {
-        inbox = "Inbox";
+        inbox = "INBOX";
         drafts = "Drafts";
         trash = "Trash";
         sent = "Sent";
@@ -113,7 +113,7 @@ in
         };
       };
       folders = {
-        inbox = "Inbox";
+        inbox = "INBOX";
         drafts = "Drafts";
         trash = "Trash";
         sent = "Sent";
