@@ -14,5 +14,6 @@
     #     kboptions = caps:swapescape,grp:ctrls_toggle;
     #   };
     # };
+    settings = { };
   };
 }
