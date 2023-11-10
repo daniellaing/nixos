@@ -1,12 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  programs.hyprland = {
+  wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       input = {
-        kblayout = [ gb us ];
-        kbvariant = [ uk dvorak ];
+        kblayout = [ "gb" "us" ];
+        kbvariant = [ "uk" "dvorak" ];
         kboptions = caps:swapescape,grp:ctrls_toggle;
       };
     };
