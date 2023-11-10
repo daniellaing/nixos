@@ -2,6 +2,7 @@
 
 {
   imports = [
+
     ./browser.nix
     ./git.nix
     ./mathematica.nix

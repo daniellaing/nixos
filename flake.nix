@@ -27,7 +27,7 @@
             ./hosts/dellG5.nix
             ./nixos/configuration.nix
 
-            hyprland.homeManagerModules.default
+            hyprland.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
