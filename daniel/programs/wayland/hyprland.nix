@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ hyprland, config, pkgs, ... }:
 
 {
+  imports = [
+    hyprland.homeManagerModules.default
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -11,9 +15,4 @@
       };
     };
   };
-
-  # Emergency terminal
-  home.packages = [
-    pkgs.kitty
-  ];
 }

@@ -14,6 +14,8 @@
       keepassxc
       pipes
       nitch # Fetch utility
+
+      kitty
     ];
   };
 

@@ -16,7 +16,7 @@ in
   imports =
     [
       ./email
-      ./hyprland.nix
+      # ./hyprland.nix
       ./kde.nix
       ./mathematica.nix
       ./nix-locate.nix
