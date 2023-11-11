@@ -125,6 +125,11 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Fonts
+  fonts.fonts = with pkgs; [
+    nerdfonts
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -135,7 +140,6 @@ in
     ripgrep
     gnupg
     pinentry-curses
-    nerdfonts
     cargo
     (python3.withPackages pypkgs)
     findutils.locate
