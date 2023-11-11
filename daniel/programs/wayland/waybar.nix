@@ -38,7 +38,7 @@
         };
 
         "clock#date" = {
-          "format" = "  {:%A, %d %B, %Y}";
+          "format" = "  {:%a, %e %b, %Y}";
         };
 
         "network" = {
