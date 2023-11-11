@@ -40,6 +40,8 @@ in
       $grey1 = 0xff939f91
       $grey2 = 0xff829181
 
+      exec-once = waybar
+
       monitor = eDP-1,1920x1080,0x0,1
 
       general {
@@ -74,15 +76,15 @@ in
         bezier = linear, 0, 0, 1, 1
 
         bezier=slow,0,0.85,0.3,1
-        bezier=overshot,0.7,0.6,0.1,1.1
+        bezier=overshot,0.13,0.99,0.29,1.1
         bezier=bounce,1,1.6,0.1,0.85
         bezier=slingshot,1,-1,0.15,1.25
         bezier=nice,0,6.9,0.5,-4.20
 
         animation = windows,1,5,bounce,popin
         animation = border,1,20,default
-        animation = fade, 1, 5, overshot
-        animation = workspaces, 1, 6, overshot, slidevert
+        animation = fade,1,3,overshot
+        animation = workspaces,1,6,overshot,
         animation = windowsIn,1,5,slow,popin
         animation = windowsMove,1,5,default
       }
@@ -93,6 +95,11 @@ in
           kb_options = caps:swapescape,grp:ctrls_toggle
           numlock_by_default = true
           follow_mouse = 1
+      }
+
+      gestures {
+          workspace_swipe = true
+          workspace_swipe_create_new = false
       }
 
       master {
