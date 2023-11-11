@@ -40,6 +40,7 @@ in
       $grey1 = 0xff939f91
       $grey2 = 0xff829181
 
+      exec-once = hyprpaper
       exec-once = waybar
 
       monitor = eDP-1,1920x1080,0x0,1
@@ -172,9 +173,19 @@ in
       bind = $MOD, 7, workspace, 7
       bind = $MOD, 8, workspace, 8
       bind = $MOD, 9, workspace, 9
+      bind = $MOD SHIFT, 1, movetoworkspace, 1
+      bind = $MOD SHIFT, 2, movetoworkspace, 2
+      bind = $MOD SHIFT, 3, movetoworkspace, 3
+      bind = $MOD SHIFT, 4, movetoworkspace, 4
+      bind = $MOD SHIFT, 5, movetoworkspace, 5
+      bind = $MOD SHIFT, 6, movetoworkspace, 6
+      bind = $MOD SHIFT, 7, movetoworkspace, 7
+      bind = $MOD SHIFT, 8, movetoworkspace, 8
+      bind = $MOD SHIFT, 9, movetoworkspace, 9
 
-      # Wallpaper
-      exec-once = hyprpaper
+      # Mouse binds
+      bindm = $mainMod, mouse:272, movewindow
+      bindm = $mainMod, mouse:273, resizewindow
     '';
   };
 }
