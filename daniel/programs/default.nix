@@ -22,5 +22,6 @@
     # Wayland
     ./wayland/waybar.nix
     ./wayland/hyprland.nix
+    ./wayland/wofi.nix
   ];
 }
