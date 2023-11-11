@@ -184,8 +184,8 @@ in
       bind = $MOD SHIFT, 9, movetoworkspace, 9
 
       # Mouse binds
-      bindm = $mainMod, mouse:272, movewindow
-      bindm = $mainMod, mouse:273, resizewindow
+      bindm = $MOD, mouse:272, movewindow
+      bindm = $MOD, mouse:273, resizewindow
     '';
   };
 }
