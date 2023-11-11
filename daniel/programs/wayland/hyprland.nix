@@ -40,6 +40,8 @@ in
       $grey1 = 0xff939f91
       $grey2 = 0xff829181
 
+      monitor = eDP-1,1920x1080,0x0,1
+
       general {
           layout = master
           gaps_out = 15
@@ -154,24 +156,15 @@ in
       bind = $MOD, Backspace, exit,
 
       # Workspaces
-      workspace = name:ws1
-      workspace = name:ws2
-      workspace = name:ws3
-      workspace = name:ws4
-      workspace = name:ws5
-      workspace = name:ws6
-      workspace = name:ws7
-      workspace = name:ws8
-      workspace = name:ws9
-      bind = $MOD, 1, workspace, name:ws1
-      bind = $MOD, 2, workspace, name:ws2
-      bind = $MOD, 3, workspace, name:ws3
-      bind = $MOD, 4, workspace, name:ws4
-      bind = $MOD, 5, workspace, name:ws5
-      bind = $MOD, 6, workspace, name:ws6
-      bind = $MOD, 7, workspace, name:ws7
-      bind = $MOD, 8, workspace, name:ws8
-      bind = $MOD, 9, workspace, name:ws9
+      bind = $MOD, 1, workspace, 1
+      bind = $MOD, 2, workspace, 2
+      bind = $MOD, 3, workspace, 3
+      bind = $MOD, 4, workspace, 4
+      bind = $MOD, 5, workspace, 5
+      bind = $MOD, 6, workspace, 6
+      bind = $MOD, 7, workspace, 7
+      bind = $MOD, 8, workspace, 8
+      bind = $MOD, 9, workspace, 9
 
       # Wallpaper
       exec-once = hyprpaper
