@@ -15,7 +15,7 @@ in
     [
       ./email
       ./fonts.nix
-      ./kde.nix
+      # ./kde.nix
       ./mathematica.nix
       ./nix-locate.nix
       ./X11.nix
@@ -72,8 +72,11 @@ in
   };
 
   # Enable networking
-  networking.networkmanager.enable = true;
-  networking.hostName = "nixos"; # Define your hostname.
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+  };
+  services.network-manager-applet.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -149,11 +152,19 @@ in
   ];
   environment.pathsToLink = [ "/etc/dbus-1" "/share/dbus-1" ];
 
-  networking.firewall.enable = true;
+  security.polkit.enable = true;
 
   system.stateVersion = "23.05"; # Did you read the comment?
 
   programs.ssh.askPassword = "/nix/store/pg42226jhbpjp47s03h0glzxyxq36h6i-ksshaskpass-5.27.7/bin/ksshaskpass";
-
   programs.adb.enable = true;
+
+  # Keep a list of all installed packages
+  environment.etc."current-system-packages".text =
+    let
+      packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
+      sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
+      formatted = builtins.concatStringsSep "\n" sortedUnique;
+    in
+    formatted;
 }
