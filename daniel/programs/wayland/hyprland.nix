@@ -188,4 +188,19 @@ in
       bindm = $MOD, mouse:273, resizewindow
     '';
   };
+
+  systemd.user.services.polkit-kde-authentication-agent-1 = {
+    Unit.Description = "KDE polkit authentication agent";
+    Unit.Wants = [ "graphical-session.target" ];
+    Unit.After = [ "graphical-session.target" ];
+    Install.WantedBy = [ "graphical-session.target" ];
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+
 }
