@@ -1,6 +1,6 @@
 {
   imports = [
     ./locate.nix
-    ./pipewire.nix
+    ./sound.nix
   ];
 }
