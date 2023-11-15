@@ -19,6 +19,9 @@ in
     pinentry-curses
     gnupg
 
+    # Secret management
+    sops
+
     # Development
     (python3.withPackages pypkgs)
     cargo
