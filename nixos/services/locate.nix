@@ -6,5 +6,6 @@
     interval = "hourly";
     package = pkgs.plocate;
     pruneBindMounts = true;
+    localuser = null;
   };
 }
