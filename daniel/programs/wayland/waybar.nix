@@ -109,10 +109,10 @@ with config.colorScheme.colors;
         margin: 5px 5px;
         padding: 8px 5px;
         border-radius: 16px;
-        color: #${base05};
+        color: #${base06};
       }
       #workspaces button {
-        color: #${base05};
+        color: #${base06};
         padding: 0px 5px;
         margin: 0px 3px;
         border-radius: 16px;
@@ -124,13 +124,13 @@ with config.colorScheme.colors;
         background: #${base0B};
         color: #${base00};
         border-radius: 16px;
-        min-width: 50px;
+        min-width: 40px;
         background-size: 400% 400%;
         transition: all 0.3s ease-in-out;
       }
 
       #workspaces button:hover {
-        background: #${base09};
+        background: #${base0D};
         color: #${base00};
         border-radius: 16px;
         min-width: 50px;
@@ -160,11 +160,23 @@ with config.colorScheme.colors;
       }
       #custom-launcher {
         background: #${base00};
-        color: #${base05};
+        color: #${base06};
         border-radius: 0px 0px 40px 0px;
         margin: 0px;
         padding: 0px 35px 0px 15px;
         font-size: 28px;
+      }
+
+      @keyframes warning {
+          100% {
+            background: #${base00};
+          }
+          0% {
+            background: #${base08};
+          }
+      }
+      #battery.warning {
+        animation: warning 1s infinite;
       }
     '';
   };
