@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   pypkgs = ps: with ps; [
@@ -15,8 +15,8 @@ in
     [
       ./email
       ./fonts.nix
-      # ./kde.nix
-      ./mathematica.nix
+      ./kde.nix
+      # ./mathematica.nix
       ./nix-locate.nix
       ./X11.nix
       ./zsh.nix
@@ -76,7 +76,7 @@ in
     hostName = "nixos";
     networkmanager.enable = true;
   };
-  services.network-manager-applet.enable = true;
+  programs.nm-applet.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -142,6 +142,8 @@ in
     texlive.combined.scheme-full
     gnumake
     libreoffice
+    librewolf
+    firefox
   ];
   nixpkgs.config.allowAliases = false;
 
@@ -158,6 +160,9 @@ in
 
   programs.ssh.askPassword = "/nix/store/pg42226jhbpjp47s03h0glzxyxq36h6i-ksshaskpass-5.27.7/bin/ksshaskpass";
   programs.adb.enable = true;
+
+  # SDDM
+  services.xserver.displayManager.sddm.enable = true;
 
   # Keep a list of all installed packages
   environment.etc."current-system-packages".text =

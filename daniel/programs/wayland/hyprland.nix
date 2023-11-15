@@ -1,10 +1,10 @@
-{ hyprland, config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 let
   wallpaper = ../../wallpapers/summer-day.png;
 in
 {
   imports = [
-    hyprland.homeManagerModules.default
+    inputs.hyprland.homeManagerModules.default
     ../../../modules/hyprpaper.nix
   ];
 
@@ -13,35 +13,19 @@ in
     inherit wallpaper;
   };
 
+  # NVIDIA things
+  wayland.windowManager.hyprland.enableNvidiaPatches = true;
+  home.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
+    xwayland.enable = true;
     extraConfig = ''
-      $bg_dim = 0xffefebd4
-      $bg0 = 0xfffdf6e3
-      $bg1 = 0xfff4f0d9
-      $bg2 = 0xffefebd4
-      $bg3 = 0xffe6e2cc
-      $bg4 = 0xffe0dcc7
-      $bg5 = 0xffbdc3af
-      $bg_visual = 0xffeaedc8
-      $bg_red = 0xfffbe3da
-      $bg_green = 0xfff0f1d2
-      $bg_blue = 0xffe9f0e9
-      $bg_yellow = 0xfffaedcd
-      $fg = 0xff5c6a72
-      $red = 0xfff85552
-      $orange = 0xfff57d26
-      $yellow = 0xffdfa000
-      $green = 0xff8da101
-      $aqua = 0xff35a77c
-      $blue = 0xff3a94c5
-      $purple = 0xffdf69ba
-      $grey0 = 0xffa6b0a0
-      $grey1 = 0xff939f91
-      $grey2 = 0xff829181
-
       exec-once = hyprpaper
-      exec-once = waybar
+      exec = pkill waybar; waybar
 
       monitor = eDP-1,1920x1080,0x0,1
 
@@ -50,23 +34,23 @@ in
           gaps_out = 15
           cursor_inactive_timeout = 3
 
-          border_size = 4
-          col.active_border = $bg5
-          col.inactive_border = $fg
-          col.nogroup_border_active = $fg
-          col.nogroup_border = $bg5
+          border_size = 2
+          col.active_border = 0xff${config.colorScheme.colors.base05}
+          col.inactive_border = 0xff${config.colorScheme.colors.base01}
+          col.nogroup_border_active = 0xff${config.colorScheme.colors.base05}
+          col.nogroup_border = 0xff${config.colorScheme.colors.base01}
       }
 
       decoration {
-          rounding = 10
+          rounding = 5
 
-          drop_shadow = yes
-          shadow_range = 0
-          shadow_render_power = 4
-          col.shadow = rgb(61694f)
-          col.shadow_inactive = rgb(2e3538)
-          shadow_scale = 1.0
-          shadow_offset = 0 10
+          # drop_shadow = yes
+          # shadow_range = 0
+          # shadow_render_power = 4
+          # col.shadow = rgb(61694f)
+          # col.shadow_inactive = rgb(2e3538)
+          # shadow_scale = 1.0
+          # shadow_offset = 0 10
       }
 
       animations {
@@ -100,7 +84,6 @@ in
 
       gestures {
           workspace_swipe = true
-          workspace_swipe_create_new = false
       }
 
       master {

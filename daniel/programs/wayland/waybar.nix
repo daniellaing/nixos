@@ -1,199 +1,170 @@
 { config, pkgs, ... }:
-
+with config.colorScheme.colors;
 {
   programs.waybar = {
     enable = true;
-    settings = {
-      mainBar = {
-        "margin-top" = 0;
-        "margin-left" = 120;
-        "margin-bottom" = 0;
-        "margin-right" = 120;
-        "height" = 60;
-        "layer" = "top";
-        "position" = "top";
-        "spacing" = 15;
-        "modules-left" = [ "custom/launcher" "clock" "clock#date" ];
-        "modules-cetrer" = [ "hyprland/workspaces" ];
-        "modules-right" = [ "pulseaudio" "network" "battery" "custom/powermenu" ];
+    package = (pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    }));
+    settings.mainBar = {
+      "position" = "top";
+      "layer" = "top";
+      "height" = 35;
+      "margin-top" = 0;
+      "margin-bottom" = 0;
+      "margin-left" = 0;
+      "margin-right" = 0;
 
-        "hyprland/workspaces" = {
-          "on-click" = "activate";
-          "on-scroll-up" = "hyprctl dispatch workspace +1";
-          "on-scroll-down" = "hyprctl dispatch workspace -1";
-          "persistent_workspaces" = {
-            "1" = [ "eDP-1" ];
-          };
-        };
+      "modules-left" = [
+        "custom/launcher"
+      ];
+      "modules-center" = [
+        "hyprland/workspaces"
+      ];
+      "modules-right" = [
+        "tray"
+        "pulseaudio"
+        "network"
+        "battery"
+        "clock"
+      ];
 
-        "custom/launcher" = {
-          "interval" = "once";
-          "format" = "";
-          "on-click" = "pkill wofi || wofi --show drun --term=$TERMINAL --width=2[% --height=50% --columns 1 -I";
-          "tooltip" = false;
-        };
+      "hyprland/workspaces" = {
+        "on-click" = "activate";
+        "all-outupts" = true;
+        "sort-by-number" = true;
+        "on-scroll-up" = "hyprctl dispatch workspace e+1";
+        "on-scroll-down" = "hyprctl dispatch workspace e-1";
+        "smooth-scrolling-threshold" = 1;
+      };
 
-        "clock" = {
-          "format" = "  {:%H:%M}";
-        };
+      "custom/launcher" = {
+        "interval" = "once";
+        "format" = "";
+        "on-click" = "pkill wofi || wofi --show drun --term=$TERMINAL --width=55% --height=50% --columns 1 -I";
+        "tooltip" = false;
+      };
 
-        "clock#date" = {
-          "format" = "  {:%a, %e %b, %Y}";
-        };
+      "clock" = {
+        "format" = "  {:%a, %e %b, %H:%M}";
+      };
 
-        "network" = {
-          "format-wifi" = "󰤨  {signalStrength}%";
-          "format-ethernet" = "󰈀  {signalStrength}%";
-          "format-disconnected" = "󰤫 ";
-          "on-click" = "$TERMINAL -e nmtui";
-        };
+      "network" = {
+        "format-wifi" = "󰤨  {signalStrength}%";
+        "format-ethernet" = "󰈀  {signalStrength}%";
+        "format-disconnected" = "󰤫 ";
+        "on-click" = "$TERMINAL -e nmtui";
+        "tooltip-format" = "Connected to {essid} {ifname} via {gwaddr}";
+      };
 
-        "battery" = {
-          "bat" = "BAT0";
-          "adapter" = "ADP0";
-          "interval" = 60;
-          "states" = {
-            "warning" = 30;
-            "critical" = 15;
-          };
-          "max-length" = 10;
-          "format" = "{icon} {capacity}%";
-          "format-warning" = "{icon} {capacity}%";
-          "format-critical" = "{icon} {capacity}%";
-          "format-charging" = "  {capacity}%";
-          "format-plugged" = "  {capacity}%";
-          "format-alt" = "{icon} {capacity}%";
-          "format-full" = "  100%";
-          "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+      "battery" = {
+        "states" = {
+          "warning" = 30;
+          "critical" = 15;
         };
+        "format" = "{icon} {capacity}%";
+        "format-warning" = "{icon} {capacity}%";
+        "format-critical" = "{icon} {capacity}%";
+        "format-charging" = "  {capacity}%";
+        "format-plugged" = "  {capacity}%";
+        "format-alt" = "{icon} {capacity}%";
+        "format-full" = "  100%";
+        "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+      };
 
-        "pulseaudio" = {
-          "format" = "{icon} {volume}%";
-          "format-bluetooth" = "{icon}  {volume}%";
-          "format-bluetooth-muted" = "婢  muted";
-          "format-muted" = "婢 muted";
-          "format-icons" = {
-            "headphone" = "󰋋";
-            "hands-free" = "󰥰";
-            "headset" = "󰋋";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = [ "" "" "" ];
-          };
-          "on-click-right" = "pavucontrol";
-          "on-click" = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+      "pulseaudio" = {
+        "format" = "{icon} {volume}%";
+        "format-bluetooth" = "{icon}  {volume}%";
+        "format-bluetooth-muted" = "󰝟  muted";
+        "format-muted" = "󰝟 muted";
+        "format-icons" = {
+          "headphone" = "󰋋";
+          "hands-free" = "󰥰";
+          "headset" = "󰋋";
+          "phone" = "";
+          "portable" = "";
+          "car" = "";
+          "default" = [ "" "" "" ];
         };
-
-        "custom/powermenu" = {
-          "format" = "";
-          "on-click" = "hyprctl dispatch exit";
-          "tooltip" = false;
-        };
+        "on-click" = "pavucontrol";
+        "on-click-right" = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
       };
     };
 
     style = ''
-      @define-color bg_dim #efebd4;
-      @define-color bg0 #fdf6e3;
-      @define-color bg1 #f4f0d9;
-      @define-color bg2 #efebd4;
-      @define-color bg3 #e6e2cc;
-      @define-color bg4 #e0dcc7;
-      @define-color bg5 #bdc3af;
-      @define-color bg_visual #eaedc8;
-      @define-color bg_red #fbe3da;
-      @define-color bg_green #f0f1d2;
-      @define-color bg_blue #e9f0e9;
-      @define-color bg_yellow #faedcd;
-      @define-color fg #5c6a72;
-      @define-color red #f85552;
-      @define-color orange #f57d26;
-      @define-color yellow #dfa000;
-      @define-color green #8da101;
-      @define-color aqua #35a77c;
-      @define-color blue #3a94c5;
-      @define-color purple #df69ba;
-      @define-color grey0 #a6b0a0;
-      @define-color grey1 #939f91;
-      @define-color grey2 #829181;
-
       * {
-        font-family: JetBrainsMono Nerd Font, FontAwesome;
-        font-size: 16px;
-        font-weight: bold;
+        font-family: "JetBrainsMono Nerd Font";
+        border: none;
+        border-radius: 0px;
+        font-size: 14px;
+        min-height: 0;
       }
 
       window#waybar {
-        background-color: @fg;
-        color: @bg0;
-        transition-property: background-color;
-        transition-duration: 0.5s;
-        border-radius: 0px 0px 15px 15px;
-        transition-duration: .5s;
-
-        border-bottom-width: 5px;
-        border-bottom-color: #2e3538;
-        border-bottom-style: solid;
-      }
-
-      #custom-launcher,
-      #clock,
-      #clock-date,
-      #workspaces,
-      #pulseaudio,
-      #network,
-      #battery,
-      #custom-powermenu {
-        background-color: @bg0;
-        color: @fg;
-
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-top: 7px;
-        margin-bottom: 12px;
-      	border-radius: 10px;
-
-        border-bottom-width: 5px;
-        border-bottom-color: @bg5;
-        border-bottom-style: solid;
+        background: transparent;
       }
 
       #workspaces {
-        padding: 0px;
+        background: #${base00};
+        margin: 5px 5px;
+        padding: 8px 5px;
+        border-radius: 16px;
+        color: #${base05};
+      }
+      #workspaces button {
+        color: #${base05};
+        padding: 0px 5px;
+        margin: 0px 3px;
+        border-radius: 16px;
+        background: transparent;
+        transition: all 0.3s ease-in-out;
       }
 
       #workspaces button.active {
-        background-color: @blue;
-        color: @bg0;
-
-      	border-radius: 10px;
-
-        margin-bottom: -5px;
-
-        border-bottom-width: 5px;
-        border-bottom-color: #1c4a62;
-        border-bottom-style: solid;
+        background: #${base0B};
+        color: #${base00};
+        border-radius: 16px;
+        min-width: 50px;
+        background-size: 400% 400%;
+        transition: all 0.3s ease-in-out;
       }
 
+      #workspaces button:hover {
+        background: #${base09};
+        color: #${base00};
+        border-radius: 16px;
+        min-width: 50px;
+        background-size: 400% 400%;
+      }
+
+      #tray,
+      #pulseaudio,
+      #network,
+      #battery {
+        background: #${base00};
+        color: #${base05};
+        font-weight: bold;
+        margin: 5px 0px;
+        border-radius: 10px 24px 10px 24px;
+        padding: 0 20px;
+        margin-left: 7px;
+      }
+      #clock {
+        background: #${base00};
+        color: #${base05};
+        border-radius: 0px 0px 0px 40px;
+        padding: 10px 10px 15px 25px;
+        margin-left: 7px;
+        font-weight: bold;
+        font-size: 16px;
+      }
       #custom-launcher {
-        background-color: @green;
-        color: @bg0;
-        border-bottom-color: #465000;
-
-        margin-left: 12px;
-        padding-left: 15px;
-        padding-right: 21px;
-      }
-
-      #custom-powermenu {
-        background-color: @red;
-        color: @bg0;
-        border-bottom-color: #9e0906;
-
-        margin-right: 15px;
-        padding-left: 20px;
-        padding-right: 23px;
+        background: #${base00};
+        color: #${base05};
+        border-radius: 0px 0px 40px 0px;
+        margin: 0px;
+        padding: 0px 35px 0px 15px;
+        font-size: 28px;
       }
     '';
   };

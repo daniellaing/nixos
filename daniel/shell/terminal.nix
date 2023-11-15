@@ -1,4 +1,5 @@
 { config, pkgs, ... }:
+with config.colorScheme.colors;
 {
   programs = {
 
@@ -7,44 +8,35 @@
       extraConfig = ''
         box_drawing_scale 0.001, 1, 1.5, 2
         window_margin_width 10
-        foreground            #323d43
-        background            #fdf6e3
-        selection_foreground  #e4e1cd
-        selection_background  #d3dbc8
-        url_color             #415c6d
-        cursor                #7fbbb3
+        foreground            #${base05}
+        background            #${base00}
+        selection_foreground  #${base05}
+        selection_background  #${base02}
+        cursor                #${base05}
 
-        # black
-        color0   #4a555b
-        color8   #525c62
+        color0   #${base01}
+        color8   #${base02}
 
-        # red
-        color1   #e68183
-        color9   #e68183
+        color1   #${base0E}
+        color9   #${base0E}
 
-        # green
-        color2   #a7c080
-        color10  #a7c080
+        color2   #${base0D}
+        color10  #${base0D}
 
-        # yellow
-        color3   #dbbc7f
-        color11  #dbbc7f
+        color3   #${base0A}
+        color11  #${base0A}
 
-        # blue
-        color4  #7fbbb3
-        color12 #7fbbb3
+        color4  #${base08}
+        color12 #${base08}
 
-        # magenta
-        color5   #d699b6
-        color13  #d699b6
+        color5   #${base09}
+        color13  #${base09}
 
-        # cyan
-        color6   #83c092
-        color14  #83c092
+        color6   #${base0B}
+        color14  #${base0B}
 
-        # white
-        color7   #f3efda
-        color15  #f3efda
+        color7   #${base07}
+        color15  #${base07}
       '';
     };
 
