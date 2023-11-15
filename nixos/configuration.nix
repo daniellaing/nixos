@@ -104,12 +104,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  services.dbus.packages = [
-    pkgs.dbus.out
-    config.system.path
-  ];
-  environment.pathsToLink = [ "/etc/dbus-1" "/share/dbus-1" ];
-
   security.polkit.enable = true;
 
   programs.ssh.askPassword = "/nix/store/pg42226jhbpjp47s03h0glzxyxq36h6i-ksshaskpass-5.27.7/bin/ksshaskpass";

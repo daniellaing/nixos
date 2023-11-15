@@ -1,7 +1,8 @@
 {
   imports = [
+    ./dbus.nix
     ./locate.nix
-    ./sound.nix
     ./printing.nix
+    ./sound.nix
   ];
 }
