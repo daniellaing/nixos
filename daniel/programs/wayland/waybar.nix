@@ -54,13 +54,12 @@ with config.colorScheme.colors;
         "format-ethernet" = "󰈀  {signalStrength}%";
         "format-disconnected" = "󰤫 ";
         "on-click" = "$TERMINAL -e nmtui";
-        "tooltip-format" = "Connected to {essid} {ifname} via {gwaddr}";
+        "tooltip-format" = "Connected to {essid}";
       };
 
       "battery" = {
         "states" = {
           "warning" = 30;
-          "critical" = 15;
         };
         "format" = "{icon} {capacity}%";
         "format-warning" = "{icon} {capacity}%";
