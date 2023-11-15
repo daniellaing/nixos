@@ -16,7 +16,6 @@ in
     wget
     ripgrep
     gnumake
-    plocate
     pinentry-curses
     gnupg
 

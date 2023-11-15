@@ -13,6 +13,7 @@
       ./kde.nix
       ./nix-locate.nix
       ./programs.nix
+      ./services
       ./X11.nix
       ./zsh.nix
     ];
