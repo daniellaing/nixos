@@ -22,7 +22,6 @@ with config.colorScheme.colors;
         "hyprland/workspaces"
       ];
       "modules-right" = [
-        "tray"
         "pulseaudio"
         "network"
         "battery"
@@ -72,7 +71,7 @@ with config.colorScheme.colors;
       };
 
       "pulseaudio" = {
-        "format" = "{icon} {volume}%";
+        "format" = "{icon}  {volume}%";
         "format-bluetooth" = "{icon}  {volume}%";
         "format-bluetooth-muted" = "󰝟  muted";
         "format-muted" = "󰝟 muted";
