@@ -3,7 +3,7 @@
 {
   imports = [
 
-    ./browser.nix
+    ./browsers
     ./git.nix
     ./mathematica.nix
     ./mpv.nix
