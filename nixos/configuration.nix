@@ -1,23 +1,18 @@
 { config, pkgs, lib, ... }:
 
-let
-  pypkgs = ps: with ps; [
-    numpy
-    requests
-    pandas
-    pip
-  ];
-in
 {
+  system.stateVersion = "23.05"; # Did you read the comment?
+
   programs.hyprland.enable = true;
 
   imports =
     [
+      # ./mathematica.nix
       ./email
       ./fonts.nix
       ./kde.nix
-      # ./mathematica.nix
       ./nix-locate.nix
+      ./programs.nix
       ./X11.nix
       ./zsh.nix
     ];
@@ -125,29 +120,6 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git
-    gcc
-    unzip
-    wget
-    ripgrep
-    gnupg
-    pinentry-curses
-    cargo
-    (python3.withPackages pypkgs)
-    findutils.locate
-    wireguard-tools
-    texlive.combined.scheme-full
-    gnumake
-    libreoffice
-    librewolf
-    firefox
-  ];
-  nixpkgs.config.allowAliases = false;
-
-
   services.dbus.packages = [
     pkgs.dbus.out
     config.system.path
@@ -155,8 +127,6 @@ in
   environment.pathsToLink = [ "/etc/dbus-1" "/share/dbus-1" ];
 
   security.polkit.enable = true;
-
-  system.stateVersion = "23.05"; # Did you read the comment?
 
   programs.ssh.askPassword = "/nix/store/pg42226jhbpjp47s03h0glzxyxq36h6i-ksshaskpass-5.27.7/bin/ksshaskpass";
   programs.adb.enable = true;
