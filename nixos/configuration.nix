@@ -71,7 +71,6 @@
     hostName = "nixos";
     networkmanager.enable = true;
   };
-  programs.nm-applet.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/London";
