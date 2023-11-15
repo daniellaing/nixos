@@ -10,9 +10,10 @@
     };
     hyprland.url = "github:hyprwm/Hyprland";
     nix-colors.url = "github:misterio77/nix-colors";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nix-colors, home-manager, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {

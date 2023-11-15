@@ -11,6 +11,7 @@
       ./email
       ./fonts.nix
       ./kde.nix
+      ./network.nix
       ./nix-locate.nix
       ./programs.nix
       ./services
@@ -65,12 +66,6 @@
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 14d";
-  };
-
-  # Enable networking
-  networking = {
-    hostName = "nixos";
-    networkmanager.enable = true;
   };
 
   # Set your time zone.
