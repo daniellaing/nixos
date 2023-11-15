@@ -46,7 +46,7 @@ with config.colorScheme.colors;
       };
 
       "clock" = {
-        "format" = "  {:%a, %e %b, %H:%M}";
+        "format" = "  {:%a, %e %b %H:%M}";
       };
 
       "network" = {
