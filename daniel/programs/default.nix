@@ -14,11 +14,6 @@
     ./xdg.nix
     ./zathura.nix
 
-    # X11
-    ./X11/rofi.nix
-    ./X11/sxhkd.nix
-    ./X11/sxiv.nix
-
     # Wayland
     ./wayland/waybar.nix
     ./wayland/hyprland.nix

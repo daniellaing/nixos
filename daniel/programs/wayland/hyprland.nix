@@ -146,6 +146,8 @@ in
       bind = $MOD SHIFT, Space, togglefloating,
       bind = $MOD, Backspace, exit,
 
+      bind = $ALT, Space, exec, wofi -s drun -I
+
       # Workspaces
       bind = $MOD, 1, workspace, 1
       bind = $MOD, 2, workspace, 2

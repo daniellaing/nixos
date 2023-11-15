@@ -40,7 +40,7 @@ with config.colorScheme.colors;
       "custom/launcher" = {
         "interval" = "once";
         "format" = "";
-        "on-click" = "pkill wofi || wofi --show drun --term=$TERMINAL --width=55% --height=50% --columns 1 -I";
+        "on-click" = "wofi -s drun -I";
         "tooltip" = false;
       };
 
