@@ -104,10 +104,11 @@ with config.colorScheme.colors;
 
       #workspaces {
         background: #${base00};
+        color: #${base06};
+        font-size: 16px;
         margin: 5px 5px;
         padding: 8px 5px;
         border-radius: 16px;
-        color: #${base06};
       }
       #workspaces button {
         color: #${base06};
