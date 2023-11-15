@@ -13,6 +13,10 @@ in
         enable = true;
         profiles.daniel = {
           bookmarks = import ./bookmarks.nix (inputs);
+          settings = {
+            "browser.toolbars.bookmarks.visibility" = "always";
+            "browser.startup.couldRestoreSession.count" = 2;
+          };
         };
       };
     })
