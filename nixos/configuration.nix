@@ -93,9 +93,6 @@
   # Configure console keymap
   console.keyMap = "uk";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.daniel = {
     shell = pkgs.zsh;
