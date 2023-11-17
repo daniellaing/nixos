@@ -30,7 +30,7 @@ in
       monitor = eDP-1,1920x1080,0x0,1
 
       general {
-          layout = master
+          layout = dwindle
           gaps_out = 15
           cursor_inactive_timeout = 3
 
@@ -86,6 +86,10 @@ in
           workspace_swipe = true
       }
 
+      dwindle {
+          force_split = 2   # Split to the right or bottom
+      }
+
       master {
           new_on_top = true
       }
@@ -112,11 +116,11 @@ in
 
       # bind = $MOD, H, #Decrease master window size
 
-      bind = $MOD, J, layoutmsg, cyclenext
-      bind = $MOD SHIFT, J, layoutmsg, swapnext
+      bind = $MOD, J, cyclenext,
+      bind = $MOD SHIFT, J, swapwindow, u
 
-      bind = $MOD, K, layoutmsg, cycleprev
-      bind = $MOD SHIFT, K, layoutmsg, swapprev
+      bind = $MOD, K, cyclenext, prev
+      bind = $MOD SHIFT, K, swapwindow, d
 
       # bind = $MOD, L, #Increase master window size
 
