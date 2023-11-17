@@ -42,6 +42,40 @@
         ];
       }
       {
+        name = "Jobs";
+        bookmarks = [
+          {
+            name = "Babcock Data Analytics";
+            url =
+              "https://www.gradcracker.com/hub/113/babcock-international-group/graduate-job/54621/data-analytics-graduate-programme";
+          }
+          {
+            name = "Lloyds Data Science";
+            url =
+              "https://www.gradcracker.com/hub/275/lloyds-banking-group/graduate-job/56154/data-science-and-analytics-graduate-scheme";
+          }
+          {
+            name = "Jacobs Graduate Consultant";
+            url =
+              "https://www.gradcracker.com/hub/41/jacobs/graduate-job/56588/graduate-consultants-data-analysis";
+          }
+          {
+            name = "EY Actuarial Graduate";
+            url =
+              "https://www.gradcracker.com/hub/615/ey/graduate-job/55565/actuarial-graduate-programmes";
+          }
+          {
+            name = "NNL Graduate Scheme";
+            url =
+              "https://www.gradcracker.com/hub/168/national-nuclear-laboratory/graduate-job/54166/graduate-scheme-2024-science-and-engineering";
+          }
+        ];
+      }
+      {
+        name = "NixOS Wiki";
+        url = "https://nixos.wiki/wiki/Main_Page";
+      }
+      {
         name = "YouTube";
         url = "https://www.youtube.com";
       }
