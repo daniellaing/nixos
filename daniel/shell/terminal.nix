@@ -8,6 +8,7 @@ with config.colorScheme.colors;
       extraConfig = ''
         box_drawing_scale 0.001, 1, 1.5, 2
         window_margin_width 10
+        confirm_os_window_close 0
         foreground            #${base05}
         background            #${base00}
         selection_foreground  #${base05}
