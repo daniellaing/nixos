@@ -17,6 +17,7 @@ with config.colorScheme.colors;
 
       "modules-left" = [
         "custom/launcher"
+        "tray"
       ];
       "modules-center" = [
         "hyprland/workspaces"
