@@ -22,8 +22,19 @@
 
   # Enable Nix commands
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
-    optimise.automatic = true;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "13:00" "20:00" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d";
+    };
   };
 
   # Bootloader.
@@ -64,13 +75,6 @@
   # Keep system up to date
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
-
-  # Clean unused packages
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 14d";
-  };
 
   # Set your time zone.
   time.timeZone = "Europe/London";
