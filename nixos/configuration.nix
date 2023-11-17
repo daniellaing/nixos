@@ -20,7 +20,10 @@
     ];
 
   # Enable Nix commands
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+    optimise.automatic = true;
+  };
 
   # Bootloader.
   boot.loader = {
