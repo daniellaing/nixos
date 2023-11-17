@@ -15,6 +15,7 @@
       ./nix-locate.nix
       ./programs.nix
       ./services
+      ./sops.nix
       ./X11.nix
       ./zsh.nix
     ];
