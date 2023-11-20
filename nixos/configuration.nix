@@ -8,10 +8,10 @@
 
   imports =
     [
-      # ./mathematica.nix
       ./email
       ./fonts.nix
-      ./kde.nix
+      # ./kde.nix
+      ./mathematica.nix
       ./network.nix
       ./nix-locate.nix
       ./programs.nix
