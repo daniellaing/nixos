@@ -3,6 +3,15 @@
 {
   system.stateVersion = "23.05"; # Did you read the comment?
 
+  # Build flags
+  nixpkgs = {
+    localSystem = {
+      gcc.arch = "skylake";
+      gcc.tune = "skylake";
+    };
+    config.allowAliases = false;
+  };
+
   programs.hyprland.enable = true;
   programs.nm-applet.enable = true;
 
@@ -104,9 +113,6 @@
     description = "Daniel Laing";
     extraGroups = [ "networkmanager" "wheel" "adbusers" ];
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   security.polkit.enable = true;
 

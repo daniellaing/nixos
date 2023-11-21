@@ -31,6 +31,4 @@ in
     libreoffice
     firefox
   ];
-
-  nixpkgs.config.allowAliases = false;
 }

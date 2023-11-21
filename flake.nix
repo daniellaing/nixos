@@ -18,6 +18,9 @@
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        config.allowUnfree = true;
+      };
       overlay-stable = final: prev: {
         stable = import nixpkgs-stable {
           inherit system;
