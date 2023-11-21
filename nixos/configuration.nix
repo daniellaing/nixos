@@ -3,15 +3,6 @@
 {
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  # Build flags
-  nixpkgs = {
-    localSystem = {
-      gcc.arch = "skylake";
-      gcc.tune = "skylake";
-    };
-    config.allowAliases = false;
-  };
-
   programs.hyprland.enable = true;
   programs.nm-applet.enable = true;
 
@@ -84,7 +75,7 @@
 
   # Keep system up to date
   system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
+  system.autoUpgrade.allowReboot = false;
 
   # Set your time zone.
   time.timeZone = "Europe/London";

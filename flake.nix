@@ -18,20 +18,27 @@
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
+
       pkgs = import nixpkgs {
-        config.allowUnfree = true;
+        inherit system;
+        config = {
+          allowUnfree = true;
+          allowAliases = false;
+        };
       };
+
       overlay-stable = final: prev: {
         stable = import nixpkgs-stable {
           inherit system;
           config.allowUnfree = true;
         };
       };
+
     in
     {
       nixosConfigurations = {
         "nixos" = nixpkgs.lib.nixosSystem rec {
-          inherit system;
+          inherit system pkgs;
           specialArgs = { inherit inputs; };
 
           modules = [
