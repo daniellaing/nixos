@@ -74,8 +74,12 @@
   };
 
   # Keep system up to date
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = false;
+  # TODO: Fix this
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   operation = "boot";
+  #   flags = [ "--flake /dotfiles#nixos" ];
+  # };
 
   # Set your time zone.
   time.timeZone = "Europe/London";
