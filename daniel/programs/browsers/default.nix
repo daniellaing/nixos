@@ -23,7 +23,7 @@ in
             engines = {
               "SearxNG" = {
                 urls = [{
-                  template = "https://search.leptons.xyz/search";
+                  template = "https://freesearch.club/search";
                   params = [
                     { name = "q"; value = "{searchTerms}"; }
                   ];
