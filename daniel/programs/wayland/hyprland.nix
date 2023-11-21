@@ -98,6 +98,7 @@ in
           disable_hyprland_logo = true;
           enable_swallow = true;
           swallow_regex = ^(Alacritty|kitty)$
+          swallow_exception_regex = ^(wev|v|nvim) ?.*
       }
 
       # Keybinds
