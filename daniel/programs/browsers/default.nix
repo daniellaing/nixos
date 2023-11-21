@@ -19,7 +19,16 @@ in
           };
           search = {
             force = true;
+            default = "SearxNG";
             engines = {
+              "SearxNG" = {
+                urls = [{
+                  template = "https://freesearch.club/search";
+                  params = [
+                    { name = "q"; value = "{searchTerms}"; }
+                  ];
+                }];
+              };
               "Nix Packages" = {
                 urls = [{
                   template = "https://search.nixos.org/packages";
