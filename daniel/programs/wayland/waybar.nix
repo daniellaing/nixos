@@ -137,7 +137,6 @@ with config.colorScheme.colors;
         background-size: 400% 400%;
       }
 
-      #tray,
       #pulseaudio,
       #network,
       #battery {
@@ -149,6 +148,17 @@ with config.colorScheme.colors;
         padding: 0 20px;
         margin-left: 7px;
       }
+
+      #tray {
+        background: #${base00};
+        color: #${base05};
+        font-weight: bold;
+        margin: 5px 0px;
+        border-radius: 24px 10px 24px 10px;
+        padding: 0 20px;
+        margin-left: 7px;
+      }
+
       #clock {
         background: #${base00};
         color: #${base05};
