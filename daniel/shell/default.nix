@@ -23,6 +23,9 @@ in
       TEXMFHOME = d + "/texmf";
       TEXMFVAR = "${config.xdg.cacheHome}/texlive/texmf-var";
       TEXMFCONFIG = c + "/texlive/texmf-config";
+
+      # Mathematica
+      MATHEMATICA_USERBASE = "${config.xdg.configHome}/mathematica";
     };
 
     sessionPath = [

@@ -6,6 +6,5 @@
 
   environment.variables = {
     QT_XCB_GL_INTEGRATION = "none";
-    MATHEMATICA_USERBASE = "${config.xdg.configHome}/mathematica";
   };
 }
