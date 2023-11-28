@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nur.url = "github:nix-community/NUR";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,7 +16,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nur, home-manager, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -42,7 +43,7 @@
           specialArgs = { inherit inputs; };
 
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable nur.overlay ]; })
             ./hosts/dellG5.nix
             ./nixos/configuration.nix
 
