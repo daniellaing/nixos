@@ -11,9 +11,8 @@ in
   la = "ls -A";
   ll = "ls -lA";
 
-  grep = "grep --color=auto ";
-  fgrep = "fgrep --color=auto ";
-  egrep = "egrep --color=auto ";
+  grep = "${pkgs.ripgrep}/bin/rg ";
+  egrep = "${pkgs.ripgrep}/bin/rg ";
   diff = "diff --color=auto ";
   ip = "ip --color=auto ";
   tree = "${pkgs.lsd}/bin/lsd --tree ";
