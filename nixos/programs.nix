@@ -30,5 +30,8 @@ in
     # Desktop
     libreoffice
     firefox
+
+    # Wayland
+    wl-clipboard
   ];
 }
