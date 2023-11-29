@@ -22,6 +22,7 @@ in
               keepassxc-browser
               ublock-origin
               sponsorblock
+              tree-style-tab
             ];
             search = {
               force = true;
