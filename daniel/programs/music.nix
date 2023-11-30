@@ -80,7 +80,7 @@
         directory = "${config.xdg.userDirs.music}";
         library = "${config.xdg.dataHome}/beets/musiclibrary.db";
         import = {
-          move = "yes";
+          move = true;
         };
       };
     };
