@@ -29,5 +29,5 @@ in
   mkdir = "mkdir -vp ";
   h = "fc -l 1 | grep ";
 
-  email = "sync-email && neomutt ";
+  email = "neomutt ";
 }
