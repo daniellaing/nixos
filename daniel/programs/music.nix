@@ -19,6 +19,13 @@
         enableStats = true;
         enableUpdate = true;
       };
+      settings = {
+        directory = "${config.xdg.userDirs.music}";
+        library = "${config.xdg.dataHome}/beets/musiclibrary.db";
+        import = {
+          move = "yes";
+        };
+      };
     };
   };
 }

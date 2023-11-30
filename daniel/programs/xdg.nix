@@ -14,7 +14,7 @@ in
       desktop = h + "";
       documents = h + "/archive";
       download = h + "/downloads";
-      music = h + "/archive/media/audio/music";
+      music = h + "/archive/media/music";
       pictures = h + "/archive/media/pictures";
       publicShare = h + "/archive/public";
       templates = h + "/archive/templates";
