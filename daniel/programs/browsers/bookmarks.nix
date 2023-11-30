@@ -121,6 +121,13 @@
   }
 
   {
+    name = "Music";
+    bookmarks = [
+      { name = "Howl's Moving Castle"; url = "https://musicbrainz.org/release/3a9c30ef-a214-4b25-a6a7-2529a40fd4fe"; }
+    ];
+  }
+
+  {
     name = "Stock Photos";
     bookmarks = [
       { name = "Pexels"; url = "https://www.pexels.com/"; }
