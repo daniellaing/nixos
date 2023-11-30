@@ -12,5 +12,13 @@
     ncmpcpp = {
       enable = true;
     };
+
+    beets = {
+      enable = true;
+      mpdIntegration = {
+        enableStats = true;
+        enableUpdate = true;
+      };
+    };
   };
 }
