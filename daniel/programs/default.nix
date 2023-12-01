@@ -5,6 +5,7 @@
 
     ./browsers
     ./git.nix
+    ./lf.nix
     ./mpv.nix
     ./music.nix
     ./picom.nix
