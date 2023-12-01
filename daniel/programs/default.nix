@@ -4,6 +4,7 @@
   imports = [
 
     ./browsers
+    ./dunst.nix
     ./git.nix
     ./lf.nix
     ./mpv.nix
