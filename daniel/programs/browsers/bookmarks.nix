@@ -12,6 +12,7 @@
         bookmarks = [
           { name = "Summer day/night"; url = "https://github.com/MathisP75/summer-day-and-night"; }
           { name = "Gako358"; url = "https://github.com/Gako358/dotfiles"; }
+          { name = "Roif Menu Collection"; url = "https://github.com/adi1090x/rofi"; }
         ];
       }
       {
