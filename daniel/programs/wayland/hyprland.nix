@@ -1,6 +1,7 @@
 { inputs, config, pkgs, ... }:
 let
   wallpaper = ../../wallpapers/summer-day.png;
+
 in
 {
   imports = [
@@ -106,7 +107,7 @@ in
       # bind = $MOD, B, #Toggle Status Bar
       # bind = $MOD, C, #Open Calendar
 
-      bind = $MOD, E, exec, $TERMINAL -e email
+      bind = $MOD, E, exec, ${pkgs.kitty}/bin/kitty neomutt
       # bind = $MOD SHIFT, E, #Open address book
 
       bind = $MOD, F, fullscreen, 0
@@ -125,10 +126,10 @@ in
 
       # bind = $MOD, L, #Increase master window size
 
-      bind = $MOD, M, exec, $TERMINAL -e ncmpcpp
+      bind = $MOD, M, exec, ${pkgs.kitty}/bin/kitty ${pkgs.ncmpcpp}/bin/ncmpcpp
       # bind = $MOD SHIFT, M,  #Mute
 
-      # bind = $MOD, P, #Play/pause
+      bind = $MOD, P, exec, ${pkgs.mpc-cli}/bin/mpc toggle
 
       bind = $MOD, Q, killactive,
 
@@ -141,12 +142,12 @@ in
 
       # bind = $MOD, Z, #Increase gaps
 
-      # bind = $MOD, comma, #Prev track
-      # bind = $MOD, <, #Restart track
+      bind = $MOD, comma, exec, ${pkgs.mpc-cli}/bin/mpc prev
+      bind = $MOD, <, exec, ${pkgs.mpc-cli}/bin/mpc seek 0
 
-      # bind = $MOD, ., #Next track
+      bind = $MOD, period, exec, ${pkgs.mpc-cli}/bin/mpc next
 
-      bind = $MOD, Return, exec, kitty
+      bind = $MOD, Return, exec, ${pkgs.kitty}/bin/kitty
       # bind = $MOD, Space, #Make current window master
       bind = $MOD SHIFT, Space, togglefloating,
       bind = $MOD, Backspace, exit,

@@ -83,6 +83,6 @@ with config.colorScheme.colors;
     };
   };
 
-  home.sessionVariables.TERMINAL = "${pkgs.alacritty}/bin/alacritty";
+  home.sessionVariables.TERMINAL = "${pkgs.kitty}/bin/kitty";
 
 }
