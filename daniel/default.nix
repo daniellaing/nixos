@@ -23,9 +23,10 @@
     [
       inputs.nix-colors.homeManagerModules.default
 
-      ./shell
       ./email
+      ./menus
       ./programs
+      ./shell
     ];
 
   # Let home manager manage itself
