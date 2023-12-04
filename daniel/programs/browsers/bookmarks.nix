@@ -124,6 +124,15 @@
     name = "Music";
     bookmarks = [
       { name = "Howl's Moving Castle"; url = "https://musicbrainz.org/release/3a9c30ef-a214-4b25-a6a7-2529a40fd4fe"; }
+      { name = "George Ezra Album"; url = "https://musicbrainz.org/release-group/9b2a689e-7935-4afc-84c9-1ef54a8c873d"; }
+      { name = "C'est Chic"; url = "https://musicbrainz.org/release/5acf3319-b7f7-45e9-b6c3-2fbeb24f11d5"; }
+      { name = "Stardew Valley"; url = "https://musicbrainz.org/release-group/2acca63c-829e-4305-9e9a-875f210851ba"; }
+      { name = "The Killers"; url = "https://musicbrainz.org/artist/95e1ead9-4d31-4808-a7ac-32c3614c116b"; }
+      { name = "The Lumineers"; url = "https://musicbrainz.org/artist/bfcb6630-9b31-4e63-b11f-7b0363be72b5"; }
+      { name = "Runrig"; url = "https://musicbrainz.org/artist/b55a7c9f-5a25-4a70-86ab-9dc07ff8dc10"; }
+      { name = "Yanni"; url = "https://musicbrainz.org/artist/9a2afb1e-504c-443e-acff-6c40ce75b1a1"; }
+      { name = "Bombadil Hold On"; url = "https://musicbrainz.org/release/394ceda3-fca4-44ff-9685-48dd194a220b"; }
+      { name = "Miffed"; url = "https://musicbrainz.org/recording/6cecfdee-9696-4e45-9dc6-a809afad7745"; }
     ];
   }
 
