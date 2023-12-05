@@ -21,6 +21,9 @@ in
     NIXOS_OZONE_WL = "1";
   };
 
+  # XDG Desktop Portal
+  home.packages = [ pkgs.xdg-desktop-portal-hyprland ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -126,7 +129,7 @@ in
 
       # bind = $MOD, L, #Increase master window size
 
-      bind = $MOD, M, exec, ${config.programs.terminal} ${pkgs.ncmpcpp}/bin/ncmpcpp
+      bind = $MOD, M, exec, ${config.programs.terminal} ${config.programs.ncmpcpp.package}/bin/ncmpcpp
       # bind = $MOD SHIFT, M,  #Mute
 
       bind = $MOD, P, exec, ${pkgs.mpc-cli}/bin/mpc toggle
