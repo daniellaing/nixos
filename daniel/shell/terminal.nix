@@ -1,8 +1,5 @@
 { config, pkgs, lib, ... }:
 with config.colorScheme.colors;
-let
-  cfg = config.programs;
-in
 {
   options.programs = {
     terminal = lib.mkOption {
