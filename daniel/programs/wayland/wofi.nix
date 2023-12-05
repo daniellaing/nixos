@@ -11,6 +11,7 @@ with config.colorScheme.colors;
       location = "center";
       no_actions = true;
       prompt = "Search";
+      term = "${config.programs.terminal}";
     };
 
     style = ''

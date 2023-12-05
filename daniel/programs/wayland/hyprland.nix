@@ -107,7 +107,7 @@ in
       # bind = $MOD, B, #Toggle Status Bar
       # bind = $MOD, C, #Open Calendar
 
-      bind = $MOD, E, exec, ${pkgs.kitty}/bin/kitty neomutt
+      bind = $MOD, E, exec, ${config.programs.terminal} neomutt
       # bind = $MOD SHIFT, E, #Open address book
 
       bind = $MOD, F, fullscreen, 0
@@ -126,7 +126,7 @@ in
 
       # bind = $MOD, L, #Increase master window size
 
-      bind = $MOD, M, exec, ${pkgs.kitty}/bin/kitty ${pkgs.ncmpcpp}/bin/ncmpcpp
+      bind = $MOD, M, exec, ${config.programs.terminal} ${pkgs.ncmpcpp}/bin/ncmpcpp
       # bind = $MOD SHIFT, M,  #Mute
 
       bind = $MOD, P, exec, ${pkgs.mpc-cli}/bin/mpc toggle
@@ -147,12 +147,12 @@ in
 
       bind = $MOD, period, exec, ${pkgs.mpc-cli}/bin/mpc next
 
-      bind = $MOD, Return, exec, ${pkgs.kitty}/bin/kitty
+      bind = $MOD, Return, exec, ${config.programs.terminal}
       # bind = $MOD, Space, #Make current window master
       bind = $MOD SHIFT, Space, togglefloating,
-      bind = $MOD, Backspace, exit,
+      bind = $MOD, Backspace, exec, powermenu
 
-      bind = $ALT, Space, exec, wofi -s drun -I
+      bind = $ALT, Space, exec, wofi -S drun -I
 
       # Workspaces
       bind = $MOD, 1, workspace, 1
