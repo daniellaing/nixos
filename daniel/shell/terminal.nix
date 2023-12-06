@@ -1,14 +1,6 @@
 { config, pkgs, lib, ... }:
 with config.colorScheme.colors;
 {
-  options.programs = {
-    terminal = lib.mkOption {
-      # type = lib.types.path;
-      description = "Your default terminal";
-      example = "''${pkgs.kitty}/bin/kitty";
-    };
-  };
-
   config = {
     programs = {
       terminal = "${pkgs.kitty}/bin/kitty";
@@ -97,4 +89,13 @@ with config.colorScheme.colors;
     home.sessionVariables.TERM = "${config.programs.terminal}";
 
   };
+
+  options.programs = {
+    terminal = lib.mkOption {
+      # type = lib.types.path;
+      description = "Your default terminal";
+      example = "''${pkgs.kitty}/bin/kitty";
+    };
+  };
+
 }
