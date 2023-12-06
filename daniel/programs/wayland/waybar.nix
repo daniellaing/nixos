@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 with config.colorScheme.colors;
+let
+  pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
+in
 {
   programs.waybar = {
     enable = true;
@@ -85,8 +88,8 @@ with config.colorScheme.colors;
           "car" = "";
           "default" = [ "" "" "" ];
         };
-        "on-click" = "pavucontrol";
-        "on-click-right" = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        "on-click" = "${pavucontrol}";
+        "on-click-right" = "wpctl set-mute @DEFAULT_SINK@ toggle";
       };
     };
 

@@ -10,12 +10,10 @@
       ferdium
       musescore
       yt-dlp
-      nnn
       keepassxc
       pipes
       nitch # Fetch utility
       vimix-icon-theme
-      pulsemixer
     ];
   };
 

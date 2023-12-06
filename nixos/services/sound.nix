@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   sound.enable = true;
@@ -12,4 +12,9 @@
     audio.enable = true;
     jack.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    pulsemixer
+    pavucontrol
+  ];
 }
