@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, osConfig, ... }:
 with config.colorScheme.colors;
 let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
@@ -89,7 +89,7 @@ in
           "default" = [ "" "" "" ];
         };
         "on-click" = "${pavucontrol}";
-        "on-click-right" = "wpctl set-mute @DEFAULT_SINK@ toggle";
+        "on-click-right" = "${osConfig.XF86.audioMute}";
       };
     };
 
