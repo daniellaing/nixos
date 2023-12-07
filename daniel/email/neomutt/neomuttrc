@@ -57,8 +57,8 @@ set abort_noattach          = ask-yes                           # Ask (default y
 set abort_noattach_regex    = "(attach|attached|attachments?|p[rř][ií]lo(h([yu]?|a(mi)?|ou|ách)|ze)?)"  # Regex for mentioned attachment in body
 
 # Hooks
-startup-hook                'exec sync-email'
-shutdown-hook               'exec sync-email'
+# startup-hook                'exec sync-email'
+# shutdown-hook               'exec sync-email'
 
 # Source other Config files
 source $my_configdir/neomutt.keybinds
