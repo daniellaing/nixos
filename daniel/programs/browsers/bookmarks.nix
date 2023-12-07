@@ -6,13 +6,30 @@
     name = "Toolbar";
     toolbar = true;
     bookmarks = [
-
       {
-        name = "Rices";
+        name = "Rice";
         bookmarks = [
-          { name = "Summer day/night"; url = "https://github.com/MathisP75/summer-day-and-night"; }
-          { name = "Gako358"; url = "https://github.com/Gako358/dotfiles"; }
-          { name = "Roif Menu Collection"; url = "https://github.com/adi1090x/rofi"; }
+          {
+            name = "Examples";
+            bookmarks = [
+              { name = "Summer day/night"; url = "https://github.com/MathisP75/summer-day-and-night"; }
+              { name = "Gako358"; url = "https://github.com/Gako358/dotfiles"; }
+            ];
+          }
+          {
+            name = "Reference";
+            bookmarks = [
+              { name = "XDG Desktop Entry Spec"; url = "https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html"; }
+              { name = "Roif Menu Collection"; url = "https://github.com/adi1090x/rofi"; }
+            ];
+          }
+          {
+            name = "Consider";
+            bookmarks = [
+              { name = "Rofi Wayland"; url = "https://github.com/lbonn/rofi"; }
+              { name = "handlr"; url = "https://github.com/chmln/handlr"; }
+            ];
+          }
         ];
       }
       {
