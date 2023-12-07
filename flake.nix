@@ -5,15 +5,28 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
     nur.url = "github:nix-community/NUR";
+    nix-colors.url = "github:misterio77/nix-colors";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    nix-colors.url = "github:misterio77/nix-colors";
-    sops-nix.url = "github:Mic92/sops-nix";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = "nixpkgs-stable";
+      };
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nur, home-manager, hyprland, ... }@inputs:
