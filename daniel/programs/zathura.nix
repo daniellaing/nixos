@@ -1,25 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  xdg = {
-    desktopEntries = {
-      zathura = {
-        name = "Zathura";
-        genericName = "PDF Viewer";
-        comment = "View PDFs";
-        exec = "zathura %U";
-        icon = "zathura";
-        terminal = true;
-        categories = [ "ConsoleOnly" ];
-        type = "Application";
-        mimeType = [ "application/pdf" ];
-      };
-    };
-    mimeApps.defaultApplications = {
-      "application/pdf" = "zathura.desktop";
-    };
-  };
-
   programs.zathura = {
     enable = true;
     mappings = {
