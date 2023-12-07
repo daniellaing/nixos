@@ -42,6 +42,7 @@
       { name = "NixOS Wiki"; url = "https://nixos.wiki/wiki/Main_Page"; }
       { name = "YouTube"; url = "https://www.youtube.com"; }
       { name = "Encycolorpedia"; url = "https://encycolorpedia.com/"; }
+      { name = "FFmpeg Guide"; url = "https://ffmpeg.guide"; }
     ];
   }
 
