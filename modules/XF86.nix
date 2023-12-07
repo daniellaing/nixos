@@ -69,7 +69,7 @@ with lib;
     wakeUp = mkOption { description = "Wake up system from sleep"; };
     eject = mkOption { description = "Eject device (e.g. DVD)"; };
     screenSaver = mkOption { description = "Invoke screensaver"; };
-    wWW = mkOption { description = "Invoke web browser"; };
+    WWW = mkOption { description = "Invoke web browser"; };
     sleep = mkOption { description = "Put system to sleep"; };
     favorites = mkOption { description = "Show favorite locations"; };
     audioPause = mkOption { description = "Pause audio playing"; };
@@ -202,8 +202,8 @@ with lib;
 
     keyboard = mkOption { description = "User defined keyboard related action"; };
 
-    wWAN = mkOption { description = "Toggle WWAN (LTE, UMTS, etc.) radio"; };
-    rFKill = mkOption { description = "Toggle radios on/off"; };
+    WWAN = mkOption { description = "Toggle WWAN (LTE, UMTS, etc.) radio"; };
+    RFKill = mkOption { description = "Toggle radios on/off"; };
 
     audioPreset = mkOption { description = "Select equalizer preset, e.g. theatre-mode"; };
 
