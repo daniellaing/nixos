@@ -23,7 +23,6 @@
 
   services.mbsync = {
     enable = true;
-    configFile = "${config.xdg.configHome}/mbsync/config";
   };
 
 }
