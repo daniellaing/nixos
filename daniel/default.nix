@@ -14,6 +14,7 @@
       pipes
       nitch # Fetch utility
       vimix-icon-theme
+      ncdu
     ];
   };
 
