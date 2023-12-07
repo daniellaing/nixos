@@ -23,6 +23,9 @@
     initExtra = ''
       # Set prompt
       [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
+      setopt autocd
+      setopt autopushd
     '';
   };
 }
