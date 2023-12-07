@@ -26,6 +26,7 @@
       ./menus
       ./programs
       ./shell
+      ./XF86Misc.nix
     ];
 
   # Let home manager manage itself
