@@ -1,6 +1,17 @@
-{ pkgs, ... }:
-
+{ pkgs, lib, ... }:
+let
+  # Dependencies
+  wpctl = "${pkgs.wireplumber}/bin/wpctl";
+in
 {
+  imports = [ ../../modules/XF86.nix ];
+
+  XF86 = {
+    audioLowerVolume = "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+    audioMute = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+    audioRaiseVolume = "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+  };
+
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
