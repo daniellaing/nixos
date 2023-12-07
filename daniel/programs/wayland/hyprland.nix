@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, osConfig, ... }:
 let
   wallpaper = ../../wallpapers/summer-day.png;
 
@@ -129,10 +129,10 @@ in
 
       # bind = $MOD, L, #Increase master window size
 
-      bind = $MOD, M, exec, ${config.programs.terminal} ${config.programs.ncmpcpp.package}/bin/ncmpcpp
+      bind = $MOD, M, exec,
       # bind = $MOD SHIFT, M,  #Mute
 
-      bind = $MOD, P, exec, ${pkgs.mpc-cli}/bin/mpc toggle
+      bind = $MOD, P, exec, ${config.XF86.audioPlay}
 
       bind = $MOD, Q, killactive,
 
@@ -145,10 +145,10 @@ in
 
       # bind = $MOD, Z, #Increase gaps
 
-      bind = $MOD, comma, exec, ${pkgs.mpc-cli}/bin/mpc prev
-      bind = $MOD, <, exec, ${pkgs.mpc-cli}/bin/mpc seek 0
+      bind = $MOD, comma, exec, ${config.XF86.audioPrev}
+      bind = $MOD, <, exec, ${config.XF86.audioRewind}
 
-      bind = $MOD, period, exec, ${pkgs.mpc-cli}/bin/mpc next
+      bind = $MOD, period, exec, ${config.XF86.audioNext}
 
       bind = $MOD, Return, exec, ${config.programs.terminal}
       # bind = $MOD, Space, #Make current window master
@@ -180,6 +180,22 @@ in
       # Mouse binds
       bindm = $MOD, mouse:272, movewindow
       bindm = $MOD, mouse:273, resizewindow
+
+      # XF86 (brace yourself)
+      binde =, XF86AudioLowerVolume, exec, ${osConfig.XF86.audioLowerVolume}
+      bind =, XF86AudioMute, exec, ${osConfig.XF86.audioMute}
+      binde =, XF86AudioRaiseVolume, exec, ${osConfig.XF86.audioRaiseVolume}
+      bind =, XF86AudioPlay, exec, ${config.XF86.audioPlay}
+      bind =, XF86AudioStop, exec, ${config.XF86.audioStop}
+      bind =, XF86AudioPrev, exec, ${config.XF86.audioPrev}
+      bind =, XF86AudioNext, exec, ${config.XF86.audioNext}
+      bind =, XF86Mail, exec, ${config.XF86.mail}
+      bind =, XF86Calculator, exec, ${config.XF86.calculator}
+      bind =, XF86WWW, exec, ${config.XF86.WWW}
+      bind =, XF86AudioPause, exec, ${config.XF86.audioPause}
+      bind =, XF86AudioRewind, exec, ${config.XF86.audioRewind}
+      bind =, XF86Terminal, exec, ${config.XF86.terminal}
+      bind =, XF86Music, exec, ${config.XF86.music}
     '';
   };
 
