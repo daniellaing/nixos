@@ -1,6 +1,21 @@
 { config, pkgs, ... }:
-
+let
+  mpc = "${pkgs.mpc-cli}/bin/mpc";
+in
 {
+  imports = [ ../../modules/XF86.nix ];
+
+  XF86 = {
+    audioPlay = "${mpc} toggle";
+    audioPause = "${mpc} pause";
+    audioStop = "${mpc} pause";
+    audioPrev = "${mpc} prev";
+    audioNext = "${mpc} next";
+    audioRewind = "${mpc} seek 0";
+    audioRepeat = "${mpc} repeat";
+    audioRandomPlay = "${mpc} random";
+  };
+
   services = {
     mpd = {
       enable = true;
