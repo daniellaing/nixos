@@ -224,8 +224,8 @@ with lib;
 
     ungrab = mkOption { description = "force ungrab"; };
     clearGrab = mkOption { description = "kill application with grab"; };
-    next_VMode = mkOption { description = "next video mode available"; };
-    prev_VMode = mkOption { description = "prev. video mode available"; };
+    nextVMode = mkOption { description = "next video mode available"; };
+    prevVMode = mkOption { description = "prev. video mode available"; };
     logWindowTree = mkOption { description = "print window tree to log"; };
     logGrabInfo = mkOption { description = "print all active grabs to log"; };
   };
