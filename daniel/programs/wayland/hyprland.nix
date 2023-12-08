@@ -127,7 +127,7 @@ in
 
       # bind = $MOD, L, #Increase master window size
 
-      bind = $MOD, M, exec,
+      bind = $MOD, M, exec, ${config.XF86.music}
       # bind = $MOD SHIFT, M,  #Mute
 
       bind = $MOD, P, exec, ${config.XF86.audioPlay}
