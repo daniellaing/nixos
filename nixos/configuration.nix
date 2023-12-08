@@ -105,7 +105,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Daniel Laing";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
+    extraGroups = [ "video" "networkmanager" "wheel" "adbusers" ];
   };
 
   security.polkit.enable = true;
