@@ -25,7 +25,6 @@ in
 
     # Development
     (python3.withPackages pypkgs)
-    cargo
     texlive.combined.scheme-full
 
     # Desktop

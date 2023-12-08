@@ -17,8 +17,6 @@ in
       XCOMPOSEFILE = c + "/X11/xcompose";
       XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
 
-      CARGO_HOME = d + "/cargo";
-
       # TeX
       TEXMFHOME = d + "/texmf";
       TEXMFVAR = "${config.xdg.cacheHome}/texlive/texmf-var";
@@ -27,9 +25,5 @@ in
       # Mathematica
       MATHEMATICA_USERBASE = "${config.xdg.configHome}/mathematica";
     };
-
-    sessionPath = [
-      "${config.xdg.dataHome}/cargo/bin"
-    ];
   };
 }
