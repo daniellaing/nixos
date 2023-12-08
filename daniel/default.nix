@@ -22,6 +22,7 @@
     [
       inputs.nix-colors.homeManagerModules.default
 
+      ./dev
       ./email
       ./menus
       ./programs
