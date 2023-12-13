@@ -29,11 +29,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nur, home-manager, hyprland, ... }@inputs:
+  outputs = inputs:
     let
       system = "x86_64-linux";
 
-      pkgs = import nixpkgs {
+      pkgs = import inputs.nixpkgs {
         inherit system;
         config = {
           allowUnfree = true;
@@ -42,7 +42,7 @@
       };
 
       overlay-stable = final: prev: {
-        stable = import nixpkgs-stable {
+        stable = import inputs.nixpkgs-stable {
           inherit system;
           config.allowUnfree = true;
         };
@@ -51,17 +51,17 @@
     in
     {
       nixosConfigurations = {
-        "nixos" = nixpkgs.lib.nixosSystem rec {
+        "nixos" = inputs.nixpkgs.lib.nixosSystem rec {
           inherit system pkgs;
           specialArgs = { inherit inputs; };
 
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable nur.overlay ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable inputs.nur.overlay ]; })
             ./hosts/dellG5.nix
             ./nixos/configuration.nix
 
-            hyprland.nixosModules.default
-            home-manager.nixosModules.home-manager
+            inputs.hyprland.nixosModules.default
+            inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.extraSpecialArgs = specialArgs;
@@ -70,5 +70,7 @@
           ];
         };
       };
+
+      templates = import ./templates inputs;
     };
 }
