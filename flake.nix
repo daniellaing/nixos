@@ -27,6 +27,7 @@
         nixpkgs-stable.follows = "nixpkgs-stable";
       };
     };
+
   };
 
   outputs = inputs:
@@ -72,5 +73,12 @@
       };
 
       templates = import ./templates inputs;
+
+      devShells.${system}.default = pkgs.mkShell
+        {
+          packages = with pkgs; [
+            rnix-lsp
+          ];
+        };
     };
 }
