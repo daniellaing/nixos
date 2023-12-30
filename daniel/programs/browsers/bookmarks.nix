@@ -165,6 +165,14 @@
     ];
   }
 
+  {
+    name = "VPN";
+    bookmarks = [
+      { name = "Free OpenVPN"; url = "https://www.freeopenvpn.org"; }
+      { name = "Free VPN"; url = "https://www.freevpn.us"; }
+    ];
+  }
+
   { name = "NotInTheCurriculum"; url = "https://charm-infinity-fe8.notion.site/NITC-PF-169e60bc1230470690ff4b632a842fd8"; }
   { name = "Github does dotfiles"; url = "https://dotfiles.github.io/"; }
   { name = "POSIX Bible"; url = "https://github.com/dylanaraps/pure-sh-bible"; }
