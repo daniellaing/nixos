@@ -15,6 +15,8 @@
       nitch # Fetch utility
       vimix-icon-theme
       ncdu
+      ffmpeg
+      imv
     ];
   };
 
