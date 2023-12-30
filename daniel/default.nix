@@ -26,6 +26,7 @@
       ./email
       ./menus
       ./programs
+      ./scripts
       ./shell
       ./XF86Misc.nix
     ];
