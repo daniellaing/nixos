@@ -16,6 +16,7 @@
       ./programs.nix
       ./services
       ./sops.nix
+      ./vm.nix
       ./X11.nix
       ./zsh.nix
     ];
@@ -105,7 +106,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Daniel Laing";
-    extraGroups = [ "video" "networkmanager" "wheel" "adbusers" ];
+    extraGroups = [ "video" "networkmanager" "wheel" "adbusers" "libvirtd" ];
   };
 
   security.polkit.enable = true;
