@@ -16,7 +16,7 @@
       ./programs.nix
       ./services
       ./sops.nix
-      ./vm.nix
+      # ./vm.nix
       ./X11.nix
       ./zsh.nix
     ];
