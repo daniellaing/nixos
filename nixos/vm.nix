@@ -20,4 +20,10 @@
       enable = true;
     };
   };
+
+  environment.systemPackages = [
+    pkgs.virtiofsd
+  ];
+
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 }
