@@ -18,6 +18,9 @@
       ffmpeg
       imv
       vimv
+      steam
+      sonic-visualiser
+      synthesia
     ];
   };
 
