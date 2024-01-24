@@ -28,6 +28,7 @@
             bookmarks = [
               { name = "Rofi Wayland"; url = "https://github.com/lbonn/rofi"; }
               { name = "handlr"; url = "https://github.com/chmln/handlr"; }
+              { name = "conform.nvim"; url = "https://github.com/stevearc/conform.nvim"; }
             ];
           }
         ];
