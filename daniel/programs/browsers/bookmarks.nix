@@ -58,9 +58,8 @@
       }
 
       { name = "NixOS Wiki"; url = "https://nixos.wiki/wiki/Main_Page"; }
-      { name = "YouTube"; url = "https://www.youtube.com"; }
-      { name = "Encycolorpedia"; url = "https://encycolorpedia.com/"; }
-      { name = "FFmpeg Guide"; url = "https://ffmpeg.guide"; }
+      { name = "Email"; url = "https://cloud.daniellaing.com/apps/mail/box/unified"; }
+      { name = "Outlook"; url = "https://outlook.office.com/mail/"; }
     ];
   }
 
@@ -174,9 +173,11 @@
     ];
   }
 
+  { name = "Encycolorpedia"; url = "https://encycolorpedia.com/"; }
   { name = "NotInTheCurriculum"; url = "https://charm-infinity-fe8.notion.site/NITC-PF-169e60bc1230470690ff4b632a842fd8"; }
   { name = "Github does dotfiles"; url = "https://dotfiles.github.io/"; }
   { name = "POSIX Bible"; url = "https://github.com/dylanaraps/pure-sh-bible"; }
   { name = "Tufte Pandoc CSS"; url = "https://jez.io/tufte-pandoc-css/"; }
   { name = "Men's Knitted Scarf"; url = "https://interunet.com/how-to-knit-a-scarf-for-a-man"; }
+  { name = "FFmpeg Guide"; url = "https://ffmpeg.guide"; }
 ]
