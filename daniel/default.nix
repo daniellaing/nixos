@@ -21,6 +21,10 @@
       steam
       sonic-visualiser
       synthesia
+
+      # Fonts
+      alegreya
+      alegreya-sans
     ];
   };
 
