@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-with config.colorScheme.colors;
+with config.colorScheme.palette;
 {
   programs.wofi = {
     enable = true;

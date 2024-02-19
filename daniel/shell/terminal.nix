@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-with config.colorScheme.colors;
+with config.colorScheme.palette;
 {
   config = {
     programs = {

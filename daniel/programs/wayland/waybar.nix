@@ -1,5 +1,5 @@
 { config, pkgs, osConfig, ... }:
-with config.colorScheme.colors;
+with config.colorScheme.palette;
 let
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
 in

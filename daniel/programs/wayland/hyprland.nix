@@ -1,7 +1,7 @@
 { inputs, config, pkgs, osConfig, ... }:
+with config.colorScheme.palette;
 let
   wallpaper = ../../wallpapers/summer-day.png;
-
 in
 {
   imports = [
@@ -37,10 +37,10 @@ in
           cursor_inactive_timeout = 3
 
           border_size = 2
-          col.active_border = 0xff${config.colorScheme.colors.base05}
-          col.inactive_border = 0xff${config.colorScheme.colors.base01}
-          col.nogroup_border_active = 0xff${config.colorScheme.colors.base05}
-          col.nogroup_border = 0xff${config.colorScheme.colors.base01}
+          col.active_border = 0xff${base05}
+          col.inactive_border = 0xff${base01}
+          col.nogroup_border_active = 0xff${base05}
+          col.nogroup_border = 0xff${base01}
       }
 
       decoration {
