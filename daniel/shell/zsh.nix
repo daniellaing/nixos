@@ -7,6 +7,7 @@
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
     enableVteIntegration = true;
+    history.path = "${config.xdg.dataHome}/zsh/zsh_history";
     envExtra = ''
       # ---   Cleanup   ---
       # export GNUPGHOME="''${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"

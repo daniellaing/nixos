@@ -23,7 +23,13 @@ in
       TEXMFCONFIG = c + "/texlive/texmf-config";
 
       # Mathematica
-      MATHEMATICA_USERBASE = "${config.xdg.configHome}/mathematica";
+      MATHEMATICA_USERBASE = c + "/mathematica";
+
+      # Cargo
+      CARGO_HOME = d + "/cargo";
+
+      # CUDA
+      CUDA_CACHE_PATH = "${config.xdg.cacheHome}/nv";
     };
   };
 }
