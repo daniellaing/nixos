@@ -1,6 +1,7 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, osConfig, ... }:
 
 {
+  nix.settings = osConfig.nix.settings;
   home = {
     username = "daniel";
     homeDirectory = "/home/daniel";
