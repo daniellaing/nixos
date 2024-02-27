@@ -28,6 +28,11 @@
       };
     };
 
+    my_neovim = {
+      type = "path";
+      path = "/home/daniel/neovim/";
+    };
+
   };
 
   outputs = inputs:
@@ -54,7 +59,7 @@
       nixosConfigurations = {
         "nixos" = inputs.nixpkgs.lib.nixosSystem rec {
           inherit system pkgs;
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs system; };
 
           modules = [
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable inputs.nur.overlay ]; })
