@@ -32,6 +32,12 @@
       fsType = "ext4";
     };
 
+  fileSystems."/tmp" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "size=512M" "mode=755" ];
+  };
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/00703522-1162-4f5b-9d16-4f5ce3dce958"; }
   ];
