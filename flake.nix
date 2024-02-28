@@ -29,8 +29,11 @@
     };
 
     my_neovim = {
-      type = "path";
-      path = "/home/daniel/neovim/";
+      url = "github:Bodleum/neovim";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
 
   };
