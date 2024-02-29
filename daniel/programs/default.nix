@@ -13,6 +13,7 @@
     ./R.nix
     ./syncthing.nix
     ./xdg.nix
+    ./yazi.nix
     ./zathura.nix
 
     # Wayland
