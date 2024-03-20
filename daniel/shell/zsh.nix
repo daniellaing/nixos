@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
     enableVteIntegration = true;

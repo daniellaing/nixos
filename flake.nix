@@ -45,6 +45,7 @@
 
   outputs = inputs:
     let
+      inherit (inputs.self) outputs;
       system = "x86_64-linux";
 
       pkgs = import inputs.nixpkgs {
@@ -56,12 +57,12 @@
       };
     in
     {
-      overlays = import ./overlays { inherit inputs; };
+      overlays = import ./overlays { inherit inputs system; };
 
       nixosConfigurations = {
         "nixos" = inputs.nixpkgs.lib.nixosSystem rec {
           inherit system pkgs;
-          specialArgs = { inherit inputs system; };
+          specialArgs = { inherit inputs outputs system; };
 
           modules = [
             ./hosts/dellG5.nix
