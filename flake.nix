@@ -54,23 +54,16 @@
           allowAliases = false;
         };
       };
-
-      overlay-stable = final: prev: {
-        stable = import inputs.nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-      };
-
     in
     {
+      overlays = import ./overlays { inherit inputs; };
+
       nixosConfigurations = {
         "nixos" = inputs.nixpkgs.lib.nixosSystem rec {
           inherit system pkgs;
           specialArgs = { inherit inputs system; };
 
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable inputs.nur.overlay ]; })
             ./hosts/dellG5.nix
             ./nixos/configuration.nix
 

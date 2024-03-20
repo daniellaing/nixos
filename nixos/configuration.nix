@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, outputs, ... }:
 
 {
   services.udev.extraRules = ''
@@ -47,6 +47,13 @@
       ./X11.nix
       ./zsh.nix
     ];
+
+  nixpkgs = {
+    overlays = with outputs.overlays;[
+      stable-packages
+      inputs.nur.overlay
+    ];
+  };
 
   # Enable Nix commands
   nix = {
