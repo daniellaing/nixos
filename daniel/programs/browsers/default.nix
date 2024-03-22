@@ -1,19 +1,22 @@
-{ config, pkgs, ... }@inputs:
-let
-  browsers = [ "firefox" ];
-in
 {
+  config,
+  pkgs,
+  ...
+} @ inputs: let
+  browsers = ["firefox"];
+in {
   # Set default browser
   home.sessionVariables.BROWSER = "${pkgs.firefox}/bin/firefox";
 
-  programs = builtins.listToAttrs
+  programs =
+    builtins.listToAttrs
     (map
       (b: {
         name = b;
         value = {
           enable = true;
           profiles.daniel = {
-            bookmarks = import ./bookmarks.nix (inputs);
+            bookmarks = import ./bookmarks.nix inputs;
             settings = {
               "browser.toolbars.bookmarks.visibility" = "always";
               "browser.startup.couldRestoreSession.count" = 2;
@@ -29,46 +32,78 @@ in
               default = "SearxNG";
               engines = {
                 "SearxNG" = {
-                  urls = [{
-                    template = "https://freesearch.club/search";
-                    params = [
-                      { name = "q"; value = "{searchTerms}"; }
-                    ];
-                  }];
+                  urls = [
+                    {
+                      template = "https://freesearch.club/search";
+                      params = [
+                        {
+                          name = "q";
+                          value = "{searchTerms}";
+                        }
+                      ];
+                    }
+                  ];
                 };
                 "Nix Packages" = {
-                  urls = [{
-                    template = "https://search.nixos.org/packages";
-                    params = [
-                      { name = "type"; value = "packages"; }
-                      { name = "channel"; value = "unstable"; }
-                      { name = "query"; value = "{searchTerms}"; }
-                    ];
-                  }];
+                  urls = [
+                    {
+                      template = "https://search.nixos.org/packages";
+                      params = [
+                        {
+                          name = "type";
+                          value = "packages";
+                        }
+                        {
+                          name = "channel";
+                          value = "unstable";
+                        }
+                        {
+                          name = "query";
+                          value = "{searchTerms}";
+                        }
+                      ];
+                    }
+                  ];
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                  definedAliases = [ "@np" ];
+                  definedAliases = ["@np"];
                 };
                 "Nix Options" = {
-                  urls = [{
-                    template = "https://search.nixos.org/options";
-                    params = [
-                      { name = "type"; value = "packages"; }
-                      { name = "channel"; value = "unstable"; }
-                      { name = "query"; value = "{searchTerms}"; }
-                    ];
-                  }];
+                  urls = [
+                    {
+                      template = "https://search.nixos.org/options";
+                      params = [
+                        {
+                          name = "type";
+                          value = "packages";
+                        }
+                        {
+                          name = "channel";
+                          value = "unstable";
+                        }
+                        {
+                          name = "query";
+                          value = "{searchTerms}";
+                        }
+                      ];
+                    }
+                  ];
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                  definedAliases = [ "@no" ];
+                  definedAliases = ["@no"];
                 };
                 "Home Manager Options" = {
-                  urls = [{
-                    template = "https://mipmip.github.io/home-manager-option-search";
-                    params = [
-                      { name = "query"; value = "{searchTerms}"; }
-                    ];
-                  }];
+                  urls = [
+                    {
+                      template = "https://mipmip.github.io/home-manager-option-search";
+                      params = [
+                        {
+                          name = "query";
+                          value = "{searchTerms}";
+                        }
+                      ];
+                    }
+                  ];
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                  definedAliases = [ "@hm" ];
+                  definedAliases = ["@hm"];
                 };
               };
             };

@@ -1,16 +1,16 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   realName = "Daniel Laing";
   gpg = {
     key = "daniel@daniellaing.com";
     signByDefault = true;
   };
-in
-{
+in {
   accounts.email.maildirBasePath = "${config.xdg.dataHome}/email";
   accounts.email.accounts = {
-
     # ---   daniel@daniellaing.com   ---
     Daniel = {
       thunderbird.enable = true;
@@ -52,7 +52,6 @@ in
       gpg = gpg;
     };
 
-
     # ---   bodleum.phone@gmail.com   ---
     GMail = {
       thunderbird.enable = true;
@@ -92,7 +91,6 @@ in
       maildir.path = "bodleum.phone@gmail.com";
       gpg = gpg;
     };
-
 
     # ---   daniellaing@talktalk.net   ---
     TalkTalk = {
@@ -134,5 +132,4 @@ in
       gpg = gpg;
     };
   };
-
 }

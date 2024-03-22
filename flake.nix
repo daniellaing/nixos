@@ -24,7 +24,6 @@
       };
     };
 
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs = {
@@ -40,53 +39,52 @@
         home-manager.follows = "home-manager";
       };
     };
-
   };
 
-  outputs = inputs:
-    let
-      inherit (inputs.self) outputs;
-      system = "x86_64-linux";
+  outputs = inputs: let
+    inherit (inputs.self) outputs;
+    system = "x86_64-linux";
 
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-          allowAliases = false;
-        };
+    pkgs = import inputs.nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        allowAliases = false;
       };
-    in
-    {
-      overlays = import ./overlays { inherit inputs system; };
-
-      nixosConfigurations = {
-        "nixos" = inputs.nixpkgs.lib.nixosSystem rec {
-          inherit system pkgs;
-          specialArgs = { inherit inputs outputs system; };
-
-          modules = [
-            ./hosts/dellG5.nix
-            ./nixos/configuration.nix
-
-            inputs.hyprland.nixosModules.default
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.extraSpecialArgs = specialArgs;
-              home-manager.users.daniel = import ./daniel;
-            }
-          ];
-        };
-      };
-
-      templates = import ./templates inputs;
-
-      devShells.${system}.default = pkgs.mkShell
-        {
-          packages = with pkgs; [
-            wally-cli
-          ];
-
-        };
     };
+  in {
+    overlays = import ./overlays {inherit inputs system;};
+
+    nixosConfigurations = {
+      "nixos" = inputs.nixpkgs.lib.nixosSystem rec {
+        inherit system pkgs;
+        specialArgs = {inherit inputs outputs system;};
+
+        modules = [
+          ./hosts/dellG5.nix
+          ./nixos/configuration.nix
+
+          inputs.hyprland.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users.daniel = import ./daniel;
+          }
+        ];
+      };
+    };
+
+    templates = import ./templates inputs;
+
+    devShells.${system}.default =
+      pkgs.mkShell
+      {
+        packages = with pkgs; [
+          wally-cli
+        ];
+      };
+
+    formatter."${system}" = pkgs.alejandra;
+  };
 }

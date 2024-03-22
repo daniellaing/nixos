@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-let
-  h = config.home.homeDirectory;
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  h = config.home.homeDirectory;
+in {
   xdg = {
     cacheHome = h + "/.cache";
     configHome = h + "/.config";
@@ -20,6 +22,6 @@ in
       templates = h + "/archive/templates";
       videos = h + "/archive/media/video";
     };
-    desktopEntries = { };
+    desktopEntries = {};
   };
 }

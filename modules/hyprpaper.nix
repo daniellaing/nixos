@@ -1,12 +1,16 @@
-{ inputs, config, pkgs, lib, ... }:
-with lib;
-let
-  cfg = config.programs.hyprpaper;
-in
 {
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with lib; let
+  cfg = config.programs.hyprpaper;
+in {
   options.programs.hyprpaper = {
     enable = mkEnableOption "Hyprpaper";
-    package = mkPackageOption pkgs "hyprpaper" { };
+    package = mkPackageOption pkgs "hyprpaper" {};
 
     wallpaper = mkOption {
       type = types.path;

@@ -1,9 +1,11 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.picom = {
     enable = false;
-    extraArgs = [ "--experimenal-backends" ];
+    extraArgs = ["--experimenal-backends"];
   };
 
   xdg.configFile."picom/picom.conf".text = ''

@@ -1,6 +1,11 @@
-{ config, pkgs, lib, inputs, outputs, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  outputs,
+  ...
+}: {
   services.udev.extraRules = ''
     # Rules for Oryx web flashing and live training
     KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
@@ -32,24 +37,23 @@
 
   programs.hyprland.enable = true;
 
-  imports =
-    [
-      ./email
-      ./fonts.nix
-      # ./kde.nix
-      ./mathematica.nix
-      ./network.nix
-      ./nix-locate.nix
-      ./programs.nix
-      ./services
-      ./sops.nix
-      # ./vm.nix
-      ./X11.nix
-      ./zsh.nix
-    ];
+  imports = [
+    ./email
+    ./fonts.nix
+    # ./kde.nix
+    ./mathematica.nix
+    ./network.nix
+    ./nix-locate.nix
+    ./programs.nix
+    ./services
+    ./sops.nix
+    # ./vm.nix
+    ./X11.nix
+    ./zsh.nix
+  ];
 
   nixpkgs = {
-    overlays = with outputs.overlays;[
+    overlays = with outputs.overlays; [
       # FIXME: Remove when #297158 merges to unstable
       waybar-fix
 
@@ -61,13 +65,13 @@
   # Enable Nix commands
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       use-xdg-base-directories = true;
     };
     optimise = {
       automatic = true;
-      dates = [ "13:00" "20:00" ];
+      dates = ["13:00" "20:00"];
     };
     gc = {
       automatic = true;
@@ -87,16 +91,15 @@
       enable = true;
       efiSupport = true;
       device = "nodev";
-      extraEntries =
-        ''
-          menuentry "Reboot" {
-            reboot
-          }
+      extraEntries = ''
+        menuentry "Reboot" {
+          reboot
+        }
 
-          menuentry "Shut Down" {
-            halt
-          }
-        '';
+        menuentry "Shut Down" {
+          halt
+        }
+      '';
       theme = pkgs.stdenv.mkDerivation {
         pname = "distro-grub-themes";
         version = "3.1";
@@ -144,7 +147,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Daniel Laing";
-    extraGroups = [ "video" "networkmanager" "wheel" "adbusers" "libvirtd" ];
+    extraGroups = ["video" "networkmanager" "wheel" "adbusers" "libvirtd"];
   };
 
   security.polkit.enable = true;
@@ -153,11 +156,10 @@
   programs.adb.enable = true;
 
   # Keep a list of all installed packages
-  environment.etc."current-system-packages".text =
-    let
-      packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
-      sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
-      formatted = builtins.concatStringsSep "\n" sortedUnique;
-    in
+  environment.etc."current-system-packages".text = let
+    packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
+    sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
+    formatted = builtins.concatStringsSep "\n" sortedUnique;
+  in
     formatted;
 }

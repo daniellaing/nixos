@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   xdg = {
     desktopEntries = {
       neomutt = {
@@ -10,8 +12,8 @@
         exec = "${pkgs.neomutt}/bin/neomutt %U";
         icon = "mutt";
         terminal = true;
-        categories = [ "Network" "Email" "ConsoleOnly" ];
-        mimeType = [ "x-scheme-handler/mailto" ];
+        categories = ["Network" "Email" "ConsoleOnly"];
+        mimeType = ["x-scheme-handler/mailto"];
       };
     };
     mimeApps.defaultApplications = {

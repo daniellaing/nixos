@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
-with config.colorScheme.palette;
 {
+  config,
+  pkgs,
+  ...
+}:
+with config.colorScheme.palette; {
   programs.wofi = {
     enable = true;
     settings = {

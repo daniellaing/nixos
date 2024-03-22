@@ -1,9 +1,12 @@
-{ config, pkgs, lib, ... }@inputs:
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+} @ inputs: let
   c = config.xdg.configHome;
   d = config.xdg.dataHome;
-in
-{
+in {
   imports = [
     ./terminal.nix
     ./zsh.nix
@@ -11,7 +14,7 @@ in
   ];
 
   home = {
-    shellAliases = import ./aliases.nix (inputs);
+    shellAliases = import ./aliases.nix inputs;
     sessionVariables = {
       LESSHISTFILE = "-";
       XCOMPOSEFILE = c + "/X11/xcompose";

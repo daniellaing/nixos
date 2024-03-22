@@ -1,40 +1,41 @@
-{ inputs, config, lib, pkgs, modulesPath, ... }:
-
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  inputs,
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   boot = {
     kernelPackages = with pkgs; linuxPackages_zen;
-    initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
-    initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-intel" "acpi_call" ];
-    extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
-    kernelParams = [ "acpi_osi=Linux-Dell-Video" ];
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod"];
+    initrd.kernelModules = [];
+    kernelModules = ["kvm-intel" "acpi_call"];
+    extraModulePackages = with config.boot.kernelPackages; [acpi_call];
+    kernelParams = ["acpi_osi=Linux-Dell-Video"];
   };
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/18f8b16f-7d02-483f-a0fa-83b7af226709";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/18f8b16f-7d02-483f-a0fa-83b7af226709";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/D08D-C40F";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/D08D-C40F";
+    fsType = "vfat";
+  };
 
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-uuid/a6364a7f-72ed-4148-842a-572e6962bf8e";
-      fsType = "ext4";
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/a6364a7f-72ed-4148-842a-572e6962bf8e";
+    fsType = "ext4";
+  };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/00703522-1162-4f5b-9d16-4f5ce3dce958"; }
+    {device = "/dev/disk/by-uuid/00703522-1162-4f5b-9d16-4f5ce3dce958";}
   ];
 
   # Enable trim for SSD
@@ -105,5 +106,5 @@
     };
   };
 
-  services.xserver.videoDrivers = lib.mkDefault [ "nvidia" ];
+  services.xserver.videoDrivers = lib.mkDefault ["nvidia"];
 }

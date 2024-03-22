@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   # Dependencies
   bc = "${pkgs.bc}/bin/bc";
   ncmpcpp = "${config.programs.ncmpcpp.package}/bin/ncmpcpp";
   neomutt = "${pkgs.neomutt}/bin/neomutt";
   terminal = "${config.programs.terminal}";
-in
-{
-  imports = [ ../modules/XF86.nix ];
+in {
+  imports = [../modules/XF86.nix];
   XF86 = {
     mail = "${terminal} ${neomutt}";
     calculator = "${terminal} ${bc}";

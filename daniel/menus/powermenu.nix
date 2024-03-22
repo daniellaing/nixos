@@ -1,8 +1,7 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   powermenu = pkgs.writeShellApplication {
     name = "powermenu";
-    runtimeInputs = with pkgs; [ wofi waylock hyprland ];
+    runtimeInputs = with pkgs; [wofi waylock hyprland];
     text = ''
       options=(" Lock" " Sleep" "󰍃 Logout" " Reboot" "󰐥 Shutdown")
       prompt="$(uptime | sed -r 's/.*up ([^,]*),.*/\1/')"
@@ -35,8 +34,7 @@ let
       esac
     '';
   };
-in
-{
+in {
   home.packages = [
     powermenu
   ];

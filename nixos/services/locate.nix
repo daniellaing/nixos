@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   services.locate = {
     enable = true;
     interval = "hourly";

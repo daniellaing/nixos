@@ -1,13 +1,11 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   virtualisation = {
     libvirtd = {
       enable = true;
       qemu = {
         swtpm.enable = true;
         ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
+        ovmf.packages = [pkgs.OVMFFull.fd];
       };
     };
     spiceUSBRedirection.enable = true;
@@ -25,5 +23,5 @@
     pkgs.virtiofsd
   ];
 
-  networking.firewall.trustedInterfaces = [ "virbr0" ];
+  networking.firewall.trustedInterfaces = ["virbr0"];
 }

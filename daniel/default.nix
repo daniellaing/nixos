@@ -1,6 +1,11 @@
-{ inputs, config, pkgs, lib, osConfig, ... }:
-
 {
+  inputs,
+  config,
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}: {
   nix.settings = osConfig.nix.settings;
   home = {
     username = "daniel";
@@ -35,18 +40,17 @@
     };
   };
 
-  imports =
-    [
-      inputs.nix-colors.homeManagerModules.default
+  imports = [
+    inputs.nix-colors.homeManagerModules.default
 
-      ./dev
-      ./email
-      ./menus
-      ./programs
-      ./scripts
-      ./shell
-      ./XF86Misc.nix
-    ];
+    ./dev
+    ./email
+    ./menus
+    ./programs
+    ./scripts
+    ./shell
+    ./XF86Misc.nix
+  ];
 
   # Let home manager manage itself
   programs.home-manager.enable = true;

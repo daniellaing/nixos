@@ -1,6 +1,6 @@
-{ pkgs, ... }:
-let
-  sddm-chili = pkgs.stdenv.mkDerivation
+{pkgs, ...}: let
+  sddm-chili =
+    pkgs.stdenv.mkDerivation
     rec {
       name = "sddm-chili-theme";
       pname = "sddm-chili-theme";
@@ -18,8 +18,7 @@ let
         sha256 = "sha256-wxWsdRGC59YzDcSopDRzxg8TfjjmA3LHrdWjepTuzgw=";
       };
     };
-in
-{
+in {
   services.xserver.displayManager = {
     sddm = {
       enable = true;

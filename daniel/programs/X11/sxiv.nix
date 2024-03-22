@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home = {
     packages = with pkgs; [
       sxiv
@@ -15,9 +17,9 @@
         comment = "Simple X Image Viewer";
         exec = "sxiv %U";
         icon = "sxiv";
-        categories = [ "Graphics" "Viewer" ];
+        categories = ["Graphics" "Viewer"];
         type = "Application";
-        mimeType = [ "image/*" ];
+        mimeType = ["image/*"];
       };
     };
     mimeApps.defaultApplications = {

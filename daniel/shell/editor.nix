@@ -1,10 +1,14 @@
-{ inputs, config, pkgs, system, ... }:
-let
-  neovim = inputs.my_neovim.packages.${system}.default;
-in
 {
+  inputs,
+  config,
+  pkgs,
+  system,
+  ...
+}: let
+  neovim = inputs.my_neovim.packages.${system}.default;
+in {
   home = {
-    packages = [ neovim ];
+    packages = [neovim];
     sessionVariables = {
       EDITOR = "${neovim}/bin/nvim";
       SUDO_EDITOR = "${neovim}/bin/nvim";
@@ -19,8 +23,8 @@ in
         comment = "Hyperextensible Vim-based text editor";
         exec = "${neovim}/bin/nvim %U";
         terminal = true;
-        categories = [ "Utility" "TextEditor" "ConsoleOnly" ];
-        mimeType = [ "text/*" ];
+        categories = ["Utility" "TextEditor" "ConsoleOnly"];
+        mimeType = ["text/*"];
       };
     };
     mimeApps.defaultApplications = {

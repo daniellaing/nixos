@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.mpv = {
     enable = true;
     scripts = with pkgs.mpvScripts; [
@@ -17,8 +19,8 @@
         exec = "mpv %U";
         icon = "mpv";
         type = "Application";
-        categories = [ "Player" "Video" ];
-        mimeType = [ "video/*" ];
+        categories = ["Player" "Video"];
+        mimeType = ["video/*"];
       };
     };
     mimeApps.defaultApplications = {

@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   services = {
     printing.enable = true;
 
@@ -11,4 +9,3 @@
     };
   };
 }
-

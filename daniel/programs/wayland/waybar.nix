@@ -1,14 +1,17 @@
-{ config, pkgs, osConfig, ... }:
-with config.colorScheme.palette;
-let
-  pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
-in
 {
+  config,
+  pkgs,
+  osConfig,
+  ...
+}:
+with config.colorScheme.palette; let
+  pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
+in {
   programs.waybar = {
     enable = true;
-    package = (pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    }));
+    package = pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+    });
     settings.mainBar = {
       "position" = "top";
       "layer" = "top";
@@ -71,7 +74,7 @@ in
         "format-plugged" = "  {capacity}%";
         "format-alt" = "{icon} {capacity}%";
         "format-full" = "  100%";
-        "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+        "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
       };
 
       "pulseaudio" = {
@@ -86,7 +89,7 @@ in
           "phone" = "";
           "portable" = "";
           "car" = "";
-          "default" = [ "" "" "" ];
+          "default" = ["" "" ""];
         };
         "on-click" = "${pavucontrol}";
         "on-click-right" = "${osConfig.XF86.audioMute}";

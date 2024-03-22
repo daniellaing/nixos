@@ -43,7 +43,7 @@ in {
     gnumake
     pinentry-curses
     gnupg
-    (uutils-coreutils.override { prefix = ""; }) # Coreutils rewrite in Rust btw
+    (uutils-coreutils.override {prefix = "";}) # Coreutils rewrite in Rust btw
 
     # Secret management
     sops

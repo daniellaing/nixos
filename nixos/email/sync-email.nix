@@ -1,5 +1,4 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellScriptBin "sync-email" ''
   # Script to sync emails
 

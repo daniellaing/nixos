@@ -1,9 +1,13 @@
-{ inputs, config, pkgs, osConfig, ... }:
-with config.colorScheme.palette;
-let
-  wallpaper = ../../wallpapers/summer-day.png;
-in
 {
+  inputs,
+  config,
+  pkgs,
+  osConfig,
+  ...
+}:
+with config.colorScheme.palette; let
+  wallpaper = ../../wallpapers/summer-day.png;
+in {
   imports = [
     inputs.hyprland.homeManagerModules.default
     ../../../modules/hyprpaper.nix
@@ -20,7 +24,7 @@ in
   };
 
   # XDG Desktop Portal
-  home.packages = [ pkgs.xdg-desktop-portal-hyprland ];
+  home.packages = [pkgs.xdg-desktop-portal-hyprland];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -199,9 +203,9 @@ in
 
   systemd.user.services.polkit-kde-authentication-agent-1 = {
     Unit.Description = "KDE polkit authentication agent";
-    Unit.Wants = [ "graphical-session.target" ];
-    Unit.After = [ "graphical-session.target" ];
-    Install.WantedBy = [ "graphical-session.target" ];
+    Unit.Wants = ["graphical-session.target"];
+    Unit.After = ["graphical-session.target"];
+    Install.WantedBy = ["graphical-session.target"];
     Service = {
       Type = "simple";
       ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
@@ -210,5 +214,4 @@ in
       TimeoutStopSec = 10;
     };
   };
-
 }

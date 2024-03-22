@@ -1,6 +1,10 @@
-{ config, pkgs, lib, ... }:
-with config.colorScheme.palette;
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+with config.colorScheme.palette; {
   config = {
     programs = {
       terminal = "${pkgs.kitty}/bin/kitty";
@@ -87,7 +91,6 @@ with config.colorScheme.palette;
 
     home.sessionVariables.TERMINAL = "${config.programs.terminal}";
     home.sessionVariables.TERM = "${config.programs.terminal}";
-
   };
 
   options.programs = {
@@ -97,5 +100,4 @@ with config.colorScheme.palette;
       example = "''${pkgs.kitty}/bin/kitty";
     };
   };
-
 }

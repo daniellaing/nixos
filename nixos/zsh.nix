@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   environment = with pkgs; {
     systemPackages = [
       zsh-powerlevel10k
     ];
 
-    shells = [ zsh ];
-    pathsToLink = [ "/share/zsh" ];
+    shells = [zsh];
+    pathsToLink = ["/share/zsh"];
   };
 
   programs.zsh = {
@@ -15,5 +17,4 @@
     syntaxHighlighting.enable = true;
     promptInit = "source ''${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
   };
-
 }

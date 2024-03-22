@@ -1,6 +1,8 @@
-{ inputs, system, ... }:
-
 {
+  inputs,
+  system,
+  ...
+}: {
   # FIXME: Remove when #297158 merges to unstable
   waybar-fix = final: prev: {
     waybar = prev.waybar.override {
@@ -23,4 +25,3 @@
     };
   };
 }
-

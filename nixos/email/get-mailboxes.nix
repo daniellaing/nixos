@@ -1,5 +1,4 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellScriptBin "get-mailboxes" ''
   while getopts ":a:i:I:" o; do case "''${o}" in
       a) address="$OPTARG" ;;

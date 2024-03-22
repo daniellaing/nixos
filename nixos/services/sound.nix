@@ -1,10 +1,12 @@
-{ pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   # Dependencies
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
-in
-{
-  imports = [ ../../modules/XF86.nix ];
+in {
+  imports = [../../modules/XF86.nix];
 
   XF86 = {
     audioLowerVolume = "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%-";
