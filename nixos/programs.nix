@@ -14,19 +14,19 @@
       runtimeInputs = with pkgs; [git bat ripgrep libnotify];
       text = ''
         set -ex
-        $EDITOR /dotfiles
         pushd /dotfiles
-        if git diff --quiet '*.nix'; then
+        $EDITOR .
+        if git diff --quiet .; then
             echo "No changes detected, exiting"
             popd
-            extit 0
+            exit 0
         fi
         nix fmt &> /dev/null
-        git diff -U0 '*.nix'
+        git diff -U0 .
         # shellcheck disable=SC2024
         sudo nixos-rebuild switch --flake /dotfiles &> nixos-rebuild.log || (notify-send -e -a "NixOS Rebuild" "Failure!"; bat nixos-rebuild.log | rg error && exit 1)
-        curgen=$(nixo-rebuild list-generations | rg current)
-        git commit -am "$curgen"
+        msg=$(nixos-rebuild list-generations --flake /dotfiles | rg current)
+        git commit -am "$msg"
         popd
         notify-send -e -a "NixOS Rebuild" "Success!"
       '';
