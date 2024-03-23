@@ -1,8 +1,4 @@
-{
-  inputs,
-  system,
-  ...
-}: {
+{inputs, ...}: {
   # FIXME: Remove when #297158 merges to unstable
   waybar-fix = final: prev: {
     waybar = prev.waybar.override {
@@ -18,9 +14,9 @@
     };
   };
 
-  stable-packages = final: _prev: {
+  stable-packages = final: prev: {
     stable = import inputs.nixpkgs-stable {
-      inherit system;
+      system = prev.system;
       config.allowUnfree = true;
     };
   };

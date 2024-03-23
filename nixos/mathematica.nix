@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   m = let
     wrapped = pkgs.writeShellScriptBin "mathematica" ''
       rm -f ''${MATHEMATICA_USERBASE:-$HOME/.Mathematica}/Autoload/PacletManager/Configuration/FrontEnd/init_${pkgs.stable.mathematica.version}.0.m

@@ -60,6 +60,7 @@
       stable-packages
       inputs.nur.overlay
     ];
+    config.allowUnfree = true;
   };
 
   # Enable Nix commands

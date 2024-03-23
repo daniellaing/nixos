@@ -6,6 +6,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
     nur.url = "github:nix-community/NUR";
     nix-colors.url = "github:misterio77/nix-colors";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -41,50 +42,51 @@
     };
   };
 
-  outputs = inputs: let
-    inherit (inputs.self) outputs;
-    system = "x86_64-linux";
+  outputs = inputs @ {
+    self,
+    flake-parts,
+    home-manager,
+    nixpkgs,
+    ...
+  }:
+    flake-parts.lib.mkFlake {inherit inputs self;} {
+      systems = nixpkgs.lib.systems.flakeExposed;
 
-    pkgs = import inputs.nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-        allowAliases = false;
+      flake = {
+        templates = import ./templates inputs;
+        overlays = import ./overlays {inherit inputs;};
+
+        nixosConfigurations = {
+          nixos = nixpkgs.lib.nixosSystem rec {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs system;
+              inherit (self) outputs;
+            };
+            modules = [
+              ./hosts/dellG5.nix
+              ./nixos/configuration.nix
+
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  extraSpecialArgs = specialArgs;
+                  users.daniel = import ./daniel;
+                };
+              }
+
+              inputs.hyprland.nixosModules.default
+            ];
+          };
+        };
+      };
+
+      perSystem = {pkgs, ...}: {
+        formatter = pkgs.alejandra;
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [wally-cli];
+        };
       };
     };
-  in {
-    overlays = import ./overlays {inherit inputs system;};
-
-    nixosConfigurations = {
-      "nixos" = inputs.nixpkgs.lib.nixosSystem rec {
-        inherit system pkgs;
-        specialArgs = {inherit inputs outputs system;};
-
-        modules = [
-          ./hosts/dellG5.nix
-          ./nixos/configuration.nix
-
-          inputs.hyprland.nixosModules.default
-          inputs.home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users.daniel = import ./daniel;
-          }
-        ];
-      };
-    };
-
-    templates = import ./templates inputs;
-
-    devShells.${system}.default =
-      pkgs.mkShell
-      {
-        packages = with pkgs; [
-          wally-cli
-        ];
-      };
-
-    formatter."${system}" = pkgs.alejandra;
-  };
 }
