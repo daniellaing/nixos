@@ -152,6 +152,17 @@
   };
 
   security.polkit.enable = true;
+  security.sudo.extraRules = [
+    {
+      groups = ["wheel"];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/nixos-rebuild";
+          options = ["SETENV" "NOPASSWD"];
+        }
+      ];
+    }
+  ];
 
   programs.ssh.askPassword = "/nix/store/pg42226jhbpjp47s03h0glzxyxq36h6i-ksshaskpass-5.27.7/bin/ksshaskpass";
   programs.adb.enable = true;
