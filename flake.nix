@@ -60,9 +60,9 @@
           nixos = nixpkgs.lib.nixosSystem rec {
             system = "x86_64-linux";
             specialArgs = {
-              inherit inputs system;
-              inherit (self) outputs;
+              inherit inputs system self;
             };
+
             modules = [
               ./hosts/dellG5.nix
               ./nixos/configuration.nix
