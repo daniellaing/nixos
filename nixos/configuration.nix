@@ -54,9 +54,6 @@
 
   nixpkgs = {
     overlays = with self.outputs.overlays; [
-      # FIXME: Remove when #297158 merges to unstable
-      waybar-fix
-
       stable-packages
       inputs.nur.overlay
     ];
