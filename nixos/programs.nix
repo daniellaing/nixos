@@ -17,6 +17,7 @@
         cfgdir="''${1:-/dotfiles}"
         pushd "$cfgdir"
         $EDITOR .
+        git add .
         if git diff --quiet .; then
             echo "No changes detected, exiting"
             popd
