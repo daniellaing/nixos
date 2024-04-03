@@ -83,6 +83,7 @@
       };
 
       perSystem = {pkgs, ...}: {
+        packages = import ./pkgs pkgs;
         formatter = pkgs.alejandra;
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [wally-cli];
