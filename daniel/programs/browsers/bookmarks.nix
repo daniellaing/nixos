@@ -18,6 +18,10 @@
                 name = "Gako358";
                 url = "https://github.com/Gako358/dotfiles";
               }
+              {
+                name = "Adam C Stephens";
+                url = "https://codeberg.org/adamcstephens/dotfiles";
+              }
             ];
           }
           {
