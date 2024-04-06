@@ -18,7 +18,7 @@
         pushd "$cfgdir"
         $EDITOR .
         git add .
-        if git diff --quiet .; then
+        if git diff --staged --quiet .; then
             echo "No changes detected, exiting"
             popd
             exit 0
