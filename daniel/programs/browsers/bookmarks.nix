@@ -204,6 +204,23 @@
           }
         ];
       }
+      {
+        name = "Egg, Inc.";
+        bookmarks = [
+          {
+            name = "Egg, Inc. Wiki";
+            url = "https://egg-inc.fandom.com/wiki/Egg,_Inc.";
+          }
+          {
+            name = "Presteige Artifacts Assistant";
+            url = "https://wasmegg-carpet.netlify.app/smart-assistant/";
+          }
+          {
+            name = "Useful links";
+            url = "https://www.reddit.com/r/EggsInc/comments/108l3t7/useful_links_for_leveling_up_your_egg_inc/";
+          }
+        ];
+      }
 
       {
         name = "EU4 Army Composition";

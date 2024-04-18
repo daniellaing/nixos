@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  lib,
   ...
 } @ inputs: let
   browsers = ["firefox"];
@@ -25,7 +25,6 @@ in {
               keepassxc-browser
               ublock-origin
               sponsorblock
-              tree-style-tab
             ];
             search = {
               force = true;
@@ -93,12 +92,14 @@ in {
                 "Home Manager Options" = {
                   urls = [
                     {
-                      template = "https://mipmip.github.io/home-manager-option-search";
+                      template = "https://home-manager-options.extranix.com";
                       params = [
-                        {
-                          name = "query";
-                          value = "{searchTerms}";
-                        }
+                        (lib.nameValuePair
+                          "query"
+                          "{searchTerms}")
+                        (lib.nameValuePair
+                          "release"
+                          "master")
                       ];
                     }
                   ];
