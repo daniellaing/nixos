@@ -212,8 +212,32 @@
             url = "https://egg-inc.fandom.com/wiki/Egg,_Inc.";
           }
           {
+            name = "mk2's Public Utils";
+            url = "https://wasmegg.netlify.app/#/";
+          }
+          {
             name = "Presteige Artifacts Assistant";
             url = "https://wasmegg-carpet.netlify.app/smart-assistant/";
+          }
+          {
+            name = "Chicken Calculator";
+            url = "https://saladfork.github.io/egg-inc-tools/";
+          }
+          {
+            name = "Golden Egg cost calculator";
+            url = "https://royalphysique.net/eggs/";
+          }
+          {
+            name = "Artifact Crafting Tree";
+            url = "https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Fj30hpaxqx9f61.png%3Fwidth%3D1080%26crop%3Dsmart%26auto%3Dwebp%26s%3Da125a901fae27e34b2d918c20ceb1ccb79cb22a6";
+          }
+          {
+            name = "Artifacts to keep";
+            url = "https://i.imgur.com/Jklslur.jpeg";
+          }
+          {
+            name = "10B Chickens Infographic";
+            url = "https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2Fdefcl1tyr9181.jpg";
           }
           {
             name = "Useful links";

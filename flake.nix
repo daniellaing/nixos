@@ -66,7 +66,7 @@
             };
 
             modules = [
-              ./hosts/dellG5.nix
+              ./hosts/dellG5/hardware.nix
               ./nixos/configuration.nix
 
               home-manager.nixosModules.home-manager
