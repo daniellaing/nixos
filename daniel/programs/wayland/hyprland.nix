@@ -38,7 +38,7 @@ in {
       general {
           layout = dwindle
           gaps_out = 15
-          cursor_inactive_timeout = 3
+          inactive_timeout = 3
 
           border_size = 2
           col.active_border = 0xff${base05}

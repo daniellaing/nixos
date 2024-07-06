@@ -19,7 +19,7 @@
       };
     };
 in {
-  services.xserver.displayManager = {
+  services.displayManager = {
     sddm = {
       enable = true;
       autoNumlock = true;
