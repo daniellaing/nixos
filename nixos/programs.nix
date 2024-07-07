@@ -11,7 +11,7 @@
     pkgs.writeShellApplication
     {
       name = "configure";
-      runtimeInputs = with pkgs; [git bat ripgrep libnotify];
+      runtimeInputs = with pkgs; [git bat ripgrep libnotify nh alejandra];
       text = ''
         set -ex
         cfgdir="''${1:-/dotfiles}"
@@ -23,9 +23,14 @@
             popd
             exit 0
         fi
-        nix fmt &> /dev/null
+
+        # Format
+        alejandra "$cfgdir" &> /dev/null
+
+        # nixos-rebuild switch --flake "$cfgdir"
         # shellcheck disable=SC2024
-        sudo nixos-rebuild switch --flake "$cfgdir" || (notify-send -e -a "NixOS Rebuild" "Failure!"; exit 1)
+        nh os switch "$cfgdir" || (notify-send -e -a "NixOS Rebuild", "Failure!"; exit 1)
+
         msg=$(nixos-rebuild list-generations --flake "$cfgdir" | rg current)
         git commit -am "$msg"
         popd
