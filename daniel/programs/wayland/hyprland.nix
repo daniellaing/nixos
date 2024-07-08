@@ -38,7 +38,6 @@ in {
       general {
           layout = dwindle
           gaps_out = 15
-          inactive_timeout = 3
 
           border_size = 2
           col.active_border = 0xff${base05}
@@ -78,6 +77,10 @@ in {
         animation = workspaces,1,6,overshot,
         animation = windowsIn,1,5,slow,popin
         animation = windowsMove,1,5,default
+      }
+
+      cursor {
+          inactive_timeout = 3
       }
 
       input {
