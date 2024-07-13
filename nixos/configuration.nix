@@ -39,7 +39,7 @@
 
   imports = [
     ./email
-    ./fonts.nix
+    # ./fonts.nix
     # ./kde.nix
     ./mathematica.nix
     ./network.nix

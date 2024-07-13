@@ -8,6 +8,11 @@
     nix-colors.url = "github:misterio77/nix-colors";
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +63,9 @@
         templates = import ./templates inputs;
         overlays = import ./overlays {inherit inputs;};
 
-        nixosConfigurations = {
+        nixosConfigurations = let
+          mkHosts = {...} @ hosts: {};
+        in {
           nixos = nixpkgs.lib.nixosSystem rec {
             system = "x86_64-linux";
             specialArgs = {
@@ -66,6 +73,8 @@
             };
 
             modules = [
+              ./common
+
               ./hosts/dellG5/hardware.nix
               ./nixos/configuration.nix
 
