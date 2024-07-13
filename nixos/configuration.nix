@@ -42,7 +42,6 @@
     # ./kde.nix
     ./mathematica.nix
     ./network.nix
-    ./nix-locate.nix
     ./programs.nix
     ./services
     ./sops.nix

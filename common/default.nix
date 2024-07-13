@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./fonts.nix
+    ./nix-index.nix
     ./vm.nix
   ];
 
