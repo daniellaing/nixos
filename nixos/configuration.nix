@@ -164,6 +164,10 @@
   programs.ssh.askPassword = "/nix/store/pg42226jhbpjp47s03h0glzxyxq36h6i-ksshaskpass-5.27.7/bin/ksshaskpass";
   programs.adb.enable = true;
 
+  # ZSH completion
+  # Added to allow completion of system packages
+  environment.pathsToLink = ["/share/zsh"];
+
   # Keep a list of all installed packages
   environment.etc."current-system-packages".text = let
     packages = builtins.map (p: "${p.name}") config.environment.systemPackages;

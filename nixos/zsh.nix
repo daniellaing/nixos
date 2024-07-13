@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment = with pkgs; {
     systemPackages = [
       zsh-powerlevel10k
