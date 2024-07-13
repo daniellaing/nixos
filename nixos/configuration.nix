@@ -39,7 +39,6 @@
 
   imports = [
     ./email
-    # ./fonts.nix
     # ./kde.nix
     ./mathematica.nix
     ./network.nix
@@ -47,7 +46,6 @@
     ./programs.nix
     ./services
     ./sops.nix
-    # ./vm.nix
     ./X11.nix
     ./zsh.nix
   ];
