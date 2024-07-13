@@ -25,7 +25,7 @@
         fi
 
         # Format
-        alejandra "$cfgdir" &> /dev/null
+        alejandra "$cfgdir" 1> /dev/null
 
         # nixos-rebuild switch --flake "$cfgdir"
         # shellcheck disable=SC2024
