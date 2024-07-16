@@ -14,7 +14,6 @@ in {
     audioRaiseVolume = "${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 5%+";
   };
 
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
