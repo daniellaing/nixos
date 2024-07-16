@@ -33,7 +33,7 @@ in {
                 "SearxNG" = {
                   urls = [
                     {
-                      template = "https://freesearch.club/search";
+                      template = "https://searx.tiekoetter.com/";
                       params = [
                         {
                           name = "q";
