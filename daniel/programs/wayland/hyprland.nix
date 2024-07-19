@@ -146,9 +146,10 @@ in {
       bind = $MOD, W, exec, $BROWSER
       # bind = $MOD, SHIFT, W, #Open network settings
 
-      # bind = $MOD, X, #Decrease gaps
+      bind = $MOD, X, exec, ${config.XF86.explorer}
+      # bind = $MOD, SHIFT X, #Decrease gaps
 
-      # bind = $MOD, Z, #Increase gaps
+      # bind = $MOD, SHIFT, Z, #Increase gaps
 
       bind = $MOD, comma, exec, ${config.XF86.audioPrev}
       bind = $MOD, <, exec, ${config.XF86.audioRewind}
