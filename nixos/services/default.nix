@@ -7,4 +7,10 @@
     ./printing.nix
     ./sound.nix
   ];
+
+  # Syncthing
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+  };
 }

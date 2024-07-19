@@ -93,7 +93,7 @@
               ];
             };
         in {
-          nixos = mkHost {
+          dellG5 = mkHost {
             hostName = "dellG5";
             system = "x86_64-linux";
           };
