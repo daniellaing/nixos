@@ -65,31 +65,37 @@
         overlays = import ./overlays {inherit inputs;};
 
         nixosConfigurations = let
-          mkHosts = {...} @ hosts: {};
-        in {
-          nixos = nixpkgs.lib.nixosSystem rec {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs system self;
+          mkHost = {
+            hostName,
+            system,
+          }:
+            nixpkgs.lib.nixosSystem rec {
+              inherit system;
+              specialArgs = {inherit inputs system self;};
+
+              modules = [
+                {networking = {inherit hostName;};}
+                ./common
+
+                ./hosts/${hostName}/hardware.nix
+                ./nixos/configuration.nix
+
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    extraSpecialArgs = specialArgs;
+                    users.daniel = import ./daniel;
+                  };
+                }
+
+                inputs.hyprland.nixosModules.default
+              ];
             };
-
-            modules = [
-              ./common
-
-              ./hosts/dellG5/hardware.nix
-              ./nixos/configuration.nix
-
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  extraSpecialArgs = specialArgs;
-                  users.daniel = import ./daniel;
-                };
-              }
-
-              inputs.hyprland.nixosModules.default
-            ];
+        in {
+          nixos = mkHost {
+            hostName = "nixos";
+            system = "x86_64-linux";
           };
         };
       };
