@@ -22,6 +22,18 @@
                 name = "Adam C Stephens";
                 url = "https://codeberg.org/adamcstephens/dotfiles";
               }
+              {
+                name = "Proxy";
+                url = "https://github.com/PROxZIMA/.dotfiles/";
+              }
+              {
+                name = "saimoomedits";
+                url = "https://github.com/saimoomedits/dotfiles";
+              }
+              {
+                name = "nwvh";
+                url = "https://github.com/nwvh/dotsv5";
+              }
             ];
           }
           {
