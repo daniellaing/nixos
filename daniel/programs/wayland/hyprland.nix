@@ -4,8 +4,8 @@
   pkgs,
   osConfig,
   ...
-}:
-with config.colorScheme.palette; let
+}: let
+  col = config.colorScheme.palette;
   wallpaper = ../../wallpapers/summer-day.png;
 in {
   imports = [
@@ -40,10 +40,10 @@ in {
           gaps_out = 15
 
           border_size = 2
-          col.active_border = 0xff${base05}
-          col.inactive_border = 0xff${base01}
-          col.nogroup_border_active = 0xff${base05}
-          col.nogroup_border = 0xff${base01}
+          col.active_border = 0xff${col.base05}
+          col.inactive_border = 0xff${col.base01}
+          col.nogroup_border_active = 0xff${col.base05}
+          col.nogroup_border = 0xff${col.base01}
       }
 
       decoration {

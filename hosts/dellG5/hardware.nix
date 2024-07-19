@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -11,11 +10,11 @@
   ];
 
   boot = {
-    kernelPackages = with pkgs; linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_zen;
     initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "sd_mod"];
     initrd.kernelModules = [];
     kernelModules = ["kvm-intel" "acpi_call"];
-    extraModulePackages = with config.boot.kernelPackages; [acpi_call];
+    extraModulePackages = builtins.attrValues {inherit (config.boot.kernelPackages) acpi_call;};
     kernelParams = ["acpi_osi=Linux-Dell-Video"];
   };
 

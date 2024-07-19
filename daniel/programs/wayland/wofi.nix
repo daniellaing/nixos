@@ -1,9 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-with config.colorScheme.palette; {
+{config, ...}: let
+  col = config.colorScheme.palette;
+in {
   programs.wofi = {
     enable = true;
     settings = {
@@ -27,10 +24,10 @@ with config.colorScheme.palette; {
 
       window {
           margin: 0px;
-          background: #${base00};
-          color: #${base06};
+          background: #${col.base00};
+          color: #${col.base06};
       	  border-radius: 15px;
-          border-color: #${base01}
+          border-color: #${col.base01}
       }
 
       #outer-box {
@@ -39,8 +36,8 @@ with config.colorScheme.palette; {
       }
 
       #input {
-          background-color: #${base03};
-          color: #${base06};
+          background-color: #${col.base03};
+          color: #${col.base06};
           margin: 15px;
           padding: 10px;
           border: none;
@@ -71,8 +68,8 @@ with config.colorScheme.palette; {
       }
 
       #entry:selected {
-          background: #${base0F};
-          color: #${base00};
+          background: #${col.base0F};
+          color: #${col.base00};
       }
     '';
   };

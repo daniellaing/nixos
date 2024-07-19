@@ -1,7 +1,14 @@
 {pkgs, ...}: let
   powermenu = pkgs.writeShellApplication {
     name = "powermenu";
-    runtimeInputs = with pkgs; [wofi waylock hyprland];
+    runtimeInputs = builtins.attrValues {
+      inherit
+        (pkgs)
+        wofi
+        waylock
+        hyprland
+        ;
+    };
     text = ''
       options=(" Lock" " Sleep" "󰍃 Logout" " Reboot" "󰐥 Shutdown")
       prompt="$(uptime | sed -r 's/.*up ([^,]*),.*/\1/')"

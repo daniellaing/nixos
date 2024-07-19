@@ -9,27 +9,30 @@
     username = "daniel";
     homeDirectory = "/home/daniel";
     stateVersion = "23.05";
-    packages = with pkgs; [
-      btop
-      ferdium
-      musescore
-      yt-dlp
-      keepassxc
-      pipes
-      nitch # Fetch utility
-      vimix-icon-theme
-      ncdu
-      ffmpeg
-      imv
-      vimv
-      steam
-      sonic-visualiser
-      synthesia
-
-      # Fonts
-      alegreya
-      alegreya-sans
-    ];
+    packages = builtins.attrValues {
+      inherit
+        (pkgs)
+        btop
+        ferdium
+        musescore
+        yt-dlp
+        keepassxc
+        pipes
+        nitch # Fetch utility
+        vimix-icon-theme
+        ncdu
+        ffmpeg
+        imv
+        vimv
+        steam
+        sonic-visualiser
+        synthesia
+        # Fonts
+        
+        alegreya
+        alegreya-sans
+        ;
+    };
 
     pointerCursor = {
       gtk.enable = true;

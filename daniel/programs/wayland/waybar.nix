@@ -3,8 +3,8 @@
   pkgs,
   osConfig,
   ...
-}:
-with config.colorScheme.palette; let
+}: let
+  col = config.colorScheme.palette;
   pavucontrol = "${pkgs.pavucontrol}/bin/pavucontrol";
 in {
   programs.waybar = {
@@ -110,15 +110,15 @@ in {
       }
 
       #workspaces {
-        background: #${base00};
-        color: #${base06};
+        background: #${col.base00};
+        color: #${col.base06};
         font-size: 16px;
         margin: 5px 5px;
         padding: 8px 5px;
         border-radius: 16px;
       }
       #workspaces button {
-        color: #${base06};
+        color: #${col.base06};
         padding: 0px 5px;
         margin: 0px 3px;
         border-radius: 16px;
@@ -127,8 +127,8 @@ in {
       }
 
       #workspaces button.active {
-        background: #${base0B};
-        color: #${base00};
+        background: #${col.base0B};
+        color: #${col.base00};
         border-radius: 16px;
         min-width: 40px;
         background-size: 400% 400%;
@@ -136,8 +136,8 @@ in {
       }
 
       #workspaces button:hover {
-        background: #${base0D};
-        color: #${base00};
+        background: #${col.base0D};
+        color: #${col.base00};
         border-radius: 16px;
         min-width: 50px;
         background-size: 400% 400%;
@@ -146,8 +146,8 @@ in {
       #pulseaudio,
       #network,
       #battery {
-        background: #${base00};
-        color: #${base05};
+        background: #${col.base00};
+        color: #${col.base05};
         font-weight: bold;
         margin: 5px 0px;
         border-radius: 10px 24px 10px 24px;
@@ -156,8 +156,8 @@ in {
       }
 
       #tray {
-        background: #${base00};
-        color: #${base05};
+        background: #${col.base00};
+        color: #${col.base05};
         font-weight: bold;
         margin: 5px 0px;
         border-radius: 24px 10px 24px 10px;
@@ -166,8 +166,8 @@ in {
       }
 
       #clock {
-        background: #${base00};
-        color: #${base05};
+        background: #${col.base00};
+        color: #${col.base05};
         border-radius: 0px 0px 0px 40px;
         padding: 10px 10px 15px 25px;
         margin-left: 7px;
@@ -175,8 +175,8 @@ in {
         font-size: 16px;
       }
       #custom-launcher {
-        background: #${base00};
-        color: #${base06};
+        background: #${col.base00};
+        color: #${col.base06};
         border-radius: 0px 0px 40px 0px;
         margin: 0px;
         padding: 0px 35px 0px 15px;
@@ -185,10 +185,10 @@ in {
 
       @keyframes warning {
           100% {
-            background: #${base00};
+            background: #${col.base00};
           }
           0% {
-            background: #${base08};
+            background: #${col.base08};
           }
       }
       #battery.warning {

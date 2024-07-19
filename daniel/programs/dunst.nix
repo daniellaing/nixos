@@ -2,8 +2,9 @@
   config,
   pkgs,
   ...
-}:
-with config.colorScheme.palette; {
+}: let
+  col = config.colorScheme.palette;
+in {
   services.dunst = {
     enable = true;
     iconTheme = {
@@ -29,7 +30,7 @@ with config.colorScheme.palette; {
         shrink = false;
         transparency = 1;
         separator_height = 6;
-        separator_color = "#${base00}";
+        separator_color = "#${col.base00}";
         padding = 16;
         horizontal_padding = 16;
         frame_width = 2;
@@ -66,24 +67,24 @@ with config.colorScheme.palette; {
       };
 
       urgency_low = {
-        background = "#${base01}";
-        foreground = "#${base05}";
-        highlight = "#${base0F}";
-        frame_color = "#${base0F}";
+        background = "#${col.base01}";
+        foreground = "#${col.base05}";
+        highlight = "#${col.base0F}";
+        frame_color = "#${col.base0F}";
       };
 
       urgency_normal = {
-        background = "#${base01}";
-        foreground = "#${base05}";
-        highlight = "#${base0C}";
-        frame_color = "#${base0C}";
+        background = "#${col.base01}";
+        foreground = "#${col.base05}";
+        highlight = "#${col.base0C}";
+        frame_color = "#${col.base0C}";
       };
 
       urgency_critical = {
-        background = "#${base01}";
-        foreground = "#${base05}";
-        highlight = "#${base09}";
-        frame_color = "#${base09}";
+        background = "#${col.base01}";
+        foreground = "#${col.base05}";
+        highlight = "#${col.base09}";
+        frame_color = "#${col.base09}";
         timeout = 0;
       };
 

@@ -3,8 +3,9 @@
   pkgs,
   lib,
   ...
-}:
-with config.colorScheme.palette; {
+}: let
+  col = config.colorScheme.palette;
+in {
   config = {
     programs = {
       terminal = "${pkgs.kitty}/bin/kitty";
@@ -15,35 +16,35 @@ with config.colorScheme.palette; {
           box_drawing_scale 0.001, 1, 1.5, 2
           window_margin_width 10
           confirm_os_window_close 0
-          foreground            #${base05}
-          background            #${base00}
-          selection_foreground  #${base05}
-          selection_background  #${base02}
-          cursor                #${base05}
+          foreground            #${col.base05}
+          background            #${col.base00}
+          selection_foreground  #${col.base05}
+          selection_background  #${col.base02}
+          cursor                #${col.base05}
 
-          color0   #${base01}
-          color8   #${base02}
+          color0   #${col.base01}
+          color8   #${col.base02}
 
-          color1   #${base0E}
-          color9   #${base0E}
+          color1   #${col.base0E}
+          color9   #${col.base0E}
 
-          color2   #${base0D}
-          color10  #${base0D}
+          color2   #${col.base0D}
+          color10  #${col.base0D}
 
-          color3   #${base0A}
-          color11  #${base0A}
+          color3   #${col.base0A}
+          color11  #${col.base0A}
 
-          color4  #${base08}
-          color12 #${base08}
+          color4  #${col.base08}
+          color12 #${col.base08}
 
-          color5   #${base09}
-          color13  #${base09}
+          color5   #${col.base09}
+          color13  #${col.base09}
 
-          color6   #${base0B}
-          color14  #${base0B}
+          color6   #${col.base0B}
+          color14  #${col.base0B}
 
-          color7   #${base07}
-          color15  #${base07}
+          color7   #${col.base07}
+          color15  #${col.base07}
         '';
       };
 

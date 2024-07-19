@@ -21,11 +21,14 @@ in {
               "browser.toolbars.bookmarks.visibility" = "always";
               "browser.startup.couldRestoreSession.count" = 2;
             };
-            extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-              keepassxc-browser
-              ublock-origin
-              sponsorblock
-            ];
+            extensions = builtins.attrValues {
+              inherit
+                (pkgs.nur.repos.rycee.firefox-addons)
+                keepassxc-browser
+                ublock-origin
+                sponsorblock
+                ;
+            };
             search = {
               force = true;
               default = "SearxNG";

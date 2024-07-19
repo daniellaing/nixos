@@ -12,14 +12,16 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        packages = with pkgs; [
-          rustc
-          cargo
-          rust-analyzer
-          rustfmt
-          clippy
-        ];
-
+        packages = builtins.attrValues {
+          inherit
+            (pkgs)
+            rustc
+            cargo
+            rust-analyzer
+            rustfmt
+            clippy
+            ;
+        };
         shellHook = ''
           echo "Let's get Rusty" | "${pkgs.lolcat}/bin/lolcat"
         '';

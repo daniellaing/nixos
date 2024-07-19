@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   # Dependencies
   wpctl = "${pkgs.wireplumber}/bin/wpctl";
 in {
@@ -25,8 +21,11 @@ in {
     jack.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    pulsemixer
-    pavucontrol
-  ];
+  environment.systemPackages = builtins.attrValues {
+    inherit
+      (pkgs)
+      pulsemixer
+      pavucontrol
+      ;
+  };
 }

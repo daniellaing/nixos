@@ -4,10 +4,13 @@
   ...
 }: {
   home = {
-    packages = with pkgs; [
-      R
-      rstudio
-    ];
+    packages = builtins.attrValues {
+      inherit
+        (pkgs)
+        R
+        rstudio
+        ;
+    };
 
     sessionVariables = {
       R_HOME_USER = "${config.xdg.configHome}/R";

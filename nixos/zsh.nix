@@ -1,10 +1,12 @@
 {pkgs, ...}: {
-  environment = with pkgs; {
-    systemPackages = [
-      zsh-powerlevel10k
-    ];
-
-    shells = [zsh];
+  environment = {
+    systemPackages = builtins.attrValues {
+      inherit
+        (pkgs)
+        zsh-powerlevel10k
+        ;
+    };
+    shells = [pkgs.zsh];
     pathsToLink = ["/share/zsh"];
   };
 

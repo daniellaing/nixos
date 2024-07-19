@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   services.xserver = {
     enable = true;
     xkb = {
@@ -11,8 +7,11 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    xclip
-    dmenu
-  ];
+  environment.systemPackages = builtins.attrValues {
+    inherit
+      (pkgs)
+      xclip
+      dmenu
+      ;
+  };
 }

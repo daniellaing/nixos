@@ -1,6 +1,6 @@
 {
-  config,
   pkgs,
+  lib,
   ...
 }: {
   # Enable the KDE Plasma Desktop Environment.
@@ -9,9 +9,8 @@
     desktopManager.plasma5.enable = true;
   };
 
-  environment.systemPackages = with pkgs;
-    []
-    ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.kdeGear)
-    ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.kdeFrameworks)
-    ++ builtins.filter lib.isDerivation (builtins.attrValues plasma5Packages.plasma5);
+  environment.systemPackages =
+    builtins.filter lib.isDerivation (builtins.attrValues pkgs.plasma5Packages.kdeGear)
+    ++ builtins.filter lib.isDerivation (builtins.attrValues pkgs.plasma5Packages.kdeFrameworks)
+    ++ builtins.filter lib.isDerivation (builtins.attrValues pkgs.plasma5Packages.plasma5);
 }

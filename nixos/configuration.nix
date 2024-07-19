@@ -50,10 +50,12 @@
   ];
 
   nixpkgs = {
-    overlays = with self.outputs.overlays; [
-      stable-packages
-      inputs.nur.overlay
-    ];
+    overlays = let
+      my_overlays = builtins.attrValues {
+        inherit (self.outputs.overlays) stable-packages;
+      };
+    in
+      my_overlays ++ [inputs.nur.overlay];
     config.allowUnfree = true;
   };
 

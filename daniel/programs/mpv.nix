@@ -1,13 +1,12 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.mpv = {
     enable = true;
-    scripts = with pkgs.mpvScripts; [
-      sponsorblock
-    ];
+    scripts = builtins.attrValues {
+      inherit
+        (pkgs.mpvScripts)
+        sponsorblock
+        ;
+    };
   };
 
   xdg = {

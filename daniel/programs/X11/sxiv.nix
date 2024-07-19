@@ -1,12 +1,11 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home = {
-    packages = with pkgs; [
-      sxiv
-    ];
+    packages = builtins.attrValues {
+      inherit
+        (pkgs)
+        sxiv
+        ;
+    };
   };
 
   xdg = {

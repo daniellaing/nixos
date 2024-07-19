@@ -20,7 +20,7 @@ in {
       pkgs.writeShellApplication
       {
         name = "configure";
-        runtimeInputs = with pkgs; [git bat ripgrep libnotify nh alejandra];
+        runtimeInputs = builtins.attrValues {inherit (pkgs) git bat ripgrep libnotify nh alejandra;};
         text = ''
           set -ex
           cfgdir="''${1:-/dotfiles}"
@@ -51,7 +51,7 @@ in {
       pkgs.writeShellApplication
       {
         name = "update-system";
-        runtimeInputs = with pkgs; [git libnotify nh];
+        runtimeInputs = builtins.attrValues {inherit (pkgs) git libnotify nh;};
         text = ''
           set -ex
           cfgdir="''${1:-/dotfiles}"

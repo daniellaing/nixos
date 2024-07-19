@@ -14,9 +14,12 @@ in {
 
   config = lib.mkIf cfg.enable {
     fonts = {
-      packages = with pkgs; [
-        nerdfonts
-      ];
+      packages = builtins.attrValues {
+        inherit
+          (pkgs)
+          nerdfonts
+          ;
+      };
     };
   };
 }

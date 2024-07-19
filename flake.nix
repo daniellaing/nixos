@@ -98,7 +98,14 @@
         packages = import ./pkgs pkgs;
         formatter = pkgs.alejandra;
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [wally-cli];
+          packages = builtins.attrValues {
+            inherit
+              (pkgs)
+              nh
+              # wally-cli # For flashing moonlander keyboard
+              
+              ;
+          };
         };
       };
     };
