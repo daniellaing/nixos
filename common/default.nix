@@ -4,6 +4,7 @@
     ./network.nix
     ./nix-index.nix
     ./scripts.nix
+    ./services
     ./vm.nix
   ];
 
@@ -13,4 +14,5 @@
     enable = lib.mkDefault true;
     nix-helpers = lib.mkDefault true;
   };
+  services.enable = lib.mkDefault true;
 }

@@ -1,7 +1,6 @@
 {
   imports = [
     ./dbus.nix
-    ./display-manager.nix
     ./keyring.nix
     ./locate.nix
     ./printing.nix
@@ -13,4 +12,7 @@
     enable = true;
     openDefaultPorts = true;
   };
+
+  # New
+  # services.display-manager.enable = true;
 }
