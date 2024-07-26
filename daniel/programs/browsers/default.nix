@@ -109,6 +109,22 @@ in {
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                   definedAliases = ["@hm"];
                 };
+                "Dictionary" = {
+                  urls = [
+                    {
+                      template = "https://www.dictionary.com/browse/{searchTerms}";
+                    }
+                  ];
+                  definedAliases = ["@d"];
+                };
+                "Thesaurus" = {
+                  urls = [
+                    {
+                      template = "https://www.thesaurus.com/browse/{searchTerms}";
+                    }
+                  ];
+                  definedAliases = ["@t"];
+                };
               };
             };
           };
