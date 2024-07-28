@@ -91,32 +91,6 @@
         ];
       }
       {
-        name = "Jobs";
-        bookmarks = [
-          {
-            name = "Babcock Data Analytics";
-            url = "https://www.gradcracker.com/hub/113/babcock-international-group/graduate-job/54621/data-analytics-graduate-programme";
-          }
-          {
-            name = "Lloyds Data Science";
-            url = "https://www.gradcracker.com/hub/275/lloyds-banking-group/graduate-job/56154/data-science-and-analytics-graduate-scheme";
-          }
-          {
-            name = "Jacobs Graduate Consultant";
-            url = "https://www.gradcracker.com/hub/41/jacobs/graduate-job/56588/graduate-consultants-data-analysis";
-          }
-          {
-            name = "EY Actuarial Graduate";
-            url = "https://www.gradcracker.com/hub/615/ey/graduate-job/55565/actuarial-graduate-programmes";
-          }
-          {
-            name = "NNL Graduate Scheme";
-            url = "https://www.gradcracker.com/hub/168/national-nuclear-laboratory/graduate-job/54166/graduate-scheme-2024-science-and-engineering";
-          }
-        ];
-      }
-
-      {
         name = "NixOS Wiki";
         url = "https://nixos.wiki/wiki/Main_Page";
       }
@@ -416,6 +390,26 @@
       {
         name = "Free VPN";
         url = "https://www.freevpn.us";
+      }
+    ];
+  }
+
+  {
+    name = "Cars";
+    bookmarks = [
+      {
+        name = "2010 Seat Cupra";
+        url = "https://www.parkers.co.uk/seat/ibiza/cupra-2009/14-tsi-bocanegra-sport-coupe-3d-dsg/specs/";
+      }
+
+      {
+        name = "2010 VW Golf";
+        url = "https://www.parkers.co.uk/volkswagen/golf/gti-2009/20-tsi-gti-3d/specs/";
+      }
+
+      {
+        name = "2012 VW Polo";
+        url = "https://www.parkers.co.uk/volkswagen/polo/gti-2010/14-tsi-(180bhp)-gti-3d-dsg/specs/";
       }
     ];
   }
