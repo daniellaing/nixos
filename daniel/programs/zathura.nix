@@ -20,6 +20,11 @@
       statusbar-v-padding = 0;
       selection-clipboard = "clipboard";
 
+      # Database
+      # Default will change with release of Debian trixie
+      # Can remove then
+      database = "sqlite";
+
       # SyncTeX
       synctex = true;
       synctex-editor-command = "code -g %{input}:%{line}";
