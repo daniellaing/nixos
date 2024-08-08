@@ -8,6 +8,12 @@
 }: {
   display-manager.enable = true;
 
+  # Syncthing
+  networking.firewall = {
+    allowedTCPPorts = [22000];
+    allowedUDPPorts = [21027 22000];
+  };
+
   services.udev.extraRules = ''
     # Rules for Oryx web flashing and live training
     KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
@@ -145,7 +151,14 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Daniel Laing";
-    extraGroups = ["video" "networkmanager" "wheel" "adbusers" "libvirtd"];
+    extraGroups = [
+      "video"
+      "networkmanager"
+      "wheel"
+      "adbusers"
+      "libvirtd"
+      "syncthing"
+    ];
   };
 
   security.polkit.enable = true;
