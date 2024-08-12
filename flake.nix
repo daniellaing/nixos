@@ -42,11 +42,6 @@
 
     my_neovim = {
       url = "github:Bodleum/neovim";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        flake-parts.follows = "flake-parts";
-      };
     };
   };
 

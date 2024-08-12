@@ -396,22 +396,7 @@
 
   {
     name = "Cars";
-    bookmarks = [
-      {
-        name = "2010 Seat Cupra";
-        url = "https://www.parkers.co.uk/seat/ibiza/cupra-2009/14-tsi-bocanegra-sport-coupe-3d-dsg/specs/";
-      }
-
-      {
-        name = "2010 VW Golf";
-        url = "https://www.parkers.co.uk/volkswagen/golf/gti-2009/20-tsi-gti-3d/specs/";
-      }
-
-      {
-        name = "2012 VW Polo";
-        url = "https://www.parkers.co.uk/volkswagen/polo/gti-2010/14-tsi-(180bhp)-gti-3d-dsg/specs/";
-      }
-    ];
+    bookmarks = [];
   }
 
   {
