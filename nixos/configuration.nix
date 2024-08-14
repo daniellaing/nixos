@@ -7,6 +7,7 @@
   ...
 }: {
   display-manager.enable = true;
+  printing.enable = true;
 
   # Syncthing
   networking.firewall = {
