@@ -47,11 +47,9 @@
 
   imports = [
     ./email
-    # ./kde.nix
     ./programs.nix
     ./services
     ./sops.nix
-    ./X11.nix
     ./zsh.nix
   ];
 
