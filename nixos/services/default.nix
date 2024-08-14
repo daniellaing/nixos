@@ -2,7 +2,6 @@
   imports = [
     ./dbus.nix
     ./keyring.nix
-    ./sound.nix
   ];
 
   # New
