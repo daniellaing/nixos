@@ -6,7 +6,7 @@
 }: let
   cfg = config.cooked.sound;
 in {
-  imports = [../../modules/XF86.nix];
+  imports = [../../../modules/XF86.nix];
 
   options.cooked.sound = {
     enable = lib.mkEnableOption ''sound'';

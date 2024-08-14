@@ -70,12 +70,12 @@
 
               modules = [
                 {networking = {inherit hostName;};}
+
                 ./cooked
 
                 ./hosts/${hostName}
                 ./nixos/configuration.nix
 
-                home-manager.nixosModules.home-manager
                 {
                   home-manager = {
                     useGlobalPkgs = true;
@@ -84,6 +84,7 @@
                   };
                 }
 
+                home-manager.nixosModules.home-manager
                 inputs.hyprland.nixosModules.default
               ];
             };
@@ -102,9 +103,9 @@
           packages = builtins.attrValues {
             inherit
               (pkgs)
-              nh
               # wally-cli # For flashing moonlander keyboard
               
+              nh
               ;
           };
         };
