@@ -72,7 +72,7 @@
                 {networking = {inherit hostName;};}
                 ./common
 
-                ./hosts/${hostName}/hardware.nix
+                ./hosts/${hostName}
                 ./nixos/configuration.nix
 
                 home-manager.nixosModules.home-manager
