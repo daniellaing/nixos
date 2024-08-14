@@ -48,7 +48,6 @@
   imports = [
     ./email
     # ./kde.nix
-    ./mathematica.nix
     ./programs.nix
     ./services
     ./sops.nix
