@@ -6,9 +6,6 @@
   self,
   ...
 }: {
-  display-manager.enable = true;
-  printing.enable = true;
-
   # Syncthing
   networking.firewall = {
     allowedTCPPorts = [22000];

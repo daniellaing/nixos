@@ -4,12 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.locate;
+  cfg = config.cooked.locate;
 in {
-  options.locate = {
-    enable = lib.mkEnableOption ''
-      Enable file locate package
-    '';
+  options.cooked.locate = {
+    enable = lib.mkEnableOption "plocate";
   };
 
   config = lib.mkIf cfg.enable {

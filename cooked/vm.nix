@@ -4,12 +4,10 @@
   config,
   ...
 }: let
-  cfg = config.vm;
+  cfg = config.cooked.vm;
 in {
-  options.vm = {
-    enable = lib.mkEnableOption ''
-      Enable virtualisation
-    '';
+  options.cooked.vm = {
+    enable = lib.mkEnableOption "virtualisation";
   };
 
   config = lib.mkIf cfg.enable {

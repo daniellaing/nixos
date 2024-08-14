@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.display-manager;
+  cfg = config.cooked.display-manager;
   sddm-chili =
     pkgs.stdenv.mkDerivation
     rec {
@@ -25,10 +25,8 @@
       };
     };
 in {
-  options.display-manager = {
-    enable = lib.mkEnableOption ''
-      Enable the display manager
-    '';
+  options.cooked.display-manager = {
+    enable = lib.mkEnableOption "the display manager";
   };
 
   config = lib.mkIf cfg.enable {

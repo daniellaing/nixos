@@ -3,12 +3,10 @@
   config,
   ...
 }: let
-  cfg = config.printing;
+  cfg = config.cooked.printing;
 in {
-  options.printing = {
-    enable = lib.mkEnableOption ''
-      Enable printing
-    '';
+  options.cooked.printing = {
+    enable = lib.mkEnableOption "printing";
   };
 
   config = lib.mkIf cfg.enable {

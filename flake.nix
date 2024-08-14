@@ -70,7 +70,7 @@
 
               modules = [
                 {networking = {inherit hostName;};}
-                ./common
+                ./cooked
 
                 ./hosts/${hostName}
                 ./nixos/configuration.nix

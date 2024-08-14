@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.common.sound;
+  cfg = config.cooked.sound;
 in {
   imports = [../../modules/XF86.nix];
 
-  options.common.sound = {
+  options.cooked.sound = {
     enable = lib.mkEnableOption ''sound'';
   };
 

@@ -4,12 +4,10 @@
   config,
   ...
 }: let
-  cfg = config.fonts;
+  cfg = config.cooked.fonts;
 in {
-  options.fonts = {
-    enable = lib.mkEnableOption ''
-      Enable added fonts
-    '';
+  options.cooked.fonts = {
+    enable = lib.mkEnableOption "added fonts";
   };
 
   config = lib.mkIf cfg.enable {

@@ -3,5 +3,9 @@
     ./hardware.nix
   ];
 
-  common.sound.enable = true;
+  cooked = {
+    sound.enable = true;
+    display-manager.enable = true;
+    printing.enable = true;
+  };
 }

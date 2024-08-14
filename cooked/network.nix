@@ -3,12 +3,10 @@
   config,
   ...
 }: let
-  cfg = config.network;
+  cfg = config.cooked.network;
 in {
-  options.network = {
-    enable = lib.mkEnableOption ''
-      Enable networking
-    '';
+  options.cooked.network = {
+    enable = lib.mkEnableOption "networking";
   };
 
   config = lib.mkIf cfg.enable {

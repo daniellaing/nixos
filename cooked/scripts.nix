@@ -4,15 +4,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.scripts;
+  cfg = config.cooked.scripts;
 in {
-  options.scripts = {
-    enable = lib.mkEnableOption ''
-      Enable scripts
-    '';
-    nix-helpers = lib.mkEnableOption ''
-      Enable nix helper scripts
-    '';
+  options.cooked.scripts = {
+    enable = lib.mkEnableOption "scripts";
+    nix-helpers = lib.mkEnableOption "nix helper scrips";
   };
 
   config = let
