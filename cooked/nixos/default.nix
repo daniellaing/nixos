@@ -23,6 +23,7 @@
   config.cooked =
     # Common config
     {
+      dbus.enable = lib.mkDefault true;
       fonts.enable = lib.mkDefault true;
       network.enable = lib.mkDefault true;
       scripts = {

@@ -1,6 +1,5 @@
 {
   imports = [
-    ./dbus.nix
     ./keyring.nix
   ];
 
