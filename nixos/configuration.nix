@@ -48,7 +48,6 @@
     ./programs.nix
     ./services
     ./sops.nix
-    ./zsh.nix
   ];
 
   nixpkgs = {
