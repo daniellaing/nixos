@@ -225,6 +225,11 @@
             name = "10B Chickens Infographic";
             url = "https://www.reddit.com/media?url=https%3A%2F%2Fi.redd.it%2Fdefcl1tyr9181.jpg";
           }
+
+          {
+            name = "Contract Boost Calculator";
+            url = "https://hashtru.netlify.app/contractboost/";
+          }
           {
             name = "Useful links";
             url = "https://www.reddit.com/r/EggsInc/comments/108l3t7/useful_links_for_leveling_up_your_egg_inc/";
