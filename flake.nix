@@ -7,6 +7,7 @@
     nur.url = "github:nix-community/NUR";
     nix-colors.url = "github:misterio77/nix-colors";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -91,6 +92,10 @@
         in {
           dellG5 = mkHost {
             hostName = "dellG5";
+            system = "x86_64-linux";
+          };
+          wsl = mkHost {
+            hostName = "wsl";
             system = "x86_64-linux";
           };
         };
