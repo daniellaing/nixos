@@ -13,7 +13,8 @@
       inherit
         (pkgs)
         btop
-        ferdium
+        # ferdium
+        
         musescore
         yt-dlp
         keepassxc
