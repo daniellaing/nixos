@@ -1,5 +1,8 @@
 {
   home-manager.users.daniel = {
-    cooked.zsh.enable = true;
+    cooked = {
+      R.enable = true;
+      zsh.enable = true;
+    };
   };
 }
