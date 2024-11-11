@@ -18,12 +18,15 @@ in
               ;
           };
           shells = [pkgs.zsh];
-          pathsToLink = ["/share/zsh"];
         };
 
         programs.zsh = {
           enable = true;
           syntaxHighlighting.enable = true;
+          # TODO: Fix to be nix variable
+          shellInit = ''
+            export ZDOTDIR="''${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+          '';
           promptInit = "source ''${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
         };
       })
@@ -43,7 +46,7 @@ in
               defaultKeymap = "viins";
               dotDir = ".config/zsh";
               enableVteIntegration = true;
-              history.path = "${config.xdg.dataHome}/zsh/zsh_history";
+              history.path = "${config.xdg.stateHome}/zsh/zsh_history";
               envExtra = ''
                 # ---   Cleanup   ---
                 # export GNUPGHOME="''${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
@@ -74,6 +77,8 @@ in
                 }
                 zle -N fancy-ctrl-z
                 bindkey '^Z' fancy-ctrl-z
+
+                compinit -d ${config.xdg.cacheHome}/zsh/zcompdump-"$ZSH_VERSION"
               '';
             };
           };
