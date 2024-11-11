@@ -2,12 +2,13 @@
   description = "Daniel's configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
-    nur.url = "github:nix-community/NUR";
-    nix-colors.url = "github:misterio77/nix-colors";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    hyprland.url = "github:hyprwm/Hyprland";
+    nix-colors.url = "github:misterio77/nix-colors";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -22,15 +23,6 @@
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland = {
-      url = "https://github.com/hyprwm/Hyprland";
-      type = "git";
-      submodules = true;
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
     };
 
     sops-nix = {
@@ -71,6 +63,13 @@
 
               modules = [
                 {networking = {inherit hostName;};}
+                {
+                  # Hyprland cache
+                  nix.settings = {
+                    substituters = ["https://hyprland.cachix.org"];
+                    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+                  };
+                }
 
                 ./cooked
 
@@ -86,7 +85,6 @@
                 }
 
                 home-manager.nixosModules.home-manager
-                inputs.hyprland.nixosModules.default
               ];
             };
         in {
