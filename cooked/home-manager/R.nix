@@ -7,6 +7,12 @@
     inherit
       (pkgs.rPackages)
       tidyverse
+      writexl
+      # Development
+      
+      devtools
+      roxygen2
+      covr
       ;
   };
 
@@ -37,9 +43,15 @@ in
               sessionVariables = {
                 R_HOME_USER = "${config.xdg.configHome}/R";
                 R_PROFILE_USER = "${config.xdg.configHome}/R/profile";
+                R_PROFILE = "${config.xdg.configHome}/R/profile";
                 R_HISTFILE = "${config.xdg.configHome}/R/history";
               };
             };
+            xdg.configFile."R/profile".text = ''
+              if (interactive()) {
+                suppressMessages(require(devtools))
+              }
+            '';
           };
         })
       ];
