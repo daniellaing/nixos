@@ -60,7 +60,7 @@
         inherit (self.outputs.overlays) stable-packages;
       };
     in
-      my_overlays ++ [inputs.nur.overlay];
+      my_overlays ++ [inputs.nur.overlays.default];
     config.allowUnfree = true;
   };
 

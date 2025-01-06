@@ -12,12 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     fonts = {
-      packages = builtins.attrValues {
-        inherit
-          (pkgs)
-          nerdfonts
-          ;
-      };
+      packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
     };
   };
 }
