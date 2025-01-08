@@ -1,10 +1,11 @@
 {
   inputs,
   pkgs,
-  osConfig,
   ...
 }: {
-  nix.settings = osConfig.nix.settings;
+  # Remove when #5805 is resolved
+  nix.settings.use-xdg-base-directories = true;
+
   home = {
     username = "daniel";
     homeDirectory = "/home/daniel";
