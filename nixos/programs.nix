@@ -3,7 +3,6 @@
     inherit
       (pkgs)
       # Utility
-      
       git
       unzip
       wget
@@ -12,16 +11,12 @@
       pinentry-curses
       gnupg
       # Secret management
-      
       sops
       # Desktop
-      
       libreoffice
       # Wayland
-      
       wl-clipboard
       # Games
-      
       prismlauncher # Minecraft
       ;
   };

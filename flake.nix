@@ -106,7 +106,6 @@
             inherit
               (pkgs)
               # wally-cli # For flashing moonlander keyboard
-
               nh
               ;
           };

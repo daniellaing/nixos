@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  inputs,
   ...
 }: {
   imports = [
@@ -10,8 +9,6 @@
     ./scripts.nix
     ./services
     ./vm.nix
-
-    inputs.nix-index-database.nixosModules.nix-index
   ];
 
   options.cooked-preload = lib.mkOption {

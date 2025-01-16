@@ -15,7 +15,6 @@
         (pkgs)
         btop
         # ferdium
-
         musescore
         yt-dlp
         keepassxc
@@ -28,10 +27,8 @@
         vimv
         steam
         # sonic-visualiser
-
         synthesia
         # ---   Fonts   ---
-
         alegreya
         alegreya-sans
         ;

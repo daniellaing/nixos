@@ -9,7 +9,6 @@
       tidyverse
       writexl
       # Development
-      
       devtools
       roxygen2
       covr
