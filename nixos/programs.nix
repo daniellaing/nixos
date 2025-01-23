@@ -10,8 +10,6 @@
       gnumake
       pinentry-curses
       gnupg
-      # Secret management
-      sops
       # Desktop
       libreoffice
       # Wayland

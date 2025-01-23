@@ -8,6 +8,7 @@
     ./network.nix
     ./scripts.nix
     ./services
+    ./sops.nix
     ./vm.nix
   ];
 
@@ -28,6 +29,7 @@
         nix-helpers = lib.mkDefault true;
       };
       locate.enable = lib.mkDefault true;
+      sops.enable = lib.mkDefault true;
     }
     //
     # Server config

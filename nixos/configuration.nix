@@ -51,7 +51,6 @@
     ./email
     ./programs.nix
     ./services
-    ./sops.nix
   ];
 
   nixpkgs = {
