@@ -23,7 +23,7 @@ in
     {
       environment.systemPackages = [
         R
-        RStudio
+        #RStudio
       ];
     }
 
