@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: let
   cfg = config.cooked.locate;
@@ -14,9 +13,7 @@ in {
     services.locate = {
       enable = true;
       interval = "hourly";
-      package = pkgs.plocate;
       pruneBindMounts = true;
-      localuser = null;
     };
   };
 }
