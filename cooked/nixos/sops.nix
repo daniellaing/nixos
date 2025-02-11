@@ -17,10 +17,6 @@ in {
       defaultSopsFile = ../../secrets.yaml;
       defaultSopsFormat = "yaml";
       age.keyFile = "/home/daniel/.config/sops/age/keys.txt";
-      secrets.svn-passwd = {
-        owner = config.users.users.daniel.name;
-        group = config.users.users.daniel.group;
-      };
     };
   };
 }

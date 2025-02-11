@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  config,
   ...
 }: let
   hm_users = ["daniel"];
@@ -18,4 +19,9 @@ in {
   };
 
   networking.nftables.enable = lib.mkForce false;
+
+  sops.secrets.svn-passwd = {
+    owner = config.users.users.daniel.name;
+    group = config.users.users.daniel.group;
+  };
 }
