@@ -6,12 +6,6 @@
     };
   };
 
-  vimix-icons-fix = final: prev: {
-    vimix-icon-theme = prev.vimix-icon-theme.overrideAttrs {
-      dontCheckForBrokenSymlinks = true;
-    };
-  };
-
   texmath-fix = final: prev: {
     haskellPackages = prev.haskellPackages.override {
       overrides = self: super: {

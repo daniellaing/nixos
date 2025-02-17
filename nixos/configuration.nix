@@ -56,7 +56,7 @@
   nixpkgs = {
     overlays = let
       my_overlays = builtins.attrValues {
-        inherit (self.outputs.overlays) stable-packages vimix-icons-fix;
+        inherit (self.outputs.overlays) stable-packages;
       };
     in
       my_overlays ++ [inputs.nur.overlays.default];
