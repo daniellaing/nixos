@@ -69,6 +69,7 @@
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       use-xdg-base-directories = true;
+      trusted-users = ["root" "@wheel"];
     };
     optimise = {
       automatic = true;
