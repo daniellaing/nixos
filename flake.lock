@@ -536,11 +536,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1741558300,
-        "narHash": "sha256-DDqS5jdnQnl6rB06ohBrr7hW12bJNNhclBXsHQaqQkQ=",
+        "lastModified": 1741969079,
+        "narHash": "sha256-eJqdUl8ddAU1zHM5hJN52ovK0KIw8M0XqKbr99DwPdU=",
         "owner": "Bodleum",
         "repo": "neovim",
-        "rev": "0458651debb25b36c727533cb01461bf0839f583",
+        "rev": "0009c8ec6df278daafcc3136223ee345c658208a",
         "type": "github"
       },
       "original": {
