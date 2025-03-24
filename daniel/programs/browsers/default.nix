@@ -16,12 +16,15 @@ in {
         value = {
           enable = true;
           profiles.daniel = {
-            bookmarks = import ./bookmarks.nix inputs;
+            bookmarks = {
+              force = true;
+              settings = import ./bookmarks.nix inputs;
+            };
             settings = {
               "browser.toolbars.bookmarks.visibility" = "always";
               "browser.startup.couldRestoreSession.count" = 2;
             };
-            extensions = builtins.attrValues {
+            extensions.packages = builtins.attrValues {
               inherit
                 (pkgs.nur.repos.rycee.firefox-addons)
                 keepassxc-browser
@@ -36,7 +39,7 @@ in {
                 "SearxNG" = {
                   urls = [
                     {
-                      template = "https://searx.tiekoetter.com/";
+                      template = "https://search.leptons.xyz/searxng/search";
                       params = [
                         {
                           name = "q";
