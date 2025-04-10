@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  osConfig,
   ...
 }: let
   col = config.colorScheme.palette;
@@ -90,13 +91,20 @@ in {
       };
     };
 
-    home.sessionVariables.TERMINAL = "${config.programs.terminal}";
-    home.sessionVariables.TERM = "${config.programs.terminal}";
+    home.sessionVariables.TERMINAL =
+      if osConfig.wsl.enable
+      then "xterm-256color"
+      else "${config.programs.terminal}";
+    home.sessionVariables.TERM =
+      if osConfig.wsl.enable
+      then "xterm-256color"
+      else "${config.programs.terminal}";
   };
 
   options.programs = {
     terminal = lib.mkOption {
       # type = lib.types.path;
+      type = lib.types.str;
       description = "Your default terminal";
       example = "''${pkgs.kitty}/bin/kitty";
     };
