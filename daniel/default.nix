@@ -45,7 +45,6 @@
     inputs.nix-colors.homeManagerModules.default
 
     ./email
-    ./menus
     ./programs
     ./scripts
     ./shell
