@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./dev.nix
     ./fonts.nix
     ./network.nix
     ./scripts.nix
@@ -30,6 +31,7 @@
       };
       locate.enable = lib.mkDefault true;
       sops.enable = lib.mkDefault true;
+      dev.enable = lib.mkDefault true;
     }
     //
     # Server config
