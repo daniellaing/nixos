@@ -91,14 +91,8 @@ in {
       };
     };
 
-    home.sessionVariables.TERMINAL =
-      if osConfig.wsl.enable
-      then "xterm-256color"
-      else "${config.programs.terminal}";
-    home.sessionVariables.TERM =
-      if osConfig.wsl.enable
-      then "xterm-256color"
-      else "${config.programs.terminal}";
+    home.sessionVariables.TERMINAL = "xterm-256color";
+    home.sessionVariables.TERM = "xterm-256color";
   };
 
   options.programs = {
