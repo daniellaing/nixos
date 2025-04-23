@@ -60,7 +60,7 @@ in
                 export LESS_TERMCAP_ue=$'\e[0m'
                 export LESS_TERMCAP_us=$'\e[1;4;31m'
               '';
-              initExtra = ''
+              initContent = ''
                 # Set prompt
                 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
