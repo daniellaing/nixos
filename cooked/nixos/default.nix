@@ -43,6 +43,6 @@
       display-manager.enable = lib.mkDefault true;
       printing.enable = lib.mkDefault true;
       sound.enable = lib.mkDefault true;
-      scripts.menus.enable = lib.mkDefault true;
+      # scripts.menus.enable = lib.mkDefault true;
     });
 }

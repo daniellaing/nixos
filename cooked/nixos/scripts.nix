@@ -9,7 +9,7 @@ in {
   options.cooked.scripts = {
     enable = lib.mkEnableOption "scripts";
     nix-helpers = lib.mkEnableOption "nix helper scrips";
-    menus.enable = lib.mkEnableOption "menus";
+    menus = lib.mkEnableOption "menus";
   };
 
   config = let
@@ -117,7 +117,7 @@ in {
           rebuild-script
           update-script
         ]
-        ++ lib.mkIf cfg.menus.enable [
+        ++ lib.lists.optionals cfg.menus [
           powermenu
         ];
     };
