@@ -5,7 +5,7 @@ cfgdir="${1:-/dotfiles}"
 cd "$cfgdir"
 
 # Do the configuration
-nix develop .#configure
+$SHELL
 
 git add .
 

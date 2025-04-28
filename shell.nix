@@ -15,10 +15,4 @@
       }
     ];
   };
-
-  configure = {
-    devshell.startup.hook.text = ''
-      echo "urmum"
-    '';
-  };
 }
