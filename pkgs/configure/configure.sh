@@ -24,6 +24,6 @@ fi
 nh os switch "$cfgdir" || (notify-send -e -a "NixOS Rebuild", "Failure!"; exit 1)
 
 msg=$(nixos-rebuild list-generations --flake "$cfgdir" | rg current)
-git commit -am "$msg"
+echo "$msg" | git commit -a -t -
 cd -
 notify-send -e -a "NixOS Rebuild" "Success!"
