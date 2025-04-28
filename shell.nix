@@ -17,6 +17,8 @@
   };
 
   configure = {
-    devshell.startup.hook.text = "exec $SHELL";
+    devshell.startup.hook.text = ''
+      echo "urmum"
+    '';
   };
 }
