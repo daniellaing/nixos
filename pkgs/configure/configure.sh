@@ -3,7 +3,10 @@
 set -ex
 cfgdir="${1:-/dotfiles}"
 cd "$cfgdir"
-$EDITOR .
+
+# Do the configuration
+nix develop .#configure
+
 git add .
 
 # Format
