@@ -7,7 +7,9 @@
     ];
   };
 
-  configure = pkgs.mkShell {
-    shellHook = ''exec $SHELL'';
+  configure = {
+    devshell.startup = [
+      {text = "exec $SHELL";}
+    ];
   };
 }
