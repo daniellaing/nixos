@@ -16,6 +16,7 @@
       wl-clipboard
       # Games
       prismlauncher # Minecraft
+
       ;
   };
 }

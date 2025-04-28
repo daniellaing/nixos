@@ -56,7 +56,7 @@
   nixpkgs = {
     overlays = let
       my_overlays = builtins.attrValues {
-        inherit (self.outputs.overlays) stable-packages;
+        inherit (self.outputs.overlays) stable-packages additions;
       };
     in
       my_overlays ++ [inputs.nur.overlays.default];

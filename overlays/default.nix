@@ -6,6 +6,13 @@
     };
   };
 
+  # Adds packages packaged in this flake
+  additions = final: prev:
+    import ../pkgs {pkgs = final;}
+    // {
+      scripts = import ../pkgs/scripts {pkgs = final;};
+    };
+
   texmath-fix = final: prev: {
     haskellPackages = prev.haskellPackages.override {
       overrides = self: super: {
