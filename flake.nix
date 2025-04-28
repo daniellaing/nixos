@@ -10,6 +10,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
 
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +50,7 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs self;} {
+      imports = [inputs.devshell.flakeModule];
       systems = nixpkgs.lib.systems.flakeExposed;
 
       flake = {
@@ -101,15 +107,7 @@
       perSystem = {pkgs, ...}: {
         packages = import ./pkgs pkgs;
         formatter = pkgs.alejandra;
-        devShells.default = pkgs.mkShell {
-          packages = builtins.attrValues {
-            inherit
-              (pkgs)
-              # wally-cli # For flashing moonlander keyboard
-              nh
-              ;
-          };
-        };
+        devshells = import ./shell.nix {inherit pkgs;};
       };
     };
 }
