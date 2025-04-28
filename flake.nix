@@ -111,7 +111,16 @@
         };
       };
 
-      perSystem = {pkgs, ...}: {
+      perSystem = {
+        system,
+        pkgs,
+        ...
+      }: {
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = with self.outputs.overlays; [stable-packages additions];
+        };
+
         packages = import ./pkgs pkgs;
         formatter = pkgs.alejandra;
         devshells = import ./shell.nix {inherit pkgs;};
