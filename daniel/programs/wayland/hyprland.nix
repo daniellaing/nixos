@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   pkgs,
   osConfig,
@@ -22,13 +21,7 @@ in {
     NIXOS_OZONE_WL = "1";
   };
 
-  # XDG Desktop Portal
-  #home.packages = [pkgs.xdg-desktop-portal-hyprland];
-
   wayland.windowManager.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    xwayland.enable = true;
     extraConfig = ''
       exec-once = hyprpaper
       exec = pkill waybar; waybar

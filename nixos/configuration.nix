@@ -41,12 +41,6 @@
 
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
   imports = [
     ./email
     ./programs.nix
