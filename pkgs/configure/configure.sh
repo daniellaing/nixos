@@ -23,7 +23,8 @@ fi
 # shellcheck disable=SC2024
 nh os switch "$cfgdir" || (notify-send -e -a "NixOS Rebuild", "Failure!"; exit 1)
 
-msg=$(nixos-rebuild list-generations --flake "$cfgdir" | rg current)
-echo "$msg" | git commit -a -t -
+nixos-rebuild list-generations --flake "$cfgdir" | rg current > /tmp/rebuild_commit_msg
+git commit -a -t /tmp/rebuild_commit_msg
+rm /tmp/rebuild_commit_msg
 cd -
 notify-send -e -a "NixOS Rebuild" "Success!"
