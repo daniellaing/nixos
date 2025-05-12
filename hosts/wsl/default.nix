@@ -17,6 +17,7 @@ in {
   wsl = {
     enable = true;
     defaultUser = "daniel";
+    startMenuLaunchers = true;
   };
 
   networking.nftables.enable = lib.mkForce false;
