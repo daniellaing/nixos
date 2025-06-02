@@ -6,7 +6,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     hyprland.url = "github:hyprwm/Hyprland";
     nix-colors.url = "github:misterio77/nix-colors";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
