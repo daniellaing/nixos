@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   lib,
   config,
   ...
@@ -25,5 +26,9 @@ in {
   sops.secrets.svn-passwd = {
     owner = config.users.users.daniel.name;
     group = config.users.users.daniel.group;
+  };
+
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs) neovide;
   };
 }
