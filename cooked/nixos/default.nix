@@ -7,6 +7,7 @@
     ./dev.nix
     ./fonts.nix
     ./network.nix
+    ./nix.nix
     ./scripts.nix
     ./services
     ./sops.nix
@@ -22,6 +23,7 @@
   config.cooked =
     # Common config
     {
+      nix.enable = lib.mkDefault true;
       dbus.enable = lib.mkDefault true;
       fonts.enable = lib.mkDefault true;
       network.enable = lib.mkDefault true;

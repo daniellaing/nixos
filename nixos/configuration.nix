@@ -57,33 +57,6 @@
     config.allowUnfree = true;
   };
 
-  # Enable Nix commands
-  nix = {
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-      auto-optimise-store = true;
-      use-xdg-base-directories = true;
-      trusted-users = ["root" "@wheel"];
-    };
-    optimise = {
-      automatic = true;
-      dates = ["13:00" "20:00"];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
-    };
-  };
-
-  # Keep system up to date
-  # TODO: Fix this
-  # system.autoUpgrade = {
-  #   enable = true;
-  #   operation = "boot";
-  #   flags = [ "--flake /dotfiles#nixos" ];
-  # };
-
   # Set your time zone.
   time.timeZone = "Europe/London";
 
