@@ -18,6 +18,10 @@ in
               ;
           };
           shells = [pkgs.zsh];
+
+          # ZSH completion
+          # Added to allow completion of system packages
+          pathsToLink = ["/share/zsh"];
         };
 
         programs.zsh = {
