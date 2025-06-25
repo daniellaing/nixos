@@ -6,7 +6,7 @@
   programs.git = {
     enable = true;
     userEmail = "daniel@daniellaing.com";
-    userName = "Daniel";
+    userName = "Daniel Laing";
     signing = {
       key = "08218B96DC7385E5BB7CA535D2643BD213BC0FA8";
       signByDefault = true;
