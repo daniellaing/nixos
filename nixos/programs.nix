@@ -9,7 +9,6 @@
       ripgrep
       gnumake
       pinentry-curses
-      gnupg
       # Desktop
       libreoffice
       # Wayland

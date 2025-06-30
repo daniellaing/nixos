@@ -6,6 +6,7 @@
   imports = [
     ./dev.nix
     ./fonts.nix
+    ./gnupg.nix
     ./network.nix
     ./nix.nix
     ./scripts.nix
@@ -26,6 +27,7 @@
       nix.enable = lib.mkDefault true;
       dbus.enable = lib.mkDefault true;
       fonts.enable = lib.mkDefault true;
+      gnupg.enable = lib.mkDefault true;
       network.enable = lib.mkDefault true;
       scripts = {
         enable = lib.mkDefault true;

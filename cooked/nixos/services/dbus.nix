@@ -12,6 +12,7 @@ in {
     services.dbus.packages = [
       pkgs.dbus.out
       config.system.path
+      pkgs.pinentry-curses
     ];
     environment.pathsToLink = ["/etc/dbus-1" "/share/dbus-1"];
   };
