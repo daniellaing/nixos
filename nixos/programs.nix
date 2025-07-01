@@ -3,7 +3,6 @@
     inherit
       (pkgs)
       # Utility
-      git
       unzip
       wget
       ripgrep
