@@ -44,7 +44,6 @@
   imports = [
     ./email
     ./programs.nix
-    ./services
   ];
 
   nixpkgs = {
