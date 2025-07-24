@@ -53,11 +53,19 @@ jobs:
         nixos_configurations:
           ${{ fromJson(needs.generate_matrix.outputs.nixos_configurations) }}
     steps:
-      - name: CD to /mnt
+      - name: Free diskspcae
         run: |
-          sudo mkdir -p /mnt/work
-          sudo chmod 777 /mnt/work
-          cd /mnt/work
+          echo "Current disk usage:"
+          df -h
+          sudo apt-get remove -y '^llvm-.*' 'php.*' azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel || true
+          sudo apt-get autoremove -y
+          sudo apt-get clean
+          sudo rm -rf /usr/share/dotnet || true
+          sudo rm -rf /opt/ghc || true
+          sudo rm -rf /usr/local/share/boost || true
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY" || true
+          echo "Disk usage after cleanup:"
+          df -h
 
       - name: Checkout repository
         uses: actions/checkout@v4
