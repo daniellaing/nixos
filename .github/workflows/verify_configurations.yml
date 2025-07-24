@@ -5,10 +5,14 @@ on:
 
 jobs:
   print_info:
-    run: |
-      id -a
-      df -h
-      mount
+    name: Print info
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print info
+        run: |
+          id -a
+          df -h
+          mount
 
   # generate_matrix:
   #   name: Generate configuration matrix
