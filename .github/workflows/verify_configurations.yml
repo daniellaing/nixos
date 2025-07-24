@@ -4,65 +4,71 @@ on:
   push:
 
 jobs:
-  generate_matrix:
-    name: Generate configuration matrix
-    runs-on: ubuntu-latest
-    outputs:
-      nixos_configurations:
-        ${{ steps.get_configurations.outputs.nixos_configurations }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  print_info:
+    run: |
+      id -a
+      df -h
+      mount
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-
-      - name: Get NixOS configurations
-        id: get_configurations
-        run: |
-          nix flake show --json > flake.json
-          cfgs="$(jq -c '.nixosConfigurations | keys' < flake.json)"
-          echo "nixos_configurations=$cfgs" >> $GITHUB_OUTPUT
-
-  check_flake:
-    name: Check flake
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-
-      - name: Nix cache
-        uses: DeterminateSystems/magic-nix-cache-action@v13
-        with:
-          use-gha-cache: enabled
-
-      - name: Check flake
-        run: nix flake check --keep-going
-
-  build_flake:
-    name: Build flake
-    runs-on: ubuntu-latest
-    timeout-minutes: 180
-    needs: [generate_matrix]
-    strategy:
-      fail-fast: false
-      matrix:
-        nixos_configurations:
-          ${{ fromJson(needs.generate_matrix.outputs.nixos_configurations) }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-
-      - name: Nix cache
-        uses: DeterminateSystems/magic-nix-cache-action@v13
-        with:
-          use-gha-cache: enabled
-
-      - name: Build configuration
-        run: nix build .#nixosConfigurations.${{ matrix.nixos_configurations }}.config.system.build.toplevel --no-link
+  # generate_matrix:
+  #   name: Generate configuration matrix
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     nixos_configurations:
+  #       ${{ steps.get_configurations.outputs.nixos_configurations }}
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Install Nix
+  #       uses: cachix/install-nix-action@v31
+  #
+  #     - name: Get NixOS configurations
+  #       id: get_configurations
+  #       run: |
+  #         nix flake show --json > flake.json
+  #         cfgs="$(jq -c '.nixosConfigurations | keys' < flake.json)"
+  #         echo "nixos_configurations=$cfgs" >> $GITHUB_OUTPUT
+  #
+  # check_flake:
+  #   name: Check flake
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Install Nix
+  #       uses: cachix/install-nix-action@v31
+  #
+  #     - name: Nix cache
+  #       uses: DeterminateSystems/magic-nix-cache-action@v13
+  #       with:
+  #         use-gha-cache: enabled
+  #
+  #     - name: Check flake
+  #       run: nix flake check --keep-going
+  #
+  # build_flake:
+  #   name: Build flake
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 180
+  #   needs: [generate_matrix]
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       nixos_configurations:
+  #         ${{ fromJson(needs.generate_matrix.outputs.nixos_configurations) }}
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Install Nix
+  #       uses: cachix/install-nix-action@v31
+  #
+  #     - name: Nix cache
+  #       uses: DeterminateSystems/magic-nix-cache-action@v13
+  #       with:
+  #         use-gha-cache: enabled
+  #
+  #     - name: Build configuration
+  #       run: nix build .#nixosConfigurations.${{ matrix.nixos_configurations }}.config.system.build.toplevel --no-link
