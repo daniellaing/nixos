@@ -56,9 +56,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Free disk space
-        uses: wimpysworld/nothing-but-nix@v6
-
       - name: Install Nix
         uses: cachix/install-nix-action@v31
 
@@ -66,6 +63,9 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v13
         with:
           use-gha-cache: enabled
+
+      - name: Free disk space
+        uses: wimpysworld/nothing-but-nix@v6
 
       - name: Build configuration
         run: nix build .#nixosConfigurations.${{ matrix.nixos_configurations }}.config.system.build.toplevel --no-link
