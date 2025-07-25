@@ -53,22 +53,11 @@ jobs:
         nixos_configurations:
           ${{ fromJson(needs.generate_matrix.outputs.nixos_configurations) }}
     steps:
-      - name: Free diskspcae
-        run: |
-          echo "Current disk usage:"
-          df -h
-          sudo apt-get remove -y '^llvm-.*' 'php.*' azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel || true
-          sudo apt-get autoremove -y
-          sudo apt-get clean
-          sudo rm -rf /usr/share/dotnet || true
-          sudo rm -rf /opt/ghc || true
-          sudo rm -rf /usr/local/share/boost || true
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY" || true
-          echo "Disk usage after cleanup:"
-          df -h
-
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Free disk space
+        uses: wimpysworld/nothing-but-nix@v6
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
