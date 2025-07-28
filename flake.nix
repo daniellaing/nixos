@@ -76,7 +76,7 @@
               modules = [
                 {
                   networking = {inherit hostName;};
-                  system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+                  system.configurationRevision = self.shortRev or "dirty";
                 }
 
                 ./cooked
