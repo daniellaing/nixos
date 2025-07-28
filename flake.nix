@@ -74,8 +74,10 @@
               specialArgs = {inherit inputs system self;};
 
               modules = [
-                {networking = {inherit hostName;};}
                 {
+                  networking = {inherit hostName;};
+                  system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+
                   # Hyprland cache
                   nix.settings = {
                     substituters = ["https://hyprland.cachix.org"];
