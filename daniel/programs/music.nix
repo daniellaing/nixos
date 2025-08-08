@@ -170,20 +170,41 @@ in {
         visualizer_type = "spectrum";
       };
     };
-
-    beets = {
-      enable = true;
-      mpdIntegration = {
-        enableStats = true;
-        enableUpdate = true;
-      };
-      settings = {
-        directory = "${config.xdg.userDirs.music}";
-        library = "${config.xdg.dataHome}/beets/musiclibrary.db";
-        import = {
-          move = true;
-        };
-      };
-    };
   };
+
+  # ---   Beets   ---
+  home.packages = [
+    (pkgs.beets.override {
+      pluginOverrides = {
+        fetchart.enable = true;
+        chroma.enable = true;
+        fromfilename.enable = true;
+        replaygain.enable = true;
+      };
+    })
+  ];
+  xdg.configFile."beets/config.yaml".text = ''
+    directory: ${config.xdg.userDirs.music}
+    import:
+      move: true
+    library: ${config.xdg.dataHome}/beets/musiclibrary.db
+    mpd:
+      host: ${config.services.mpd.network.listenAddress}
+      port: ${builtins.toString config.services.mpd.network.port}
+    paths:
+      ^category::^$: $category/$albumartist/$album%aunique{}/$track-$title
+    ftintitle:
+      keep_in_artist: yes
+      format: ft. {0}
+    replaygain:
+      backend: ffmpeg
+    plugins:
+      - mpdstats
+      - mpdupdate
+      - fetchart
+      - fromfilename
+      - chroma
+      - ftintitle
+      - replaygain
+  '';
 }
