@@ -516,15 +516,15 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1754884065,
-        "narHash": "sha256-T/0M4tNDa0J1sUXghZDwGcs4GDdDWNAyU1B6Kw7KNO8=",
-        "owner": "Bodleum",
+        "lastModified": 1754902995,
+        "narHash": "sha256-61dtT9UXVxFMnm6NB0F//bMWx0CoJ7VgFthL3j+Rs3Y=",
+        "owner": "daniellaing",
         "repo": "neovim",
-        "rev": "250736eb1a7bc00164ebaa4ac7b273799289cd19",
+        "rev": "86b7d6b7f29f659a4c7a3df2c9f4218fe86b9f86",
         "type": "github"
       },
       "original": {
-        "owner": "Bodleum",
+        "owner": "daniellaing",
         "repo": "neovim",
         "type": "github"
       }

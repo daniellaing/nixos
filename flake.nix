@@ -45,7 +45,7 @@
     };
 
     my_neovim = {
-      url = "github:Bodleum/neovim";
+      url = "github:daniellaing/neovim";
     };
   };
 
