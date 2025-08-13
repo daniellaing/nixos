@@ -27,10 +27,6 @@ in
         programs.zsh = {
           enable = true;
           syntaxHighlighting.enable = true;
-          # TODO: Fix to be nix variable
-          shellInit = ''
-            export ZDOTDIR="''${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-          '';
           promptInit = "source ''${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
         };
       })
@@ -44,11 +40,13 @@ in
           };
 
           config = lib.mkIf cfg.enable {
-            programs.zsh = {
+            programs.zsh = let
+              dotDir = "${config.xdg.configHome}/zsh";
+            in {
+              inherit dotDir;
               enable = true;
               autosuggestion.enable = true;
               defaultKeymap = "viins";
-              dotDir = ".config/zsh";
               enableVteIntegration = true;
               history.path = "${config.xdg.stateHome}/zsh/zsh_history";
               envExtra = ''
@@ -66,7 +64,7 @@ in
               '';
               initContent = ''
                 # Set prompt
-                [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+                [[ ! -f ${dotDir}/.p10k.zsh ]] || source ${dotDir}/.p10k.zsh
 
                 setopt autocd
                 setopt autopushd
