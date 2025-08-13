@@ -22,7 +22,7 @@
         nitch # Fetch utility
         vimix-icon-theme
         ncdu
-        ffmpeg
+        ffmpeg-full
         imv
         vimv
         steam

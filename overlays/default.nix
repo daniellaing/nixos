@@ -26,5 +26,15 @@
         my_neovim = my_neovim.packages.${prev.system}.default;
       }
     )
+
+    # ffmpeg with unfree libs
+    (final: prev: {
+      ffmpeg-full =
+        (prev.ffmpeg-full.override {
+          withUnfree = true;
+        }).overrideAttrs (_: {
+          doCheck = false;
+        });
+    })
   ];
 }
