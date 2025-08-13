@@ -161,7 +161,7 @@ in {
         progressbar_elapsed_color = "blue:b";
         song_library_format = "{%n - }{%t}|{%f}";
         song_list_format = "{$4%a - }{%t}|{$8%f$9}$R{$3(%l)$9}";
-        song_status_format = ''$b{{$8"%t "}} $3by {$4%a{ $3in $7%b{ (%y)}} $3}|{$8%f}'';
+        song_status_format = ''$b{{$8"%t"}} $3by {$4%a{ $3in $7%b{ (%y)}} $3}|{$8%f}'';
         startup_screen = "media_library";
         statusbar_color = "red";
         statusbar_time_color = "cyan:b";
