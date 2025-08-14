@@ -29,6 +29,6 @@ in {
   };
 
   environment.systemPackages = builtins.attrValues {
-    inherit (pkgs) neovide;
+    inherit (pkgs);
   };
 }
