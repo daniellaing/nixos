@@ -1,4 +1,11 @@
-{pkgs ? import <nixpkgs> {}, ...}: {
+{
+  pkgs ?
+    import <nixpkgs> {
+      config = {};
+      overlays = [];
+    },
+  ...
+}: {
   default = {
     commands = [
       {
