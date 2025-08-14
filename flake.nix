@@ -56,13 +56,13 @@
     nixpkgs,
     ...
   }:
-    flake-parts.lib.mkFlake {inherit inputs self;} {
+    flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [inputs.devshell.flakeModule];
       systems = nixpkgs.lib.systems.flakeExposed;
 
       flake = {
         templates = import ./templates inputs;
-        overlays = import ./overlays {inherit inputs;};
+        overlays = import ./overlays inputs;
 
         nixosConfigurations = let
           mkHost = {
@@ -71,12 +71,17 @@
           }:
             nixpkgs.lib.nixosSystem rec {
               inherit system;
-              specialArgs = {inherit inputs system self;};
+              specialArgs = {inherit inputs;};
 
               modules = [
                 {
                   networking = {inherit hostName;};
                   system.configurationRevision = self.shortRev or "dirty";
+                  nixpkgs = {
+                    overlays = [self.overlays.default inputs.nur.overlays.default];
+                    config.allowUnfree = true;
+                    hostPlatform = nixpkgs.lib.mkDefault system;
+                  };
                 }
 
                 ./cooked
@@ -114,7 +119,7 @@
       }: {
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
-          overlays = with self.outputs.overlays; [stable-packages additions];
+          overlays = [self.overlays.default];
         };
 
         packages = import ./pkgs pkgs;

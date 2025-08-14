@@ -46,16 +46,6 @@
     ./programs.nix
   ];
 
-  nixpkgs = {
-    overlays = let
-      my_overlays = builtins.attrValues {
-        inherit (self.outputs.overlays) stable-packages additions;
-      };
-    in
-      my_overlays ++ [inputs.nur.overlays.default];
-    config.allowUnfree = true;
-  };
-
   # Set your time zone.
   time.timeZone = "Europe/London";
 

@@ -1,17 +1,9 @@
-{
-  inputs,
-  config,
-  pkgs,
-  system,
-  ...
-}: let
-  neovim = inputs.my_neovim.packages.${system}.default;
-in {
+{pkgs, ...}: {
   home = {
-    packages = [neovim];
+    packages = [pkgs.my_neovim];
     sessionVariables = {
-      EDITOR = "${neovim}/bin/nvim";
-      SUDO_EDITOR = "${neovim}/bin/nvim";
+      EDITOR = "${pkgs.my_neovim}/bin/nvim";
+      SUDO_EDITOR = "${pkgs.my_neovim}/bin/nvim";
     };
   };
 
@@ -21,7 +13,7 @@ in {
         name = "Neovim";
         genericName = "Text Editor";
         comment = "Hyperextensible Vim-based text editor";
-        exec = "${neovim}/bin/nvim %U";
+        exec = "${pkgs.my_neovim}/bin/nvim %U";
         terminal = true;
         categories = ["Utility" "TextEditor" "ConsoleOnly"];
         mimeType = ["text/*"];
