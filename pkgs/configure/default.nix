@@ -1,16 +1,14 @@
 {
   alejandra,
-  bat,
   git,
   libnotify,
   nh,
-  ripgrep,
   writeShellApplication,
   ...
 }:
 writeShellApplication
 {
   name = "configure";
-  runtimeInputs = [git bat ripgrep libnotify nh alejandra];
+  runtimeInputs = [alejandra git libnotify nh];
   text = builtins.readFile ./configure.sh;
 }

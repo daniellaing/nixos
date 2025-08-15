@@ -76,7 +76,12 @@
               modules = [
                 {
                   networking = {inherit hostName;};
-                  system.configurationRevision = self.shortRev or "dirty";
+                  system = let
+                    shortHash = self.shortRev or "dirty";
+                  in {
+                    configurationRevision = shortHash;
+                    nixos.label = shortHash;
+                  };
                   nixpkgs = {
                     overlays = [self.overlays.default inputs.nur.overlays.default];
                     config.allowUnfree = true;
