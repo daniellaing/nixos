@@ -12,6 +12,7 @@
     ./scripts.nix
     ./services
     ./sops.nix
+    ./tmux.nix
     ./vm.nix
   ];
 
@@ -24,18 +25,19 @@
   config.cooked =
     # Common config
     {
-      nix.enable = lib.mkDefault true;
       dbus.enable = lib.mkDefault true;
+      dev.enable = lib.mkDefault true;
       fonts.enable = lib.mkDefault true;
       gnupg.enable = lib.mkDefault true;
+      locate.enable = lib.mkDefault true;
       network.enable = lib.mkDefault true;
+      nix.enable = lib.mkDefault true;
       scripts = {
         enable = lib.mkDefault true;
         nix-helpers = lib.mkDefault true;
       };
-      locate.enable = lib.mkDefault true;
       sops.enable = lib.mkDefault true;
-      dev.enable = lib.mkDefault true;
+      tmux.enable = lib.mkDefault true;
     }
     //
     # Server config
