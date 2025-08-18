@@ -5,6 +5,18 @@
       zsh.enable = true;
       nix-index.enable = true;
       hyprland.enable = true;
+      tmux = {
+        conf = ''
+          bind h select-pane -L
+          bind j select-pane -D
+          bind k select-pane -U
+          bind l select-pane -R
+
+          bind-key -T copy-mode-vi v send-keys -X begin-selection
+          bind-key -T copy-mode-vi V send-keys -X select-line
+          bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+        '';
+      };
     };
 
     programs = {
@@ -16,17 +28,6 @@
           signByDefault = true;
         };
       };
-
-      tmux.extraConfig = ''
-        bind h select-pane -L
-        bind j select-pane -D
-        bind k select-pane -U
-        bind l select-pane -R
-
-        bind-key -T copy-mode-vi v send-keys -X begin-selection
-        bind-key -T copy-mode-vi V send-keys -X select-line
-        bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
-      '';
     };
   };
 }

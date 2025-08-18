@@ -4,6 +4,7 @@
     ./hyprland.nix
     ./nix-index.nix
     ./R.nix
+    ./tmux.nix
     ./zsh.nix
   ];
 
@@ -11,6 +12,7 @@
     {
       cooked = {
         git.enable = lib.mkDefault true;
+        tmux.enable = lib.mkDefault true;
       };
     }
   ];

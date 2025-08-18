@@ -12,7 +12,6 @@
     ./scripts.nix
     ./services
     ./sops.nix
-    ./tmux.nix
     ./vm.nix
   ];
 
@@ -37,7 +36,6 @@
         nix-helpers = lib.mkDefault true;
       };
       sops.enable = lib.mkDefault true;
-      tmux.enable = lib.mkDefault true;
     }
     //
     # Server config
