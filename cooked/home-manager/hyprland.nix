@@ -46,7 +46,25 @@ in
               package = null;
               portalPackage = null;
 
-              systemd.variables = ["--all"];
+              systemd = {
+                variables = ["--all"];
+              };
+            };
+
+            systemd.user.services.hyprpolkitagent = {
+              Unit = {
+                Description = "Hyprland polkit authentication agent";
+                PartOf = [config.wayland.systemd.target];
+                After = [config.wayland.systemd.target];
+              };
+              Install.WantedBy = [config.wayland.systemd.target];
+              Service = {
+                Type = "simple";
+                ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
+                Restart = "on-failure";
+                RestartSec = 1;
+                TimeoutStopSec = 10;
+              };
             };
           };
         })
