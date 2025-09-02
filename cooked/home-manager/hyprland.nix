@@ -29,6 +29,8 @@ in
         enable32Bit = true;
         package32 = ps.pkgsi686Linux.mesa;
       };
+
+      environment.systemPackages = [pkgs.wl-clipboard];
     })
     {
       home-manager.sharedModules = [

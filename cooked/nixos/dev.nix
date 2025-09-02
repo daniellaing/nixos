@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.cooked.dev;
@@ -14,5 +15,9 @@ in {
       enable = true;
       silent = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      gnumake
+    ];
   };
 }

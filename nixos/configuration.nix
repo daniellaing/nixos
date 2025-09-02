@@ -43,7 +43,6 @@
 
   imports = [
     ./email
-    ./programs.nix
   ];
 
   # Set your time zone.
