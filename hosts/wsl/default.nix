@@ -13,7 +13,7 @@ in {
       ./home.nix
     ]
     ++ lib.flatten (map (user: lib.optional (lib.pathExists ../../users/${user}) ../../users/${user}) hm_users);
-  cooked-preload = "desktop";
+  cooked.preload.desktop = true;
 
   wsl = {
     enable = true;

@@ -2,8 +2,11 @@
   lib,
   config,
   pkgs,
+  type,
   ...
-}: {
+}: let
+  cfg = config.cooked;
+in {
   imports = [
     ./dev.nix
     ./fonts.nix
@@ -16,16 +19,10 @@
     ./vm.nix
   ];
 
-  options.cooked-preload = lib.mkOption {
-    type = lib.types.nullOr (lib.types.enum ["desktop" "server"]);
-    default = null;
-    description = "Preload options";
-  };
-
-  config = {
-    cooked =
-      # Common config
-      {
+  config = lib.mkMerge [
+    # Common config
+    {
+      cooked = {
         dbus.enable = lib.mkDefault true;
         dev.enable = lib.mkDefault true;
         fonts.enable = lib.mkDefault true;
@@ -38,25 +35,26 @@
           nix-helpers = lib.mkDefault true;
         };
         sops.enable = lib.mkDefault true;
-      }
-      //
-      # Server config
-      (lib.optionalAttrs (config.cooked-preload == "server") {
-        })
-      //
-      # Desktop config
-      (lib.optionalAttrs (config.cooked-preload == "desktop") {
+      };
+
+      environment.systemPackages = with pkgs; [
+        ripgrep
+        unzip
+        wget
+      ];
+    }
+
+    # Server configuration
+    (lib.mkIf cfg.preload.server {})
+
+    # Desktop configuration
+    (lib.mkIf cfg.preload.desktop {
+      cooked = {
         display-manager.enable = lib.mkDefault true;
         printing.enable = lib.mkDefault true;
         sound.enable = lib.mkDefault true;
         # scripts.menus.enable = lib.mkDefault true;
-      });
-
-    # Common packages
-    environment.systemPackages = with pkgs; [
-      ripgrep
-      unzip
-      wget
-    ];
-  };
+      };
+    })
+  ];
 }
