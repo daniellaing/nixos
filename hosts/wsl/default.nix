@@ -15,6 +15,8 @@ in {
     ++ lib.flatten (map (user: lib.optional (lib.pathExists ../../users/${user}) ../../users/${user}) hm_users);
   cooked.preload.desktop = true;
 
+  system.stateVersion = "23.05"; # Do not change.
+
   wsl = {
     enable = true;
     defaultUser = "daniel";
