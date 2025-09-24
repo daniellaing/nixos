@@ -1,0 +1,34 @@
+[devshell]
+name = "CHARM devshell"
+packages = [
+    "subversion",
+    "jdk",
+    "maven",
+    "google-java-format",
+    "entr"
+]
+
+[[commands]]
+name="fmt"
+command='find ${1:-src}/ -name "*.java" -type f -print | xargs google-java-format -i'
+help="Format all java files under the given directory (`src` by default)"
+
+[[commands]]
+name="runc"
+command='mvn exec:java -Dexec.mainClass="$1"'
+help="Run a class with maven exec plugin"
+
+[[commands]]
+name="watch"
+command="""
+OPTIND=1
+dir="src"
+while getopts "d:" opt; do
+    dir="$OPTARG"
+done
+
+while sleep 0.1; do
+    find "$dir" -type f -print | entr -dcc ${@:-mvn clean test}
+done
+"""
+help="Watch the directory given by -d (default `src`) and run a command (default `mvn clean test`) when files change"
