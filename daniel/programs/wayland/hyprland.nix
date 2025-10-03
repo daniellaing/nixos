@@ -84,9 +84,7 @@ in {
           follow_mouse = 1
       }
 
-      gestures {
-          workspace_swipe = true
-      }
+      gesture = 3, horizontal, workspace
 
       dwindle {
           force_split = 2   # Split to the right or bottom
