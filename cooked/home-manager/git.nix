@@ -22,12 +22,12 @@ in
           config = lib.mkIf cfg.enable {
             programs.git = {
               enable = true;
-              aliases = {
-                pa = "!git remote | ${pkgs.findutils}/bin/xargs -L1 git push --all";
-                cpa = "!f() { git commit \"$@\" && git pa; }; f";
-                lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date-order";
-              };
-              extraConfig = {
+              settings = {
+                alias = {
+                  pa = "!git remote | ${pkgs.findutils}/bin/xargs -L1 git push --all";
+                  cpa = "!f() { git commit \"$@\" && git pa; }; f";
+                  lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date-order";
+                };
                 init = {
                   defaultBranch = "master";
                 };
