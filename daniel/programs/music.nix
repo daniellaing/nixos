@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  mpc = "${pkgs.mpc-cli}/bin/mpc";
+  mpc = "${pkgs.mpc}/bin/mpc";
 in {
   imports = [../../modules/XF86.nix];
 
@@ -174,7 +174,7 @@ in {
 
   # ---   Beets   ---
   home.packages = [
-    (pkgs.beets.override {
+    (pkgs.python3.pkgs.beets.override {
       pluginOverrides = {
         fetchart.enable = true;
         chroma.enable = true;
