@@ -19,12 +19,12 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/18f8b16f-7d02-483f-a0fa-83b7af226709";
+    device = "/dev/disk/by-uuid/c44064c6-0a7f-4f17-aeef-1445ce58625d";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/D08D-C40F";
+    device = "/dev/disk/by-uuid/1B43-DD2B";
     fsType = "vfat";
   };
 
@@ -34,7 +34,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/00703522-1162-4f5b-9d16-4f5ce3dce958";}
+    {device = "/dev/disk/by-uuid/664e0c1a-b532-46bd-8a14-1f63fb74e2c4";}
   ];
 
   # Enable trim for SSD
