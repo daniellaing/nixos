@@ -23,7 +23,7 @@
 
     (
       final: prev: {
-        my_neovim = my_neovim.packages.${prev.system}.default;
+        my_neovim = my_neovim.packages.${prev.stdenv.hostPlatform.system}.default;
       }
     )
 
