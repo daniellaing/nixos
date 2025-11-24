@@ -12,7 +12,7 @@ jobs:
         ${{ steps.get_configurations.outputs.nixos_configurations }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
@@ -54,7 +54,7 @@ jobs:
           ${{ fromJson(needs.generate_matrix.outputs.nixos_configurations) }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Free disk space
         uses: wimpysworld/nothing-but-nix@v6
