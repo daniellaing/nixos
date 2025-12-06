@@ -34,21 +34,8 @@ in {
             };
             search = {
               force = true;
-              default = "SearxNG";
+              default = "ddg"; # DuckDuckGo is built-in
               engines = {
-                "SearxNG" = {
-                  urls = [
-                    {
-                      template = "https://search.leptons.xyz/searxng/search";
-                      params = [
-                        {
-                          name = "q";
-                          value = "{searchTerms}";
-                        }
-                      ];
-                    }
-                  ];
-                };
                 "Nix Packages" = {
                   urls = [
                     {
