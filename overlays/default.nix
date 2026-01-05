@@ -18,7 +18,7 @@
     (final: prev:
       import ../pkgs {pkgs = final;}
       // {
-        scripts = import ../pkgs/scripts {pkgs = final;};
+        # scripts = import ../pkgs/scripts {pkgs = final;};
       })
 
     (
