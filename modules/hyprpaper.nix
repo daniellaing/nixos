@@ -20,8 +20,10 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = lib.optional (cfg.package != null) cfg.package;
     xdg.configFile."hypr/hyprpaper.conf".text = ''
-      preload = ${cfg.wallpaper}
-      wallpaper = ,${cfg.wallpaper}
+      wallpaper {
+        monitor =
+        path = ${cfg.wallpaper}
+      }
     '';
   };
 }

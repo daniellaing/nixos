@@ -5,7 +5,7 @@
   ...
 }: let
   col = config.colorScheme.palette;
-  wallpaper = ../../wallpapers/summer-day.png;
+  wallpaper = ../../wallpapers;
 in {
   imports = [
     ../../../modules/hyprpaper.nix
