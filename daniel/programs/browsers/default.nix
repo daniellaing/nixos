@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 } @ inputs: let
   browsers = ["firefox"];
@@ -15,6 +16,7 @@ in {
         name = b;
         value = {
           enable = true;
+          configPath = "${config.xdg.configHome}/mozilla/firefox";
           profiles.daniel = {
             bookmarks = {
               force = true;
