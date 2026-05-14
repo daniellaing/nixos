@@ -43,5 +43,7 @@
         };
       };
     };
+
+    xdg.userDirs.setSessionVariables = false;
   };
 }
