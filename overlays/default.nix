@@ -8,7 +8,7 @@
     # Stable packages
     (final: prev: {
       stable = import nixpkgs-stable {
-        system = prev.system;
+        system = prev.stdenv.hostPlatform.system;
         config = {allowUnfree = true;};
         overlays = [];
       };
