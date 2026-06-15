@@ -42,7 +42,7 @@ in {
     # Dependencies
     environment.systemPackages = builtins.attrValues {
       inherit
-        (pkgs.libsForQt5.qt5)
+        (pkgs.qt5)
         qtquickcontrols
         qtgraphicaleffects
         ;
