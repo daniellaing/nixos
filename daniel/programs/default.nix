@@ -2,8 +2,6 @@
   imports = [
     ./browsers
     ./dunst.nix
-    ./lf.nix
-    ./mpv.nix
     ./music.nix
     ./picom.nix
     ./syncthing.nix

@@ -1,4 +1,8 @@
 {lib, ...}: {
+  imports = [
+    ./programs.nix
+  ];
+
   home-manager.users.daniel = {
     cooked = {
       R.enable = true;
