@@ -1,0 +1,28 @@
+name: Formatting
+
+on:
+  push:
+
+permissions: {}
+
+jobs:
+  formatting:
+    name: Check formatting
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Free disk space
+        uses: wimpysworld/nothing-but-nix@v10
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Format
+        run: |
+          nix run nixpkgs#alejandra -- -c .
+
+
