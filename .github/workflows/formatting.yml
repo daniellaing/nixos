@@ -2,6 +2,7 @@ name: Formatting
 
 on:
   push:
+  pull_request:
 
 permissions: {}
 
