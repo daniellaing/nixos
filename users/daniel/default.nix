@@ -1,4 +1,4 @@
-{lib, ...}: {
+{pkgs, ...}: {
   imports = [
     ./programs.nix
   ];
@@ -35,19 +35,40 @@
       };
     };
 
-    programs = {
-      git = {
-        settings = {
-          user.email = lib.mkDefault "daniel@daniellaing.com";
-          user.name = "Daniel Laing";
-        };
-        signing = {
-          key = lib.mkDefault "08218B96DC7385E5BB7CA535D2643BD213BC0FA8";
-          signByDefault = true;
-        };
+    home = {
+      username = "daniel";
+      homeDirectory = "/home/daniel";
+      stateVersion = "23.05";
+      packages = builtins.attrValues {
+        inherit
+          (pkgs)
+          btop
+          # ferdium
+          # musescore
+          yt-dlp
+          keepassxc
+          pipes
+          # nitch # Fetch utility
+          vimix-icon-theme
+          # ncdu
+          ffmpeg-full
+          imv
+          vimv
+          steam
+          # sonic-visualiser
+          # synthesia
+          # ---   Fonts   ---
+          alegreya
+          alegreya-sans
+          ;
+      };
+
+      pointerCursor = {
+        enable = true;
+        gtk.enable = true;
+        package = pkgs.vimix-cursors;
+        name = "Vimix-white-cursors";
       };
     };
-
-    xdg.userDirs.setSessionVariables = false;
   };
 }
