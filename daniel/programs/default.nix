@@ -5,7 +5,6 @@
     ./music.nix
     ./picom.nix
     ./syncthing.nix
-    ./xdg.nix
     ./yazi.nix
     ./zathura.nix
 
