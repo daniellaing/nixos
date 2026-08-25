@@ -9,8 +9,5 @@
     ./XF86Misc.nix
   ];
 
-  # Let home manager manage itself
-  programs.home-manager.enable = true;
-
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-material-dark-medium;
 }

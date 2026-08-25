@@ -4,15 +4,19 @@
   lib,
   config,
   ...
-}: let
-  hm_users = ["daniel"];
+} @ args: let
+  users = ["daniel"];
 in {
-  imports =
-    [
-      inputs.nixos-wsl.nixosModules.default
-      ./home.nix
-    ]
-    ++ lib.flatten (map (user: lib.optional (lib.pathExists ../../users/${user}) ../../users/${user}) hm_users);
+  imports = [
+    inputs.nixos-wsl.nixosModules.default
+    ./home.nix
+  ];
+
+  home-manager.users =
+    lib.genAttrs
+    (builtins.filter (user: lib.pathExists ../../users/${user}) users)
+    (user: import ../../users/${user} args);
+
   cooked.preload.desktop = true;
 
   system.stateVersion = "23.05"; # Do not change.

@@ -2,14 +2,18 @@
   lib,
   pkgs,
   ...
-}: let
-  hm_users = ["daniel"];
+} @ args: let
+  users = ["daniel"];
 in {
-  imports =
-    [
-      ./hardware.nix
-    ]
-    ++ lib.flatten (map (user: lib.optional (lib.pathExists ../../users/${user}) ../../users/${user}) hm_users);
+  imports = [
+    ./hardware.nix
+  ];
+
+  home-manager.users =
+    lib.genAttrs
+    (builtins.filter (user: lib.pathExists ../../users/${user}) users)
+    (user: import ../../users/${user} args);
+
   cooked.preload.desktop = true;
 
   system.stateVersion = "23.05"; # Do not change.
