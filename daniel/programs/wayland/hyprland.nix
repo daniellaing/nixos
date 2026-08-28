@@ -21,6 +21,8 @@ in {
     NIXOS_OZONE_WL = "1";
   };
 
+  home.file."testfile".text = "foo";
+
   wayland.windowManager.hyprland = {
     configType = "lua";
     extraConfig = ''
