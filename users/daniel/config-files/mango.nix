@@ -4,7 +4,6 @@ in ''
   exec=pkill waybar; waybar
 
   animations=0
-  smartgaps=1
   cursor_hide_timeout=3
   cursor_hide_on_keypress=1
 
@@ -20,7 +19,7 @@ in ''
   # binds=${mod},c,
   # binds=${mod},d,
   # binds=${mod},e,
-  binds=${mod},f,togglefakefullscreen
+  binds=${mod},f,togglefullscreen
   binds=${mod},g,togglegaps
   # binds=${mod},h,
   # binds=${mod},i,
