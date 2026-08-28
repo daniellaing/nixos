@@ -1,7 +1,7 @@
 {config, ...}: let
   mod = "SUPER";
 in ''
-  exec=pkill waybar && waybar
+  exec=pkill waybar; waybar
 
   animations=0
   smartgaps=1

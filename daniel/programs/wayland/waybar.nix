@@ -15,7 +15,7 @@ in {
     settings.mainBar = {
       "position" = "top";
       "layer" = "top";
-      "height" = 35;
+      "height" = 50;
       "margin-top" = 0;
       "margin-bottom" = 0;
       "margin-left" = 0;
@@ -26,7 +26,7 @@ in {
         "tray"
       ];
       "modules-center" = [
-        "hyprland/workspaces"
+        "mango/workspaces"
       ];
       "modules-right" = [
         "pulseaudio"
@@ -35,14 +35,19 @@ in {
         "clock"
       ];
 
-      "hyprland/workspaces" = {
+      "mango/workspaces" = {
         "on-click" = "activate";
-        "all-outupts" = true;
-        "sort-by-number" = true;
-        "on-scroll-up" = "hyprctl dispatch workspace e+1";
-        "on-scroll-down" = "hyprctl dispatch workspace e-1";
-        "smooth-scrolling-threshold" = 1;
+        "hide-empty" = true;
       };
+
+      # "hyprland/workspaces" = {
+      #   "on-click" = "activate";
+      #   "all-outupts" = true;
+      #   "sort-by-number" = true;
+      #   "on-scroll-up" = "hyprctl dispatch workspace e+1";
+      #   "on-scroll-down" = "hyprctl dispatch workspace e-1";
+      #   "smooth-scrolling-threshold" = 1;
+      # };
 
       "custom/launcher" = {
         "interval" = "once";
