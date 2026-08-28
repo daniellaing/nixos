@@ -9,14 +9,18 @@ in {
     ./hardware.nix
   ];
 
+  # Import users' home-manager configuration
   home-manager.users =
     lib.genAttrs
     (builtins.filter (user: lib.pathExists ../../users/${user}) users)
     (user: import ../../users/${user} args);
 
   cooked.preload.desktop = true;
-
   system.stateVersion = "23.05"; # Do not change.
+
+  programs = {
+    mango.enable = true; # Mango WM
+  };
 
   # Bootloader.
   boot.loader = {

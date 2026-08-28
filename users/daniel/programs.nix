@@ -3,11 +3,9 @@
   pkgs,
   config,
   ...
-}: let
-  # h = config.home-manager.users.daniel.home.homeDirectory;
+} @ args: let
   h = config.home.homeDirectory;
 in {
-  # home-manager.users.daniel = {
   programs = {
     # ---   Home manager   ---
     home-manager.enable = true; # Let home manager manage itself
@@ -38,6 +36,11 @@ in {
 
   xdg = {
     enable = true;
+
+    configFile = {
+      # ---   Mango WM   ---
+      "mango/config.conf".text = import ./config-files/mango.nix args;
+    };
 
     userDirs.setSessionVariables = false;
     cacheHome = h + "/.cache";

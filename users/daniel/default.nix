@@ -12,7 +12,7 @@
     R.enable = true;
     zsh.enable = true;
     nix-index.enable = true;
-    hyprland.enable = true;
+    # hyprland.enable = true;
     tmux = {
       conf = ''
         # Vim keys for pane navigation
