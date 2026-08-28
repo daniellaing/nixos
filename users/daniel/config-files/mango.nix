@@ -8,9 +8,9 @@ in ''
   xkb_rules_options=caps:swapescape,grp:ctrls_toggle
 
   # Keybinds
-  bind=${mod},x,spawn,${config.XF86.explorer}
-  bind=${mod},Q,killclient
-  bind=${mod},W,spawn,$BROWSER
+  binds=${mod},x,spawn,${config.XF86.explorer}
+  binds=${mod},Q,killclient
+  binds=${mod},W,spawn,$BROWSER
 
   bind=${mod},Return,spawn,${config.programs.terminal}
 ''
