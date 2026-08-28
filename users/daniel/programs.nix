@@ -7,7 +7,6 @@
   # h = config.home-manager.users.daniel.home.homeDirectory;
   h = config.home.homeDirectory;
 in {
-  # home-manager.users.daniel = {
   programs = {
     # ---   Home manager   ---
     home-manager.enable = true; # Let home manager manage itself
@@ -38,6 +37,11 @@ in {
 
   xdg = {
     enable = true;
+
+    configFile = {
+      # ---   Mango WM   ---
+      "mango/config.conf".source = ./config-files/mango.conf;
+    };
 
     userDirs.setSessionVariables = false;
     cacheHome = h + "/.cache";
