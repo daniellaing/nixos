@@ -22,6 +22,7 @@ in {
   };
 
   wayland.windowManager.hyprland = {
+    configType = "hyprlang";
     extraConfig = ''
       exec-once = hyprpaper
       exec = pkill waybar; waybar
