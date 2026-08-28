@@ -3,8 +3,7 @@
   pkgs,
   config,
   ...
-}: let
-  # h = config.home-manager.users.daniel.home.homeDirectory;
+} @ args: let
   h = config.home.homeDirectory;
 in {
   programs = {
@@ -40,7 +39,7 @@ in {
 
     configFile = {
       # ---   Mango WM   ---
-      "mango/config.conf".source = ./config-files/mango.conf;
+      "mango/config.conf".text = import ./config-files/mango.nix args;
     };
 
     userDirs.setSessionVariables = false;
