@@ -154,18 +154,30 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.token.outputs.token }}
           pr_num: ${{ steps.open_pr_info.outputs.number }}
-          title: Auto update ${{ github.ref_name }}
         run: |
           echo "Pushing to remote branch $pr_branch"
           git push --force --set-upstream origin "$pr_branch"
 
+          title="$(date --date='last Sunday' +'Weekly Flake Update: %d %b %Y (week %V)')"
+
           echo "Writing PR body file"
           (
-            echo "# Automatic flake update on $(date -I)"
-            echo
+            echo "# Weekly flake update"
+            echo ''
+            echo "Week begining $(date --date='last Sunday' +'%d/%m%Y, week %V')"
+            echo ''
+            echo '<details>'
+            echo '<summary>Lock file updates</summary>'
+            echo ''
             echo '```'
             git show --no-patch --format=%b
             echo '```'
+            echo '</details>'
+            echo '---'
+            echo
+            echo -n 'This PR was most recently updated by workflow run '
+            echo "[$workflow_run_id]($workflow_run_url)."
+            echo
           ) > body.md
 
           if [[ -n "$pr_num" ]]; then
