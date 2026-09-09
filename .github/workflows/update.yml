@@ -154,6 +154,8 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.token.outputs.token }}
           pr_num: ${{ steps.open_pr_info.outputs.number }}
+          workflow_run_id: ${{ github.run_id }}
+          workflow_run_url: ${{ github.server_url }}/${{ github.repository }}/actions/run/${{ github.run_id }}
         run: |
           echo "Pushing to remote branch $pr_branch"
           git push --force --set-upstream origin "$pr_branch"
@@ -164,7 +166,7 @@ jobs:
           (
             echo "# Weekly flake update"
             echo ''
-            echo "Week begining $(date --date='last Sunday' +'%d/%m%Y, week %V')"
+            echo "Week begining $(date --date='last Sunday' +'%d/%m/%Y, week %V')"
             echo ''
             echo '<details>'
             echo '<summary>Lock file updates</summary>'
