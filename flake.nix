@@ -63,14 +63,16 @@
       flake = {
         templates = import ./templates inputs;
         overlays = import ./overlays inputs;
+        lib = import ./lib inputs;
 
         nixosConfigurations = let
+          lib = nixpkgs.lib.extend self.lib.default;
           mkHost = {
             hostName,
             system,
           }:
             nixpkgs.lib.nixosSystem rec {
-              inherit system;
+              inherit system lib;
               specialArgs = {inherit inputs;};
 
               modules = [

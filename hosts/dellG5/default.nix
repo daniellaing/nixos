@@ -9,10 +9,7 @@ in {
     ./hardware.nix
   ];
 
-  home-manager.users =
-    lib.genAttrs
-    (builtins.filter (user: lib.pathExists ../../users/${user}) users)
-    (user: import ../../users/${user} args);
+  home-manager.users = lib.mkHomeUsers ../../users args users;
 
   cooked.preload.desktop = true;
 
