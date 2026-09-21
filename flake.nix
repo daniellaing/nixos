@@ -116,10 +116,10 @@
             hostName = "wsl";
             system = "x86_64-linux";
           };
-          # server = mkHost {
-          #   hostName = "server";
-          #   system = "x86_64-linux";
-          # };
+          server = mkHost {
+            hostName = "server";
+            system = "x86_64-linux";
+          };
         };
       };
 
