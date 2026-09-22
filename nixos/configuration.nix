@@ -14,21 +14,6 @@
     ./email
   ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.daniel = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    description = "Daniel Laing";
-    extraGroups = [
-      "video"
-      "networkmanager"
-      "wheel"
-      "adbusers"
-      "libvirtd"
-      "syncthing"
-    ];
-  };
-
   security.polkit.enable = true;
   security.sudo.extraRules = [
     {

@@ -26,6 +26,20 @@ in {
 
   networking.nftables.enable = lib.mkForce false;
 
+  users.users.daniel = {
+    shell = pkgs.zsh;
+    isNormalUser = true;
+    description = "Daniel Laing";
+    extraGroups = [
+      "video"
+      "networkmanager"
+      "wheel"
+      "adbusers"
+      "libvirtd"
+      "syncthing"
+    ];
+  };
+
   sops.secrets.svn-passwd = {
     owner = config.users.users.daniel.name;
     group = config.users.users.daniel.group;

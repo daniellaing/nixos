@@ -6,6 +6,10 @@
 } @ args: let
   users = ["sysadmin"];
 in {
+  imports = [
+    ./hardware.nix
+  ];
+
   home-manager.users = lib.mkHomeUsers ../../users args users;
   # cooked.preload.server = true;
   system.stateVersion = "23.05"; # Do not change.

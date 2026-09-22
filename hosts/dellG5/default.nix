@@ -15,6 +15,20 @@ in {
 
   system.stateVersion = "23.05"; # Do not change.
 
+  users.users.daniel = {
+    shell = pkgs.zsh;
+    isNormalUser = true;
+    description = "Daniel Laing";
+    extraGroups = [
+      "video"
+      "networkmanager"
+      "wheel"
+      "adbusers"
+      "libvirtd"
+      "syncthing"
+    ];
+  };
+
   # Bootloader.
   boot.loader = {
     systemd-boot.enable = false;
