@@ -6,10 +6,6 @@
 } @ args: let
   users = ["sysadmin"];
 in {
-  imports = [
-    inputs.nixos-wsl.nixosModules.default
-  ];
-
   home-manager.users = lib.mkHomeUsers ../../users args users;
   # cooked.preload.server = true;
   system.stateVersion = "23.05"; # Do not change.

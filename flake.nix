@@ -100,7 +100,7 @@
                   home-manager = {
                     useGlobalPkgs = true;
                     extraSpecialArgs = specialArgs;
-                    users.daniel = import ./daniel;
+                    users = lib.optionalAttrs (builtins.elem hostName ["dellG5" "wsl"]) {daniel = import ./daniel;};
                   };
                 }
 
