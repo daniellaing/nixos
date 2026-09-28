@@ -1,8 +1,5 @@
-#!/bin/sh
-
-set -ex
 cfgdir="${1:-/dotfiles}"
-cd "$cfgdir"
+cd "$cfgdir" || exit
 
 # Do the configuration
 $SHELL
@@ -13,7 +10,7 @@ git add .
 
 if git diff --staged --quiet .; then
     echo "No changes detected, exiting"
-    cd -
+    cd - || exit
     exit 0
 fi
 
@@ -26,5 +23,5 @@ nh os build "$cfgdir" || (
 git commit -a
 nh os boot "$cfgdir"
 
-cd -
+cd - || exit
 notify-send -e -a "NixOS Rebuild" "Success!\nReboot for changes to take effect"
