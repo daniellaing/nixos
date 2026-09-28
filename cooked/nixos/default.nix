@@ -12,7 +12,6 @@ in {
     ./fonts.nix
     ./gnupg.nix
     ./network.nix
-    ./nix.nix
     ./scripts.nix
     ./services
     ./sops.nix
@@ -29,7 +28,6 @@ in {
         gnupg.enable = lib.mkDefault true;
         locate.enable = lib.mkDefault true;
         network.enable = lib.mkDefault true;
-        nix.enable = lib.mkDefault true;
         scripts = {
           enable = lib.mkDefault true;
           nix-helpers = lib.mkDefault true;

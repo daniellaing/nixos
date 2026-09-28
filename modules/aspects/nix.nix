@@ -1,21 +1,11 @@
-{
-  lib,
-  config,
-  ...
-}: let
-  cfg = config.cooked.nix;
-in {
-  options.cooked.nix = {
-    enable = lib.mkEnableOption "nix config";
-  };
-
-  config = lib.mkIf cfg.enable {
+{moduleWithSystem, ...}: {
+  flake.nixosModules.nix = moduleWithSystem ({system, ...}: {
     nix = {
       settings = {
-        experimental-features = ["nix-command" "flakes"];
         auto-optimise-store = true;
-        use-xdg-base-directories = true;
+        experimental-features = ["nix-command" "flakes"];
         trusted-users = ["root" "@wheel"];
+        use-xdg-base-directories = true;
       };
       optimise = {
         automatic = true;
@@ -23,9 +13,13 @@ in {
       };
       gc = {
         automatic = true;
-        dates = "weekly";
+        dates = "daily";
         options = "--delete-older-than 14d";
       };
     };
-  };
+    nixpkgs = {
+      config.allowUnfree = true;
+      hostPlatform = system;
+    };
+  });
 }
