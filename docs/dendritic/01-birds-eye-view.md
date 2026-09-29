@@ -3,7 +3,7 @@
 ### A bird's-eye view of `mightyiam/dendritic`, `mightyiam/infra` and `voidarc/nixos`
 
 *Report 1 of 2 · prepared 2026-09-29 for `daniellaing/nixos` (branch `dendritic`, commit `0e29b82`).
-Report 2, [`02-migration-guide.md`](02-migration-guide.md), turns this into concrete steps for your repository.*
+Report 2, [`02-migration-guide.md`](02-migration-guide.md), turns this into concrete steps for your repository. A companion note, [`03-config-notes.md`](03-config-notes.md), covers things I found in your repository that are unrelated to the pattern.*
 
 ## What was read
 

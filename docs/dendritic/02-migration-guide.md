@@ -3,7 +3,7 @@
 ### A step-by-step guide
 
 *Report 2 of 2 · prepared 2026-09-29 · starting point: branch `dendritic`, commit `0e29b82`.
-Report 1, [`01-birds-eye-view.md`](01-birds-eye-view.md), explains the pattern and the example repositories. This guide assumes you have read its §0 to §2.*
+Report 1, [`01-birds-eye-view.md`](01-birds-eye-view.md), explains the pattern and the example repositories. This guide assumes you have read its §0 to §2. A companion note, [`03-config-notes.md`](03-config-notes.md), covers findings about your repository that are unrelated to the pattern.*
 
 ## How to use this guide
 
@@ -55,11 +55,11 @@ Your last commit ("dendritic: Migrate development config") did real work: `flake
 | 6 | `systems = ["x86_64-linux"]; # TODO: Remove` | It cannot be removed while anything uses `perSystem` (packages, dev shell). It can be *moved* and, if you like, *derived*. | Step 2 |
 | 7 | Dead legacy files: `daniel/programs/X11/{rofi,sxhkd,sxiv}.nix` and `nixos/programs.nix` are imported by nothing. | Under import-tree, **anything you move under `modules/` becomes live**. Delete or `_`-prefix them. | Step 8 |
 
-Three things I noticed that are unrelated to the pattern, so you can decide separately:
+Three things I noticed that are unrelated to the pattern, so you can decide separately. The companion note [`03-config-notes.md`](03-config-notes.md) gives the evidence, the options and a check for each (as N1 to N4), and lists eight more:
 
-- **Hyprland's `nixpkgs` follows yours** (`flake.nix:35`, new in your last commit). Hyprland's wiki says: "Do **not** override Hyprland's `nixpkgs` input unless you know what you are doing. Doing so will render the cache useless" ([Cachix page](https://wiki.hypr.land/Nix/Cachix/)). You already add `hyprland.cachix.org` as a substituter in `cooked/home-manager/hyprland.nix`, and the `mesa` workaround there (`inputs.hyprland.inputs.nixpkgs...mesa`) becomes a no-op when the two nixpkgs are the same. The same commit added `follows` to `my_neovim`, which changes its derivation.
-- **`nixos/configuration.nix` hard-codes a store path**: `programs.ssh.askPassword = "/nix/store/pg42...-ksshaskpass-5.27.7/bin/ksshaskpass"`. That path disappears at the next garbage collection or update. `${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass` is the usual spelling (check the binary path when you make the change).
-- **`nixpkgs-stable` tracks `nixos-25.05`**, which reached end of life at the end of 2025 (voidarc already tracks `nixos-26.05`). You only use it for `pkgs.stable.gitSVN` on WSL.
+- **Hyprland's `nixpkgs` follows yours** (`flake.nix:35`, new in your last commit). Hyprland's wiki says: "Do **not** override Hyprland's `nixpkgs` input unless you know what you are doing. Doing so will render the cache useless" ([Cachix page](https://wiki.hypr.land/Nix/Cachix/)). You already add `hyprland.cachix.org` as a substituter in `cooked/home-manager/hyprland.nix`, and the `mesa` workaround there (`inputs.hyprland.inputs.nixpkgs...mesa`) becomes a no-op when the two nixpkgs are the same (N1). The same commit added `follows` to `my_neovim`, which changes its derivation (N2).
+- **`nixos/configuration.nix` hard-codes a store path**: `programs.ssh.askPassword = "/nix/store/pg42...-ksshaskpass-5.27.7/bin/ksshaskpass"`. A string literal is not a dependency, so nothing keeps that path alive, and your pinned nixpkgs no longer has Plasma 5 to rebuild it. The option is also probably not in effect on your hosts, because it needs `programs.ssh.enableAskPassword`, which defaults to `services.xserver.enable` (N3 has the check and the fix).
+- **`nixpkgs-stable` tracks `nixos-25.05`**, which reached end of life at the end of 2025 (25.11 has ended since, and 26.05 is current; voidarc already tracks it). You only use it for `pkgs.stable.gitSVN` on WSL (N4).
 
 ## The choices this guide makes for you
 
@@ -161,7 +161,7 @@ done
 
 Empty output means the same packages at the same versions.
 
-**3. Know which differences are yours.** Your last commit already changed a few things that will show up, so they are not migration bugs: `nix.gc.dates` (weekly to daily), the `follows` you added to `hyprland` and `my_neovim` (different derivations, and a Hyprland rebuild), and the reworked `configure` script. Anything else deserves an explanation before you move on.
+**3. Know which differences are yours.** Your last commit already changed a few things that will show up, so they are not migration bugs: `nix.gc.dates` (weekly to daily), the `follows` you added to `hyprland` and `my_neovim` (different derivations, and a Hyprland rebuild), and the reworked `configure` script. Anything else deserves an explanation before you move on. The companion note explains the first two and asks whether you meant them (N11, N1, N2 in [`03-config-notes.md`](03-config-notes.md)); reverting the Hyprland `follows` (N1) *before* you build the baseline removes one of these differences.
 
 **4. Optional: a stricter check for steps that only move text.** This package writes each host's `toplevel` derivation path to a file. Build it before and after a step (on the same uncommitted tree, where the revision label is the constant `"dirty"`) and `diff` the two. **Identical files are proof** that the system did not change. **Different files are not necessarily a bug**: moving text between files can reorder merged lists such as `environment.systemPackages`, which changes a derivation hash without changing what is installed. When that happens, `nix store diff-closures` (empty output) or `nix-diff` (it shows the change is only list order) settle the question. Add it once hosts exist (Step 4):
 
@@ -543,6 +543,7 @@ Points worth understanding:
 - **The list is explicit** because overlay order can matter and you want to choose it (`builtins.attrValues` would sort by name). flake-parts' docs for `flake.overlays` make the related point that composition order is significant and the module system does not guarantee a deterministic order across modules.
 - **`perSystem`'s own `pkgs`** is plain `inputs.nixpkgs.legacyPackages.${system}`: no overlays, no unfree. Your four packages need neither. If one ever needs an unfree dependency, set `perSystem._module.args.pkgs` (infra builds one shared `pkgs`; see below).
 - **Naming**: the attribute is `powermenu` now (it was `power-menu`). Step 5 updates the one reference in `scripts.nix`. The *executable* is still `powermenu`, so your Hyprland keybinding is unaffected.
+- **`stable` is optional.** It exists for one package (`pkgs.stable.gitSVN`, WSL only), its input tracks the end-of-life `nixos-25.05`, and `pkgs.gitSVN` exists in your main nixpkgs. If that builds for you, leave this overlay out and delete the `nixpkgs-stable` input (note [N4](03-config-notes.md#n4--nixpkgs-stable-is-an-end-of-life-release)). Decide before you write it.
 - **`allowUnfree`** already lives in `nix.nix` (Step 1), and **`hostPlatform`** moves to the hosts (Step 4).
 - **Locality.** Each overlay really belongs next to its consumer: `my-neovim` next to the editor feature, `ffmpeg-unfree` next to the media feature, `stable` next to WSL. Step 8 moves `my-neovim` as a demonstration. They are collected here first because the legacy code needs them all on day one.
 
@@ -1041,7 +1042,7 @@ Note that `inputs` is used directly: the file is a top-level module (see Report 
 | `users.users.daniel` | Step 7 | named `nixos.daniel` |
 | `nixos/email/*` | Step 8 (cross-class) | `nixos.base` |
 
-Keep `ssh.askPassword` as the literal it is today while you migrate; fixing it is a separate, deliberate change (see "Where you are now").
+Keep `ssh.askPassword` as the literal it is today while you migrate, and move the `sudo.extraRules` unchanged. Fixing the first (probably by deleting it) and deciding about the second are separate, deliberate changes; notes [N3](03-config-notes.md#n3--a-hard-coded-ksshaskpass-store-path) and [N9](03-config-notes.md#n9--the-sudo-rules-are-passwordless-root) say what to look at, and each should be its own commit after this step.
 
 **Split a host's hardware file into reusable pieces (optional, uses the "host as facets" idea).** `hosts/dellG5/hardware.nix` mixes *facts about one laptop* (disk UUIDs, PCI bus IDs, kernel modules) with *reusable features* (TLP battery settings, `thermald`, bluetooth, NVIDIA PRIME). The facts stay in `_hardware.nix`. The reusable features can become named modules (`nixos.laptop-power`, `nixos.nvidia-prime`) that the host imports and that a second laptop could reuse. Do it when you have a second laptop, not before.
 
@@ -1460,6 +1461,7 @@ Notes:
 - The package list is a *placeholder for now*. Each package that belongs to a feature moves with that feature in Step 8 (`yt-dlp`, `ffmpeg-full` to media; `alegreya*` to fonts; `keepassxc` next to the browser). What remains is genuinely "Daniel's odds and ends" and can stay here.
 - This module replaces the interim one from Steps 4 and 6. Of the two legacy trees it used to import, `users/daniel` is fully absorbed by 7b and disappears in this step; `daniel/` stays wrapped (the `rootPath + "/daniel"` line) until Step 8 empties it.
 - Your commented-out `home.packages` entries (`ferdium`, `musescore`, `nitch`, …) are omitted here for brevity; keep them if you want them.
+- `"adbusers"` is carried over unchanged. That group no longer exists in your nixpkgs (`programs.adb` was removed), so the entry does nothing; note [N10](03-config-notes.md#n10--the-adbusers-group-no-longer-exists) says what to do with it.
 
 **7b. Where the rest of `users/daniel/*` goes.**
 
@@ -1813,7 +1815,7 @@ A migration is not finished while its temporary parts are still there, and the t
 
 **9b. Remove what is now unused.** `grep -rn rootPath modules` should show only its definition in `modules/repository/parts.nix`; if so, delete that line (infra declares it and never reads it either). Delete `cooked/`, `daniel/`, `hosts/`, `nixos/`, `users/` and `modules.old/` if any are left; `templates/default.nix` was replaced by `modules/repository/templates.nix` in Step 2.
 
-**9c. CI.** `.github/workflows/verify_configurations.yml` needs no change: it builds a matrix from `nix flake show --json | jq '.nixosConfigurations | keys'`, and the assembler makes that key exist again. `formatting.yml` (`alejandra -c .`) and `update.yml` are unaffected.
+**9c. CI.** `.github/workflows/verify_configurations.yml` needs no change *for the migration*: it builds a matrix from `nix flake show --json | jq '.nixosConfigurations | keys'`, and the assembler makes that key exist again. `formatting.yml` (`alejandra -c .`) and `update.yml` are unaffected too. None of the three is free of problems, though: note [N5](03-config-notes.md#n5--ci-workflows) lists six, including a step in `update.yml` that can never re-apply commits, an unpinned action in `verify_configurations.yml`, and a formatting check that could use the `formatter` you add in Step 2.
 
 **9d. A template for new features.** voidarc keeps `modules/empty.nix` so a new feature starts from a known shape. Yours should start with an underscore so import-tree ignores it:
 
@@ -2078,7 +2080,7 @@ flake.modules.homeManager.base = { … };    # the second, without the option an
 | `path '…/secrets.yaml' does not exist`, or any missing path in the flake source | The file is not tracked by git (flakes only see tracked files), or a relative path is stale after a move. | `git add` it; recheck `../..` depth from the file's new location. |
 | A file you did not expect is active | import-tree imports everything under `modules/`: dead code has become live. | Delete it, or `_` prefix it (Step 2e). |
 | `jq: error … null (null) has no keys` in `verify_configurations.yml` | The flake defines no `nixosConfigurations`. | Step 4. |
-| Hyprland compiles from source on every update | Hyprland's `nixpkgs` input follows yours, so the Cachix cache does not match. | See "Where you are now". |
+| Hyprland compiles from source on every update | Hyprland's `nixpkgs` input follows yours, so the Cachix cache does not match. | Note [N1](03-config-notes.md#n1--hyprland-follows-your-nixpkgs). |
 
 ---
 
@@ -2099,5 +2101,5 @@ flake.modules.homeManager.base = { … };    # the second, without the option an
 
 - **Nothing was evaluated or built.** The environment I worked in has no route to nixos.org or the binary caches, so I could not install Nix. Snippets are therefore *reviewed against the sources*, not run. The likeliest defects are small: a missing argument, a stale relative path, an attribute I renamed in passing. Step 0 is the safety net, and Appendix C lists the errors I would expect first.
 - The claim that `nix.nix` will hit infinite recursion (audit item 1) is derived from reading `moduleWithSystem` and NixOS' `nixpkgs.nix`; I did not reproduce the error.
-- I assumed the versions your `flake.lock` pins behave like the sources I read (current `master` of each project as of 2026-09-29). If your lock is older, an option name may differ.
+- I assumed the versions your `flake.lock` pins behave like the sources I read (current `master` of each project as of 2026-09-29). If your lock is older, an option name may differ. The companion note [`03-config-notes.md`](03-config-notes.md) is the exception: it was checked against the exact revisions your lock pins (nixpkgs `6774f7bc`, home-manager `0b2f112`), and its "Method and limits" section says how.
 - Which host has which features (for example that `vm` is enabled nowhere) comes from reading your tree, not from evaluating it.
