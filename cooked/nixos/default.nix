@@ -8,7 +8,6 @@
   cfg = config.cooked;
 in {
   imports = [
-    ./dev.nix
     ./fonts.nix
     ./gnupg.nix
     ./network.nix
@@ -23,7 +22,6 @@ in {
     {
       cooked = {
         dbus.enable = lib.mkDefault true;
-        dev.enable = lib.mkDefault true;
         fonts.enable = lib.mkDefault true;
         gnupg.enable = lib.mkDefault true;
         locate.enable = lib.mkDefault true;
