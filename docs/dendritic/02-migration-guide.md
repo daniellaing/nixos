@@ -3,7 +3,7 @@
 ### A step-by-step guide
 
 *Report 2 of 2 · prepared 2026-09-29 · starting point: branch `dendritic`, commit `0e29b82`.
-Report 1, [`01-birds-eye-view.md`](01-birds-eye-view.md), explains the pattern and the example repositories. This guide assumes you have read its §0 to §2. A companion note, [`03-config-notes.md`](03-config-notes.md), covers findings about your repository that are unrelated to the pattern.*
+Report 1, [`01-birds-eye-view.md`](01-birds-eye-view.md), explains the pattern and the example repositories. This guide assumes you have read its §0 to §2. A companion note, [`03-config-notes.md`](03-config-notes.md), covers findings about your repository that are unrelated to the pattern. A fourth document, [`04-infra-style-design.md`](04-infra-style-design.md), redesigns this guide's decisions D1 to D5 around infra's typed-option model; §7 there lists what it supersedes.*
 
 ## How to use this guide
 

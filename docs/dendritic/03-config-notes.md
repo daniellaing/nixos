@@ -3,7 +3,7 @@
 ### Things I found in `daniellaing/nixos` that hold whatever layout it ends up with
 
 *Companion to the two reports · prepared 2026-09-29 · starting point: branch `dendritic`, commit `0e29b82`.
-Report 1: [`01-birds-eye-view.md`](01-birds-eye-view.md). Report 2: [`02-migration-guide.md`](02-migration-guide.md).*
+Report 1: [`01-birds-eye-view.md`](01-birds-eye-view.md). Report 2: [`02-migration-guide.md`](02-migration-guide.md). Report 4: [`04-infra-style-design.md`](04-infra-style-design.md).*
 
 While auditing your repository for the migration guide I noticed several things that have nothing to do with the dendritic pattern. Report 2 mentions three of them in one short paragraph ("Where you are now"). This note gives them, and the further ones I found when I looked properly, a fuller treatment: what it is, the evidence, why it matters, the options, a check you can run, and when to do it relative to the migration steps.
 
