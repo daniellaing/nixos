@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.development = {pkgs, ...}: {
+  modules.development = {pkgs, ...}: {
     programs.direnv = {
       enable = true;
       silent = true;
