@@ -1,25 +1,35 @@
-{moduleWithSystem, ...}: {
-  flake.nixosModules.nix = moduleWithSystem ({system, ...}: {
-    nix = {
-      settings = {
-        auto-optimise-store = true;
-        experimental-features = ["nix-command" "flakes"];
-        trusted-users = ["root" "@wheel"];
-        use-xdg-base-directories = true;
-      };
-      optimise = {
-        automatic = true;
-        dates = ["13:00" "20:00"];
-      };
-      gc = {
-        automatic = true;
-        dates = "daily";
-        options = "--delete-older-than 14d";
+{lib, ...}: {
+  modules.nix = {
+    options = {
+      test = lib.mkOption {
+        type = lib.types.str;
+        default = "test";
+        description = "Test option";
       };
     };
-    nixpkgs = {
-      config.allowUnfree = true;
-      hostPlatform = system;
+
+    config = {
+      nix = {
+        settings = {
+          auto-optimise-store = true;
+          experimental-features = ["nix-command" "flakes"];
+          trusted-users = ["root" "@wheel"];
+          use-xdg-base-directories = true;
+        };
+        optimise = {
+          automatic = true;
+          dates = ["13:00" "20:00"];
+        };
+        gc = {
+          automatic = true;
+          dates = "daily";
+          options = "--delete-older-than 14d";
+        };
+      };
+      # nixpkgs = {
+      #   config.allowUnfree = true;
+      #   hostPlatform = system;
+      # };
     };
-  });
+  };
 }
