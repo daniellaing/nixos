@@ -1,10 +1,6 @@
-{
-  inputs,
-  config,
-  ...
-}: {
+{inputs, ...}: {
   hosts.wsl.modules.hardware = {
-    imports = [inputs.nixos-wsl.nixosModules.default config.modules.nix];
+    imports = [inputs.nixos-wsl.nixosModules.default];
 
     nixpkgs.hostPlatform = "x86_64-linux";
 
