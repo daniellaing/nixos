@@ -4,6 +4,13 @@
       enable = true;
       silent = true;
     };
-    environment.systemPackages = with pkgs; [gnumake];
+
+    programs.git = {
+      enable = true;
+    };
+
+    environment.systemPackages = with pkgs; [
+      gnumake
+    ];
   };
 }
