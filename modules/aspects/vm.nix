@@ -1,16 +1,5 @@
 {
-  lib,
-  pkgs,
-  config,
-  ...
-}: let
-  cfg = config.cooked.vm;
-in {
-  options.cooked.vm = {
-    enable = lib.mkEnableOption "virtualisation";
-  };
-
-  config = lib.mkIf cfg.enable {
+  modules.vm = {pkgs, ...}: {
     virtualisation = {
       libvirtd = {
         enable = true;
