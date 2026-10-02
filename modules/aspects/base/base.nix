@@ -11,7 +11,11 @@
     pkgs,
     ...
   }: {
-    imports = [inputs.sops-nix.nixosModules.default] ++ (with config.modules; []);
+    imports =
+      [inputs.sops-nix.nixosModules.default]
+      ++ (with config.modules; [
+        xf86
+      ]);
 
     # ---   GnuPG   ---
     programs.gnupg.agent = {
