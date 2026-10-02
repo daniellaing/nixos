@@ -1,12 +1,16 @@
 {
-  self,
   config,
   inputs,
   rootPath,
+  moduleWithSystem,
   ...
 }: {
   # Base system configuration module
-  modules.base = {pkgs, ...}: {
+  modules.base = moduleWithSystem ({
+    self',
+    pkgs,
+    ...
+  }: {
     imports = [inputs.sops-nix.nixosModules.default] ++ (with config.modules; []);
 
     # ---   GnuPG   ---
@@ -47,8 +51,8 @@
         unzip
         wget
       ])
-      ++ (with self.packages; [
+      ++ (with self'.packages; [
         configure
       ]);
-  };
+  });
 }

@@ -1,5 +1,5 @@
 {
-  self,
+  config,
   lib,
   ...
 }: {
@@ -9,8 +9,9 @@
     timeZone = "Europe/London";
     locale = "en_GB.UTF-8";
 
-    modules = with self.modules; [
+    modules = with config.modules; [
       sudo
+      nix
     ];
   in {
     imports = [] ++ modules;
