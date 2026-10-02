@@ -20,10 +20,7 @@
       };
     };
 
-    # nixpkgs = {
-    #   config.allowUnfree = true;
-    #   hostPlatform = system;
-    # };
+    nixpkgs.config.allowUnfree = true;
 
     programs.nix-index-database = {
       enable = true;
