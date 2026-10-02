@@ -2,7 +2,6 @@
   imports = [
     ./git.nix
     ./hyprland.nix
-    ./nix-index.nix
     ./R.nix
     ./tmux.nix
     ./zsh.nix
