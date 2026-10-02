@@ -78,6 +78,13 @@
           set -ga update-environment TERM_PROGRAM
         '';
       };
+
+      # ---   Yazi   ---
+      programs.yazi = {
+        enable = true;
+        enableZshIntegration = true;
+        shellWrapperName = "y";
+      };
     };
   };
 }
