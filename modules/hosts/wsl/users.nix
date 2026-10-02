@@ -1,7 +1,7 @@
 {config, ...}: {
   hosts.wsl.users = {
     daniel = {
-      imports = [config.users.daniel.base];
+      imports = [config.users.daniel.core];
       users.users.daniel = {
         isNormalUser = true;
         description = "Daniel Laing";
