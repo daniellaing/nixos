@@ -1,5 +1,5 @@
 {
-  users.daniel.modules.shell-aliases = {
+  users.daniel.shell-aliases = {
     lib,
     pkgs,
     ...

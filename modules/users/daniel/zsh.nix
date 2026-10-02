@@ -4,7 +4,7 @@
       (with config.modules; [
         zsh
       ])
-      ++ (with config.users.daniel.modules; [
+      ++ (with config.users.daniel; [
         shell-aliases
       ]);
 
