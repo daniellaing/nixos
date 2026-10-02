@@ -1,6 +1,6 @@
 {
   users.daniel.zathura = {
-    programs.zathura = {
+    home-manager.users.daniel.programs.zathura = {
       enable = true;
       mappings = {
         u = "scroll half-up";
