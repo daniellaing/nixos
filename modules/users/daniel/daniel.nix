@@ -10,7 +10,11 @@
     };
   };
 
-  users.daniel.base = {pkgs, ...}: {
+  users.daniel.base = {
+    imports = with config.users.daniel; [
+      zsh
+    ];
+
     home-manager.users.daniel = {
       programs.tmux = {
         enable = true;
