@@ -3,6 +3,8 @@
   lib,
   ...
 }: {
+  # Core system configuration module
+  # The kind of stuff needed for even the most basic usability
   modules.core = {pkgs, ...}: let
     timeZone = "Europe/London";
     locale = "en_GB.UTF-8";

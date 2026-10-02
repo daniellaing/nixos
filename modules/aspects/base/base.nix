@@ -1,9 +1,11 @@
 {
+  self,
   config,
   inputs,
   rootPath,
   ...
 }: {
+  # Base system configuration module
   modules.base = {pkgs, ...}: {
     imports = [inputs.sops-nix.nixosModules.default] ++ (with config.modules; []);
 
@@ -39,10 +41,14 @@
     };
 
     # ---   Other packages   ---
-    environment.systemPackages = with pkgs; [
-      ripgrep
-      unzip
-      wget
-    ];
+    environment.systemPackages =
+      (with pkgs; [
+        ripgrep
+        unzip
+        wget
+      ])
+      ++ (with self.packages; [
+        configure
+      ]);
   };
 }
