@@ -1,4 +1,9 @@
-{config, ...}: {
+{
+  inputs',
+  config,
+  lib,
+  ...
+}: {
   users.daniel.core = {
     imports = with config.modules; [
       home-manager
@@ -15,7 +20,36 @@
       zsh
     ];
 
-    home-manager.users.daniel = {
+    home-manager.users.daniel = let
+      nvim = inputs'.my_neovim.packages.default;
+      nvimBin = lib.getBin nvim;
+    in {
+      # ---   Neovim   ---
+      home = {
+        packages = [nvim];
+        sessionVaribles = {
+          EDITOR = nvimBin;
+          SUDO_EDITOR = nvimBin;
+        };
+      };
+      xdg = {
+        desktopEntries = {
+          neovim = {
+            name = "Neovim";
+            genericName = "Text Editor";
+            comment = "Hyperextensible Vim-based text editor";
+            exec = nvimBin + " %U";
+            terminal = true;
+            categories = ["Utility" "TextEditor" "ConsoleOnly"];
+            mimeType = ["text/*"];
+          };
+        };
+        mimeApps.defaultApplications = {
+          "text/*" = "neovim.desktop";
+        };
+      };
+
+      # ---   tmux   ---
       programs.tmux = {
         enable = true;
         escapeTime = 10;

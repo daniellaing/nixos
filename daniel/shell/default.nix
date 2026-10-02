@@ -1,24 +1,11 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   c = config.xdg.configHome;
   d = config.xdg.dataHome;
 in {
-  imports = [
-    ./terminal.nix
-    ./editor.nix
-  ];
+  imports = [./terminal.nix];
 
   home = {
-    shellAliases = import ./aliases.nix {inherit lib pkgs;};
     sessionVariables = {
-      LESSHISTFILE = "-";
-      XCOMPOSEFILE = c + "/X11/xcompose";
-      XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
-
       # TeX
       TEXMFHOME = d + "/texmf";
       TEXMFVAR = "${config.xdg.cacheHome}/texlive/texmf-var";

@@ -1,8 +1,12 @@
 {config, ...}: {
   users.daniel.zsh = {pkgs, ...}: {
-    imports = with config.modules; [
-      zsh
-    ];
+    imports =
+      (with config.modules; [
+        zsh
+      ])
+      ++ (with config.users.daniel.modules; [
+        shell-aliases
+      ]);
 
     # Might need this
     # programs.zsh.promptInit = "source ''${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
@@ -10,6 +14,13 @@
     home-manager.users.daniel = {config, ...}: {
       home = {
         packages = [pkgs.zsh-powerlevel10k];
+        sessionVariables = {
+          GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+          LESSHISTFILE = "-";
+          XCOMPOSEFILE = "${config.xdg.configHome}" + "/X11/xcompose";
+          XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
+          CUDA_CACHE_PATH = "${config.xdg.cacheHome}/nv";
+        };
       };
 
       programs = {
@@ -23,9 +34,6 @@
           enableVteIntegration = true;
           history.path = "${config.xdg.stateHome}/zsh/zsh_history";
           envExtra = ''
-            # ---   Cleanup   ---
-            # export GNUPGHOME="''${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
-
             # ---   Colour man pages   ---
             export LESS_TERMCAP_mb=$'\e[1;32m'
             export LESS_TERMCAP_md=$'\e[1;32m'
