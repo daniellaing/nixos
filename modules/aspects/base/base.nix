@@ -1,7 +1,5 @@
 {
   config,
-  inputs,
-  rootPath,
   moduleWithSystem,
   ...
 }: {
@@ -11,11 +9,10 @@
     pkgs,
     ...
   }: {
-    imports =
-      [inputs.sops-nix.nixosModules.default]
-      ++ (with config.modules; [
-        xf86
-      ]);
+    imports = with config.modules; [
+      sops
+      xf86
+    ];
 
     # ---   GnuPG   ---
     programs.gnupg.agent = {
@@ -39,13 +36,6 @@
         nssmdns4 = true;
         openFirewall = true;
       };
-    };
-
-    # --- Sops   ---
-    sops = {
-      defaultSopsFile = rootPath + "/secrets.yaml";
-      defaultSopsFormat = "yaml";
-      age.keyFile = "/home/daniel/.config/sops/age/keys.txt"; # TODO: Improve this line
     };
 
     # ---   Other packages   ---

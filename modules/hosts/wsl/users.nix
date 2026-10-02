@@ -5,6 +5,8 @@
         core
         base
 
+        music
+
         development
         zsh
       ];
