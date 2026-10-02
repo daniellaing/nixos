@@ -62,21 +62,13 @@ in {
     };
   };
 
-  config = {
-    flake.nixosConfigurations = lib.mapAttrs (_hostname: {configuration, ...}: configuration) config.hosts;
+  config.flake = {
+    nixosConfigurations = lib.mapAttrs (_hostname: {configuration, ...}: configuration) config.hosts;
 
-    flake.nixosModules =
-      lib.concatMapAttrs (
-        host: {
-          configuration,
-          modules,
-          users,
-          ...
-        }:
-          {"${host}-configuration" = configuration;}
-          // lib.mapAttrs' (name: module: lib.nameValuePair "${host}-${name}" module) modules
-          // lib.mapAttrs' (user: module: lib.nameValuePair "${host}-${user}" module) users
-      )
-      config.hosts;
+    checks = lib.mkMerge (lib.mapAttrsToList (host: {configuration, ...}:
+      lib.setAttrByPath
+      [configuration.pkgs.stdenv.hostPlatform.system host]
+      configuration.config.system.build.toplevel)
+    config.hosts);
   };
 }

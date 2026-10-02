@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   options = {
     modules = lib.mkOption {
       type = lib.types.lazyAttrsOf lib.types.deferredModule;
@@ -10,9 +6,5 @@
         Set of defined NixOS modules.
       '';
     };
-  };
-
-  config = {
-    flake.nixosModules = config.modules;
   };
 }
