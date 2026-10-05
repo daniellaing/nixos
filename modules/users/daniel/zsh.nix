@@ -11,6 +11,7 @@
     # Might need this
     # programs.zsh.promptInit = "source ''${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
+    users.users.daniel.shell = pkgs.zsh;
     home-manager.users.daniel = {config, ...}: {
       home = {
         packages = [pkgs.zsh-powerlevel10k];
