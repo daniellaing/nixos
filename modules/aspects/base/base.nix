@@ -42,6 +42,7 @@
     # ---   Other packages   ---
     environment.systemPackages =
       (with pkgs; [
+        curl
         ripgrep
         unzip
         wget
