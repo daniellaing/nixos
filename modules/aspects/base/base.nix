@@ -11,6 +11,7 @@
   }: {
     imports = with config.modules; [
       sops
+      syncthing
       xf86
     ];
 
