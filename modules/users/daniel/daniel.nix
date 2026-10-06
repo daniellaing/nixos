@@ -15,6 +15,7 @@
       home = {
         inherit homeDirectory;
         username = "daniel";
+        stateVersion = "23.05";
       };
 
       xdg = {
@@ -43,7 +44,11 @@
 
   users.daniel.base =
     moduleWithSystem
-    ({inputs', ...}: {
+    ({
+      inputs',
+      pkgs,
+      ...
+    }: {
       imports = with config.users.daniel; [
         zsh
       ];
@@ -113,6 +118,14 @@
           enableZshIntegration = true;
           shellWrapperName = "y";
         };
+
+        # ---   Other packages   ---
+        packages = with pkgs; [
+          btop
+          yt-dlp
+          keepassxc
+          vimv
+        ];
       };
     });
 }

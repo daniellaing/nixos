@@ -17,7 +17,12 @@
     imports = [] ++ modules;
 
     # ---   Fonts   ---
-    fonts.packages = lib.filter lib.attrsets.isDerivation (lib.attrValues pkgs.nerd-fonts);
+    fonts.packages =
+      (lib.filter lib.attrsets.isDerivation (lib.attrValues pkgs.nerd-fonts))
+      ++ (with pkgs; [
+        alegreya
+        alegreya-sans
+      ]);
 
     # ---   Locale   ---
     time = {inherit timeZone;};
