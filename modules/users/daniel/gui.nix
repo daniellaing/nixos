@@ -4,6 +4,7 @@
     imports = with config.users.daniel; [
       dunst
       firefox
+      mpv
       zathura
     ];
   };

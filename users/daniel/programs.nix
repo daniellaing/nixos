@@ -33,22 +33,6 @@ in {
       templates = h + "/archive/templates";
       videos = h + "/archive/media/video";
     };
-
-    desktopEntries = {
-      mpv = {
-        name = "mpv";
-        genericName = "Video Player";
-        comment = "A free, open-source, cross-platform video player";
-        exec = "mpv %U";
-        icon = "mpv";
-        type = "Application";
-        categories = ["Player" "Video"];
-        mimeType = ["video/*"];
-      };
-    };
-    mimeApps.defaultApplications = {
-      "video/*" = "mpv.desktop";
-    };
   };
   # };
 }
