@@ -9,9 +9,35 @@
       home-manager
     ];
 
-    home-manager.users.daniel.home = {
-      username = "daniel";
+    home-manager.users.daniel = let
       homeDirectory = "/home/daniel";
+    in {
+      home = {
+        inherit homeDirectory;
+        username = "daniel";
+      };
+
+      xdg = {
+        enable = true;
+
+        userDirs.setSessionVariables = false;
+        cacheHome = homeDirectory + "/.cache";
+        configHome = homeDirectory + "/.config";
+        dataHome = homeDirectory + "/.local/share";
+        stateHome = homeDirectory + "/.local/state";
+        userDirs = {
+          enable = true;
+          createDirectories = true;
+          desktop = homeDirectory + "";
+          documents = homeDirectory + "/archive";
+          download = homeDirectory + "/downloads";
+          music = homeDirectory + "/archive/media/music";
+          pictures = homeDirectory + "/archive/media/pictures";
+          publicShare = homeDirectory + "/archive/public";
+          templates = homeDirectory + "/archive/templates";
+          videos = homeDirectory + "/archive/media/video";
+        };
+      };
     };
   };
 
