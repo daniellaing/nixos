@@ -7,13 +7,20 @@
     lib,
     pkgs,
     ...
-  }: {
+  }: let
+    firefoxBin = lib.getBin pkgs.firefox;
+  in {
+    imports = with config.modules; [
+      xf86
+    ];
+
     # NUR overlay
     nixpkgs.overlays = [inputs.nur.overlays.default];
 
     home-manager.users.daniel = {config, ...}: {
       imports = with outer.config.users.daniel; [bookmarks];
-      home.sessionVariables.BROWSER = lib.getBin pkgs.firefox;
+      home.sessionVariables.BROWSER = firefoxBin;
+      xf86.WWW = firefoxBin;
 
       programs.firefox = {
         enable = true;

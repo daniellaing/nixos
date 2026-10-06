@@ -49,9 +49,13 @@
       pkgs,
       ...
     }: {
-      imports = with config.users.daniel; [
-        zsh
-      ];
+      imports =
+        (with config.modules; [
+          xf86
+        ])
+        ++ (with config.users.daniel; [
+          zsh
+        ]);
 
       home-manager.users.daniel = let
         nvim = inputs'.my_neovim.packages.default;
@@ -118,6 +122,7 @@
           enableZshIntegration = true;
           shellWrapperName = "y";
         };
+        xf86.explorer = lib.getBin pkgs.yazi;
 
         # ---   Other packages   ---
         packages = with pkgs; [
