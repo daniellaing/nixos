@@ -1,15 +1,9 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  # home-manager.users.daniel = {
+{pkgs, ...}: {
   home = {
     packages = builtins.attrValues {
       inherit
         (pkgs)
         ffmpeg-full
-        steam
         ;
     };
   };
