@@ -27,6 +27,10 @@ in {
               Set of users in the host.
             '';
             default = {};
+            apply = lib.mapAttrs (user: module: {
+              key = "hosts:${name}:users:${user}";
+              imports = [module];
+            });
           };
 
           modules = lib.mkOption {
@@ -35,6 +39,10 @@ in {
               Set of modules in the host.
             '';
             default = {};
+            apply = lib.mapAttrs (mname: module: {
+              key = "hosts:${name}:modules:${mname}";
+              imports = [module];
+            });
           };
 
           # The final, evaluated NixOS system config

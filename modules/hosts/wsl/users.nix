@@ -7,6 +7,7 @@
 
         music
 
+        zsh
         development
         zsh
       ];
