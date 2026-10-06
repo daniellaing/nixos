@@ -3,6 +3,7 @@
   users.daniel.gui = {
     imports = with config.users.daniel; [
       dunst
+      firefox
       zathura
     ];
   };
