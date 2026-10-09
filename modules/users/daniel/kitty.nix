@@ -1,10 +1,17 @@
-{
+{config, ...} @ outer: {
   users.daniel.kitty = {
+    config,
+    lib,
+    ...
+  }: {
+    imports = with outer.config.modules; [xf86];
+
     home-manager.users.daniel = {
       home.sessionVariables = {
         TERMINAL = "xterm-256color";
         TERM = "xterm-256color";
       };
+      xf86.terminal = lib.getBin config.programs.kitty.package;
 
       kitty = {
         enable = true;
