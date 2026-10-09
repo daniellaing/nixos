@@ -15,12 +15,9 @@
     users.users.daniel.shell = pkgs.zsh;
     home-manager.users.daniel = {config, ...}: {
       home = {
-        packages = [pkgs.zsh-powerlevel10k];
         sessionVariables = {
           GNUPGHOME = "${config.xdg.dataHome}/gnupg";
           LESSHISTFILE = "-";
-          XCOMPOSEFILE = "${config.xdg.configHome}" + "/X11/xcompose";
-          XCOMPOSECACHE = "${config.xdg.cacheHome}/X11/xcompose";
           CUDA_CACHE_PATH = "${config.xdg.cacheHome}/nv";
         };
       };
@@ -47,27 +44,39 @@
             export LESS_TERMCAP_us=$'\e[1;4;31m'
           '';
 
-          initContent = ''
-            # Set prompt
-            source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-            [[ ! -f ${dotDir}/.p10k.zsh ]] || source ${dotDir}/.p10k.zsh
+          initContent = lib.mkMerge [
+            (lib.mkOrder 500 ''
+              (( ''${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
 
-            setopt autocd
-            setopt autopushd
-
-            fancy-ctrl-z () {
-              if [[ $#BUFFER -eq 0 ]]; then
-                fg
-                zle redisplay
-              else
-                zle push-input
+              if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+                source "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh"
               fi
-            }
-            zle -N fancy-ctrl-z
-            bindkey '^Z' fancy-ctrl-z
 
-            compinit -d ${config.xdg.cacheHome}/zsh/zcompdump-"$ZSH_VERSION"
-          '';
+              (( ''${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
+            '')
+
+            ''
+              # Set prompt
+              source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+              [[ ! -f ${dotDir}/.p10k.zsh ]] || source ${dotDir}/.p10k.zsh
+
+              setopt autocd
+              setopt autopushd
+
+              fancy-ctrl-z () {
+                if [[ $#BUFFER -eq 0 ]]; then
+                  fg
+                  zle redisplay
+                else
+                  zle push-input
+                fi
+              }
+              zle -N fancy-ctrl-z
+              bindkey '^Z' fancy-ctrl-z
+
+              compinit -d ${config.xdg.cacheHome}/zsh/zcompdump-"$ZSH_VERSION"
+            ''
+          ];
         };
       };
     };
