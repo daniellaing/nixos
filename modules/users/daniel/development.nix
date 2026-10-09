@@ -4,7 +4,7 @@
       development
     ];
 
-    home-manager.users.daniel.home = {
+    home-manager.users.daniel = {
       programs.git = {
         enable = true;
         settings = {

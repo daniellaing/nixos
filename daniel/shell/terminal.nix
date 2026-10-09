@@ -10,45 +10,6 @@ in {
   config = {
     programs = {
       terminal = "${pkgs.kitty}/bin/kitty";
-
-      kitty = {
-        enable = true;
-        extraConfig = ''
-          box_drawing_scale 0.001, 1, 1.5, 2
-          window_margin_width 10
-          confirm_os_window_close 0
-          foreground            #${col.base05}
-          background            #${col.base00}
-          selection_foreground  #${col.base05}
-          selection_background  #${col.base02}
-          cursor                #${col.base05}
-
-          color0   #${col.base01}
-          color8   #${col.base02}
-
-          color1   #${col.base0E}
-          color9   #${col.base0E}
-
-          color2   #${col.base0D}
-          color10  #${col.base0D}
-
-          color3   #${col.base0A}
-          color11  #${col.base0A}
-
-          color4  #${col.base08}
-          color12 #${col.base08}
-
-          color5   #${col.base09}
-          color13  #${col.base09}
-
-          color6   #${col.base0B}
-          color14  #${col.base0B}
-
-          color7   #${col.base07}
-          color15  #${col.base07}
-        '';
-      };
-
       alacritty = {
         enable = true;
         settings = {
@@ -90,9 +51,6 @@ in {
         };
       };
     };
-
-    home.sessionVariables.TERMINAL = "xterm-256color";
-    home.sessionVariables.TERM = "xterm-256color";
   };
 
   options.programs = {

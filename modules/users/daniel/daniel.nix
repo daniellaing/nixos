@@ -54,6 +54,7 @@
           xf86
         ])
         ++ (with config.users.daniel; [
+          basePkgs
           zsh
         ]);
 
@@ -123,14 +124,16 @@
           shellWrapperName = "y";
         };
         xf86.explorer = lib.getBin pkgs.yazi;
-
-        # ---   Other packages   ---
-        packages = with pkgs; [
-          btop
-          yt-dlp
-          keepassxc
-          vimv
-        ];
       };
     });
+
+  users.daniel.basePkgs = {pkgs, ...}: {
+    # ---   Other packages   ---
+    home-manager.users.daniel.home.packages = with pkgs; [
+      btop
+      yt-dlp
+      keepassxc
+      vimv
+    ];
+  };
 }

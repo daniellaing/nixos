@@ -22,6 +22,7 @@
         audioRewind = "${mpc} seek 0";
         audioRepeat = "${mpc} repeat";
         audioRandomPlay = "${mpc} random";
+        music = config.openInTerminal (lib.getBin config.programs.ncmpcpp.package);
       };
 
       services = {
