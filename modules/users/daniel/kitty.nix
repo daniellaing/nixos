@@ -11,7 +11,7 @@
         TERMINAL = "xterm-256color";
         TERM = "xterm-256color";
       };
-      xf86.terminal = lib.getBin config.programs.kitty.package;
+      xf86.terminal = lib.getExe config.programs.kitty.package;
 
       kitty = {
         enable = true;

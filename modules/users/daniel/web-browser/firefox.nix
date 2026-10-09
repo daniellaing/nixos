@@ -4,13 +4,14 @@
   ...
 } @ outer: {
   users.daniel.firefox = {
+    config,
     lib,
     pkgs,
     ...
   }: let
-    firefoxBin = lib.getBin pkgs.firefox;
+    firefoxBin = lib.getExe config.programs.firefox.package;
   in {
-    imports = with config.modules; [
+    imports = with outer.config.modules; [
       xf86
     ];
 

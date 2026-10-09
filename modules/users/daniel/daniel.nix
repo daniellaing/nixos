@@ -60,7 +60,7 @@
 
       home-manager.users.daniel = let
         nvim = inputs'.my_neovim.packages.default;
-        nvimBin = lib.getBin nvim;
+        nvimBin = lib.getExe nvim;
       in {
         # ---   Neovim   ---
         home = {
@@ -123,7 +123,7 @@
           enableZshIntegration = true;
           shellWrapperName = "y";
         };
-        xf86.explorer = lib.getBin pkgs.yazi;
+        xf86.explorer = lib.getExe pkgs.yazi;
       };
     });
 
