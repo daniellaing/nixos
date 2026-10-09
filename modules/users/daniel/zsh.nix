@@ -28,6 +28,7 @@
         zsh = let
           dotDir = "${config.xdg.configHome}/zsh";
         in {
+          inherit dotDir;
           enable = true;
           syntaxHighlighting.enable = true;
           autosuggestion.enable = true;
