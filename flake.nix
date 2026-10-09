@@ -73,6 +73,8 @@
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       _module.args.rootPath = ./.;
       imports = [(inputs.import-tree ./modules)];
+      flake.templates = import ./templates inputs;
+
       systems = ["x86_64-linux"]; # TODO: Remove
     };
 }
