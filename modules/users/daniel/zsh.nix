@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   users.daniel.zsh = {pkgs, ...}: {
     imports =
       (with config.modules; [
@@ -7,9 +11,6 @@
       ++ (with config.users.daniel; [
         shell-aliases
       ]);
-
-    # Might need this
-    # programs.zsh.promptInit = "source ''${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
     users.users.daniel.shell = pkgs.zsh;
     home-manager.users.daniel = {config, ...}: {
@@ -45,8 +46,10 @@
             export LESS_TERMCAP_ue=$'\e[0m'
             export LESS_TERMCAP_us=$'\e[1;4;31m'
           '';
+
           initContent = ''
             # Set prompt
+            source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
             [[ ! -f ${dotDir}/.p10k.zsh ]] || source ${dotDir}/.p10k.zsh
 
             setopt autocd
