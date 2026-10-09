@@ -33,6 +33,7 @@
           defaultKeymap = "viins";
           enableVteIntegration = true;
           history.path = "${config.xdg.stateHome}/zsh/zsh_history";
+          completionInit = "autoload -U compinit && compinit -d ${config.xdg.cacheHome}/zsh/zcompdump-${config.programs.zsh.package.version}";
           envExtra = ''
             # ---   Colour man pages   ---
             export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -46,8 +47,6 @@
 
           initContent = lib.mkMerge [
             (lib.mkOrder 500 ''
-              (( ''${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
-
               if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
                 source "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh"
               fi
@@ -74,7 +73,6 @@
               zle -N fancy-ctrl-z
               bindkey '^Z' fancy-ctrl-z
 
-              compinit -d ${config.xdg.cacheHome}/zsh/zcompdump-"$ZSH_VERSION"
             ''
           ];
         };
