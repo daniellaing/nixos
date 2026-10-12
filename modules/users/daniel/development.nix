@@ -7,13 +7,14 @@
     home-manager.users.daniel = {
       programs.git = {
         enable = true;
+        signing = {
+          key = "08218B96DC7385E5BB7CA535D2643BD213BC0FA8";
+          signByDefault = true;
+        };
+
         settings = {
           user.email = "daniel@daniellaing.com";
           user.name = "Daniel Laing";
-          signing = {
-            key = "08218B96DC7385E5BB7CA535D2643BD213BC0FA8";
-            signByDefault = true;
-          };
           alias = {
             pa = "!git remote | ${pkgs.findutils}/bin/xargs -L1 git push --all";
             cpa = "!f() { git commit \"$@\" && git pa; }; f";
