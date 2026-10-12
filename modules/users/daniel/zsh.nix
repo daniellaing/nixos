@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   users.daniel.zsh = {pkgs, ...}: {
     imports =
       (with config.modules; [
@@ -13,27 +9,39 @@
       ]);
 
     users.users.daniel.shell = pkgs.zsh;
-    home-manager.users.daniel = {config, ...}: {
+    home-manager.users.daniel = {
+      config,
+      lib,
+      ...
+    }: let
+      dotDir = "${config.xdg.configHome}/zsh";
+      cacheDir = "${config.xdg.cacheHome}/zsh";
+      stateDir = "${config.xdg.stateHome}/zsh";
+    in {
       home = {
         sessionVariables = {
           GNUPGHOME = "${config.xdg.dataHome}/gnupg";
           LESSHISTFILE = "-";
           CUDA_CACHE_PATH = "${config.xdg.cacheHome}/nv";
         };
+
+        # Create directories we will need
+        activation.prepareZshCompletionCache = lib.hm.dag.entryAfter ["writeBoundary"] ''
+          run ${lib.getExe' pkgs.coreutils "mkdir"} -p -m 0700 -- ${lib.escapeShellArg cacheDir}
+          run ${lib.getExe' pkgs.coreutils "mkdir"} -p -m 0700 -- ${lib.escapeShellArg stateDir}
+        '';
       };
 
       programs = {
-        zsh = let
-          dotDir = "${config.xdg.configHome}/zsh";
-        in {
+        zsh = {
           inherit dotDir;
           enable = true;
           syntaxHighlighting.enable = true;
           autosuggestion.enable = true;
           defaultKeymap = "viins";
           enableVteIntegration = true;
-          history.path = "${config.xdg.stateHome}/zsh/zsh_history";
-          completionInit = "autoload -U compinit && compinit -d ${config.xdg.cacheHome}/zsh/zcompdump-${config.programs.zsh.package.version}";
+          history.path = "${stateDir}/zsh_history";
+          completionInit = "autoload -Uz compinit && compinit -d ${cacheDir}/zcompdump-${config.programs.zsh.package.version}";
           envExtra = ''
             # ---   Colour man pages   ---
             export LESS_TERMCAP_mb=$'\e[1;32m'
