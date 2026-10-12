@@ -4,6 +4,10 @@
   moduleWithSystem,
   ...
 }: {
+  flake-file.inputs.my_neovim = {
+    url = "github:daniellaing/neovim";
+  };
+
   users.daniel.core = {
     imports = with config.modules; [
       home-manager

@@ -3,6 +3,10 @@
   rootPath,
   ...
 }: {
+  flake-file.inputs.sops-nix = {
+    url = "github:Mic92/sops-nix";
+  };
+
   modules.sops = {
     imports = [inputs.sops-nix.nixosModules.default];
 

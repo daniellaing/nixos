@@ -1,4 +1,8 @@
 {inputs, ...}: {
+  flake-file.inputs.home-manager = {
+    url = "github:nix-community/home-manager";
+  };
+
   modules.home-manager = {
     imports = [inputs.home-manager.nixosModules.home-manager];
 

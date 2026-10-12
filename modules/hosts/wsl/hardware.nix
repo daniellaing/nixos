@@ -1,4 +1,8 @@
 {inputs, ...}: {
+  flake-file.inputs.nixos-wsl = {
+    url = "github:nix-community/NixOS-WSL/main";
+  };
+
   hosts.wsl.modules.hardware = {
     imports = [inputs.nixos-wsl.nixosModules.default];
 

@@ -3,6 +3,10 @@
   inputs,
   ...
 } @ outer: {
+  flake-file.inputs.nur = {
+    url = "github:nix-community/NUR";
+  };
+
   users.daniel.firefox = {
     config,
     lib,

@@ -1,4 +1,18 @@
 {inputs, ...}: {
+  flake-file.inputs = {
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+
+    nixpkgs-stable = {
+      url = "github:NixOS/nixpkgs/nixos-26.05";
+    };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+    };
+  };
+
   modules.nix = {
     imports = [inputs.nix-index-database.nixosModules.nix-index];
 
