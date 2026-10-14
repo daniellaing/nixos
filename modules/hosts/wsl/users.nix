@@ -6,8 +6,10 @@
         base
 
         development
+        syncthing
         zsh
       ];
+
       users.users.daniel = {
         isNormalUser = true;
         description = "Daniel Laing";
