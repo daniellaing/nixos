@@ -1,3 +1,0 @@
-# Neomutt
-# IMAP Settings
-set connect_timeout         = 60                # Timeout after this many seconds
