@@ -11,7 +11,7 @@
       config,
       ...
     }: let
-      mpc = lib.genBin pkgs.mpc;
+      mpc = lib.getExe pkgs.mpc;
     in {
       xf86 = {
         audioPlay = "${mpc} toggle";

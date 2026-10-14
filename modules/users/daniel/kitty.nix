@@ -6,14 +6,17 @@
   }: {
     imports = with outer.config.modules; [xf86];
 
-    home-manager.users.daniel = {
+    home-manager.users.daniel = {config, ...}: let
+      kittyBin = lib.getExe config.programs.kitty.package;
+    in {
       home.sessionVariables = {
         TERMINAL = "xterm-256color";
         TERM = "xterm-256color";
       };
-      xf86.terminal = lib.getExe config.programs.kitty.package;
+      xf86.terminal = kittyBin;
+      openInTerminal = cmd: "${kittyBin} ${cmd}";
 
-      kitty = {
+      programs.kitty = {
         enable = true;
         extraConfig = ''
           box_drawing_scale 0.001, 1, 1.5, 2

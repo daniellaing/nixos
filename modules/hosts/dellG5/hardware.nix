@@ -74,6 +74,10 @@
     # Protect hard drive if laptop falls
     services.hdapsd.enable = true;
 
+    # Catch all for hardware and firmware
+    hardware.enableAllHardware = true;
+    hardware.enableAllFirmware = true;
+
     # Enable bluetooth
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;

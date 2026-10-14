@@ -8,6 +8,8 @@
     imports = with config.users.daniel; [
       dunst
       firefox
+      kitty
+      mangowm
       mpv
       zathura
     ];

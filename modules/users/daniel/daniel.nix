@@ -59,6 +59,7 @@
         ])
         ++ (with config.users.daniel; [
           basePkgs
+          syncthing
           zsh
         ]);
 

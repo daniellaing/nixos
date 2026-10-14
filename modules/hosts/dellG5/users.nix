@@ -15,6 +15,7 @@
         description = "Daniel Laing";
         extraGroups = [
           "wheel"
+          "networkmanager"
         ];
       };
     };
