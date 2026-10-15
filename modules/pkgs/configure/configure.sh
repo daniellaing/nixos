@@ -24,4 +24,5 @@ git commit -a
 nh os boot "$cfgdir"
 
 cd - || exit
-notify-send -e -a "NixOS Rebuild" "Success!\nReboot for changes to take effect"
+notify-send -e -a "NixOS Rebuild" "Success!
+Reboot for changes to take effect"
