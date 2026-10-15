@@ -63,6 +63,11 @@
         ]);
 
       home-manager.users.daniel = lib.mkMerge [
+        # Bat pager
+        {
+          home.sessionVariables.PAGER = lib.getExe pkgs.bat;
+        }
+
         (
           # ---   Neovim   ---
           let
