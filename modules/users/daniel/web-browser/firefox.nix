@@ -25,7 +25,7 @@
     home-manager.users.daniel = {config, ...}: {
       imports = with outer.config.users.daniel; [bookmarks];
       home.sessionVariables.BROWSER = firefoxBin;
-      xf86.WWW = firefoxBin;
+      xf86.WWW.cmd = firefoxBin;
 
       programs.firefox = {
         enable = true;

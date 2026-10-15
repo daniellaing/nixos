@@ -140,7 +140,7 @@
             enableZshIntegration = true;
             shellWrapperName = "y";
           };
-          xf86.explorer = lib.getExe pkgs.yazi;
+          xf86.explorer.cmd = lib.getExe pkgs.yazi;
         }
 
         # ---   Other packages   ---

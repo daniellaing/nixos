@@ -13,7 +13,7 @@
         TERMINAL = "xterm-256color";
         TERM = "xterm-256color";
       };
-      xf86.terminal = kittyBin;
+      xf86.terminal.cmd = kittyBin;
       openInTerminal = cmd: "${kittyBin} ${cmd}";
 
       programs.kitty = {

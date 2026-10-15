@@ -14,15 +14,15 @@
       mpc = lib.getExe pkgs.mpc;
     in {
       xf86 = {
-        audioPlay = "${mpc} toggle";
-        audioPause = "${mpc} pause";
-        audioStop = "${mpc} pause";
-        audioPrev = "${mpc} prev";
-        audioNext = "${mpc} next";
-        audioRewind = "${mpc} seek 0";
-        audioRepeat = "${mpc} repeat";
-        audioRandomPlay = "${mpc} random";
-        music = config.openInTerminal (lib.getExe config.programs.ncmpcpp.package);
+        audioPlay.cmd = "${mpc} toggle";
+        audioPause.cmd = "${mpc} pause";
+        audioStop.cmd = "${mpc} pause";
+        audioPrev.cmd = "${mpc} prev";
+        audioNext.cmd = "${mpc} next";
+        audioRewind.cmd = "${mpc} seek 0";
+        audioRepeat.cmd = "${mpc} repeat";
+        audioRandomPlay.cmd = "${mpc} random";
+        music.cmd = config.openInTerminal (lib.getExe config.programs.ncmpcpp.package);
       };
 
       services = {

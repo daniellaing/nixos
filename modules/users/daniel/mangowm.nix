@@ -31,24 +31,24 @@
         binds=${mod},j,focusstack,next
         binds=${mod},k,focusstack,prev
         # binds=${mod},l,
-        binds=${mod},m,spawn,${config.xf86.music}
+        binds=${mod},m,spawn,${config.xf86.music.cmd}
         # binds=${mod},n,
         # binds=${mod},o,
-        binds=${mod},p,spawn,${config.xf86.audioPlay}
+        binds=${mod},p,spawn,${config.xf86.audioPlay.cmd}
         binds=${mod},q,killclient
         # binds=${mod},r,
         # binds=${mod},s,
         # binds=${mod},t,
         # binds=${mod},u,
         # binds=${mod},v,
-        binds=${mod},w,spawn,$BROWSER
-        binds=${mod},x,spawn,${config.xf86.explorer}
+        binds=${mod},w,spawn,${config.xf86.WWW.cmd}
+        binds=${mod},x,spawn,${config.xf86.explorer.cmd}
         # binds=${mod},y,
         # binds=${mod},z,
 
-        binds=${mod},comma,spawn,${config.xf86.audioPrev}
-        binds=${mod},period,spawn,${config.xf86.audioNext}
-        bind=${mod},Return,spawn,${config.xf86.terminal}
+        binds=${mod},comma,spawn,${config.xf86.audioPrev.cmd}
+        binds=${mod},period,spawn,${config.xf86.audioNext.cmd}
+        bind=${mod},Return,spawn,${config.xf86.terminal.cmd}
         bind=ALT,Space,spawn_shell,wofi -S drun -I
 
         bind=${mod},1,view,1
