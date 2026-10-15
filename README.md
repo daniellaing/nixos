@@ -1,10 +1,7 @@
 # Daniel Laing's System Configuration
 
-Todo...
+## Ideas
 
-## Refactor
-
-#### New
-
-- nixos and daniel -> cooked
-- daniel ->  users/daniel
+- Nix apps
+  - List defined modules: user modules, system modules
+- Add module options to handle dependencies, system vs user
