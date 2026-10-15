@@ -12,6 +12,7 @@
       enable = true;
       defaultUser = "daniel";
       startMenuLaunchers = true;
+      ssh-agent.enable = true; # Enables ssh passthrough to Windows
     };
   };
 }

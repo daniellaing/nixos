@@ -1,5 +1,9 @@
 {config, ...} @ outer: {
-  hosts.wsl.modules.system = {config, ...}: {
+  hosts.wsl.modules.system = {
+    config,
+    lib,
+    ...
+  }: {
     system.stateVersion = "23.05"; # Do not change, ever
     imports = with outer.config.modules; [
       core
@@ -10,6 +14,8 @@
       home-manager
       zsh
     ];
+
+    networking.networkmanager.enable = lib.mkForce false;
 
     sops.secrets.svn-passwd = {
       owner = config.users.users.daniel.name;
