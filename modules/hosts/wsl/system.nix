@@ -21,5 +21,8 @@
       owner = config.users.users.daniel.name;
       group = config.users.users.daniel.group;
     };
+
+    # Fixes that weird issue with nvim on wsl
+    environment.sessionVariables.NVIM_NOTTYFAST = 1;
   };
 }
