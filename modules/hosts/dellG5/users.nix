@@ -7,8 +7,8 @@
         gui
 
         development
-        email
         music
+        thunderbird
         zsh
       ];
 

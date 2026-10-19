@@ -1,5 +1,5 @@
 {config, ...}: {
-  users.daniel.email = {
+  users.daniel.emailAccounts = {
     imports = with config.users.daniel; [pass];
 
     home-manager.users.daniel = {
@@ -40,7 +40,7 @@
             msmtp.enable = true;
             neomutt.enable = true;
             notmuch.enable = true;
-            thunderbird.enable = true;
+            # thunderbird.enable = true;
           }
           overrides);
     in {
@@ -84,17 +84,6 @@
             };
           })
         ];
-      };
-
-      programs = {
-        mbsync.enable = true;
-        msmtp.enable = true;
-        neomutt.enable = true;
-        notmuch.enable = true;
-      };
-
-      services.mbsync = {
-        enable = true;
       };
     };
   };
