@@ -40,7 +40,7 @@
             msmtp.enable = true;
             neomutt.enable = true;
             notmuch.enable = true;
-            # thunderbird.enable = true;
+            thunderbird.enable = true;
           }
           overrides);
     in {

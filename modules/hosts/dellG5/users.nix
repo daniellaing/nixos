@@ -12,7 +12,6 @@
         zsh
       ];
 
-      programs.thunderbird.enable = true;
       users.users.daniel = {
         isNormalUser = true;
         description = "Daniel Laing";
