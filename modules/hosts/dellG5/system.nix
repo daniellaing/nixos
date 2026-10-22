@@ -5,9 +5,10 @@
       core
       base
 
-      sddm
       development
       home-manager
+      sddm
+      sound
       zsh
     ];
   };
