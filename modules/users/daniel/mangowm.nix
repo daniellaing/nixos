@@ -95,7 +95,7 @@ in {
         binds=${mod},comma,spawn,${config.xf86.audioPrev.cmd}
         binds=${mod},period,spawn,${config.xf86.audioNext.cmd}
         bind=${mod},Return,spawn,${config.xf86.terminal.cmd}
-        bind=ALT,Space,spawn_shell,wofi -S drun -I
+        bind=ALT,Space,spawn,${lib.getExe pkgs.rofi} -show drun
 
         bind=${mod},1,view,1
         bind=${mod},2,view,2
