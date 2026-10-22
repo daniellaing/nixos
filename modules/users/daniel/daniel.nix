@@ -147,9 +147,10 @@
         {
           home.packages = with pkgs; [
             btop
-            yt-dlp
+            entr
             keepassxc
             vimv
+            yt-dlp
           ];
         }
       ];
