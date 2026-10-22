@@ -1,10 +1,10 @@
-{
-  modules.sound = {pkgs, ...}: {
-    # XF86 = {
-    #   audioLowerVolume = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-    #   audioMute = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-    #   audioRaiseVolume = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-    # };
+{config, ...}: {
+  modules.sound = {
+    lib,
+    pkgs,
+    ...
+  }: {
+    imports = with config.modules; [xf86];
 
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
@@ -24,5 +24,15 @@
         pavucontrol
         ;
     };
+
+    home-manager.sharedModules = [
+      {
+        xf86 = {
+          audioLowerVolume.cmd = "${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+          audioMute.cmd = "${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          audioRaiseVolume.cmd = "${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+        };
+      }
+    ];
   };
 }
