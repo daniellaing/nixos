@@ -13,6 +13,7 @@
         kitty
         mangowm
         mpv
+        quickshell
         waybar
         zathura
       ]);
