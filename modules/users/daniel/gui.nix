@@ -11,6 +11,7 @@
       kitty
       mangowm
       mpv
+      waybar
       zathura
     ];
 

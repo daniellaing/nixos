@@ -52,8 +52,6 @@ in {
       xdg.configFile."mango/config.conf".text = let
         mod = "SUPER";
       in ''
-        exec=pkill waybar; waybar
-
         animations=0
         cursor_hide_timeout=3
         cursor_hide_on_keypress=1
