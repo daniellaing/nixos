@@ -5,15 +5,17 @@
 }: {
   # Base stuff for a graphical interface
   users.daniel.gui = {pkgs, ...}: {
-    imports = with config.users.daniel; [
-      dunst
-      firefox
-      kitty
-      mangowm
-      mpv
-      waybar
-      zathura
-    ];
+    imports =
+      (with config.modules; [xf86])
+      ++ (with config.users.daniel; [
+        dunst
+        firefox
+        kitty
+        mangowm
+        mpv
+        waybar
+        zathura
+      ]);
 
     home-manager.sharedModules = [
       {
@@ -24,7 +26,7 @@
       }
     ];
 
-    home-manager.users.daniel = {
+    home-manager.users.daniel = {config, ...}: {
       home = {
         pointerCursor = {
           enable = true;
@@ -36,6 +38,13 @@
         packages = with pkgs; [
           imv
         ];
+      };
+
+      programs.rofi = {
+        enable = true;
+        settings = {
+          terminal = config.xf86.terminal.cmd;
+        };
       };
     };
   };
