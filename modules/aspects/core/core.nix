@@ -30,6 +30,7 @@
           ++ (with pkgs; [
             alegreya
             alegreya-sans
+            material-symbols
           ]);
       }
 
