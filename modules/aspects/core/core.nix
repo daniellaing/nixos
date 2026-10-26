@@ -12,6 +12,17 @@
     ];
 
     config = lib.mkMerge [
+      # ---   File systems   ---
+      {
+        # Will also include any file system types the host uses.
+        # For example, if the host has a partition formatted as ext4,
+        #   then ext4 will also be added to the supported file system types.
+        # These are additional types.
+        boot.supportedFilesystems = {
+          exfat = lib.mkForce true;
+        };
+      }
+
       # ---   Fonts   ---
       {
         fonts.packages =
