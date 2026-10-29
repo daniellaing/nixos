@@ -63,6 +63,7 @@
         ])
         ++ (with self'.packages; [
           configure
+          new-template
         ]);
     }))
   ];
