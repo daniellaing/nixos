@@ -10,6 +10,7 @@
 
       # Testing
       radicale
+      vikunja
     ];
   };
 }
