@@ -1,8 +1,8 @@
-{config, ...}: {
+{config, ...} @ outer: {
   hosts.expat.users = {
-    sysadmin = {
+    sysadmin = {config, ...}: {
       # Base off of Daniel's config
-      imports = with config.users.daniel; [
+      imports = with outer.config.users.daniel; [
         # core
         # base
       ];
@@ -12,6 +12,7 @@
         description = "System administrator";
         extraGroups = [
           "wheel"
+          "${config.services.forgejo.group}"
         ];
         initialPassword = "password";
       };
