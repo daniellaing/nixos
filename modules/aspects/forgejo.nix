@@ -1,6 +1,7 @@
 {config, ...} @ outer: {
   modules.forgejo = {
     config,
+    host,
     lib,
     ...
   }: let
@@ -37,6 +38,8 @@
         enable = true;
         settings = {
           server = {
+            DOMAIN = "git.${host.domain}";
+            ROOT_URL = "http://${srv.DOMAIN}";
             SSH_PORT = lib.mkIf config.services.openssh.enable (lib.lists.head config.services.openssh.ports);
           };
         };
@@ -52,7 +55,7 @@
         virtualHosts."${srv.DOMAIN}" = {
           # forceSSL = true;
           # enableACME = true;
-          locations."/".proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
+          locations."/".proxyPass = "http://${host.domain}:${toString srv.HTTP_PORT}";
         };
       };
 
