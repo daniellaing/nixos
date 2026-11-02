@@ -21,6 +21,11 @@ in {
             default = name;
           };
 
+          domain = lib.mkOption {
+            type = lib.types.str;
+            description = ''The domain assigned to the host. Used in various web server config modules.'';
+          };
+
           users = lib.mkOption {
             type = lib.types.lazyAttrsOf lib.types.deferredModule;
             description = ''
@@ -61,6 +66,10 @@ in {
                       configurationRevision = shortHash;
                       nixos.label = shortHash;
                     };
+                  }
+                  # Expose host to modules
+                  {
+                    _module.args.host = {inherit (config) name domain;};
                   }
                 ];
             };
