@@ -40,6 +40,10 @@
             SSH_PORT = lib.mkIf config.services.openssh.enable (lib.lists.head config.services.openssh.ports);
           };
         };
+
+        database = {
+          user = config.services.forgejo.user;
+        };
       };
 
       # TODO: Create ensured users
@@ -54,5 +58,25 @@
 
       # security.acme.acceptTerms = true;
     };
+  };
+
+  modules.forgejo-git = {config, ...}: let
+    cfg = config.services.forgejo;
+  in {
+    imports = with outer.config.modules; [forgejo];
+
+    services.forgejo = {
+      user = "git";
+      group = "git";
+    };
+
+    users.users.git = {
+      home = cfg.stateDir;
+      useDefaultShell = true;
+      group = cfg.group;
+      isSystemUser = true;
+    };
+
+    users.groups.git = {};
   };
 }
