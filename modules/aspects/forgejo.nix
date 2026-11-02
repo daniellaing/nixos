@@ -55,7 +55,7 @@
         virtualHosts."${srv.DOMAIN}" = {
           # forceSSL = true;
           # enableACME = true;
-          locations."/".proxyPass = "http://${host.domain}:${toString srv.HTTP_PORT}";
+          locations."/".proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
         };
       };
 

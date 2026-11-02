@@ -14,7 +14,7 @@
     }
 
     (
-      lib.pipe [3000 5232 80 443] [
+      lib.pipe [80 443] [
         (lib.map (port: {
           virtualisation.vmVariant = {
             virtualisation.forwardPorts = [

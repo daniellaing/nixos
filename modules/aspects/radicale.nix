@@ -12,11 +12,9 @@
       };
     };
 
-    networking.firewall.allowedTCPPorts = [port];
-
     services.nginx = {
       virtualHosts."cal.${host.domain}" = {
-        locations."/".proxyPass = "http://${host.domain}:${toString port}";
+        locations."/".proxyPass = "http://localhost:${toString port}";
       };
     };
   };
