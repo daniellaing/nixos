@@ -9,6 +9,7 @@
         development
         music
         thunderbird
+        offlineEmail
         zsh
       ];
 
