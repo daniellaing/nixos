@@ -59,6 +59,7 @@
           curl
           ripgrep
           unzip
+          usbutils
           wget
         ])
         ++ (with self'.packages; [
