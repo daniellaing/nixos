@@ -13,6 +13,10 @@
       defaultUser = "daniel";
       startMenuLaunchers = true;
       ssh-agent.enable = true; # Enables ssh passthrough to Windows
+      usbip = {
+        enable = true;
+        autoAttach = ["5-13"];
+      };
     };
   };
 }
