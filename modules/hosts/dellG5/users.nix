@@ -19,6 +19,7 @@
         extraGroups = [
           "wheel"
           "networkmanager"
+          "sops"
         ];
       };
 
