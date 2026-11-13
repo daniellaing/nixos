@@ -1,6 +1,6 @@
 {config, ...}: {
   hosts.dellG5.users = {
-    daniel = {
+    daniel = {pkgs, ...}: {
       imports = with config.users.daniel; [
         core
         base
@@ -20,6 +20,10 @@
           "wheel"
           "networkmanager"
         ];
+      };
+
+      home-manager.users.daniel = {
+        home.packages = with pkgs; [steam];
       };
     };
   };
