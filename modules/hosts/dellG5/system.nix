@@ -1,5 +1,5 @@
 {config, ...}: {
-  hosts.dellG5.modules.system = {
+  hosts.dellG5.modules.system = {pkgs, ...}: {
     system.stateVersion = "23.05"; # Do not change, ever
     imports = with config.modules; [
       core
@@ -10,6 +10,10 @@
       sddm
       sound
       zsh
+    ];
+
+    environment.systemPackages = with pkgs; [
+      libreoffice
     ];
   };
 }
