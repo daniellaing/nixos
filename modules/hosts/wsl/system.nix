@@ -17,7 +17,7 @@
 
     networking.networkmanager.enable = lib.mkForce false;
 
-    sops.secrets.svn-passwd = {
+    sops.secrets.hello = {
       owner = config.users.users.daniel.name;
       group = config.users.users.daniel.group;
     };
