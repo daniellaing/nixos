@@ -107,7 +107,7 @@
             escapeTime = 10;
             keyMode = "vi";
             clock24 = true;
-            terminal = "xterm-256color";
+            terminal = "tmux-256color";
             extraConfig = ''
               # Vim keys for pane navigation
               bind h select-pane -L
