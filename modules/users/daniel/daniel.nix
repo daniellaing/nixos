@@ -66,6 +66,7 @@
         # Bat pager
         {
           home.sessionVariables.PAGER = lib.getExe pkgs.bat;
+          home.sessionVariables.MANPAGER = "${lib.getExe pkgs.bat} -l man -p --strip-ansi=auto";
         }
 
         (
