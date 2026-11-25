@@ -16,6 +16,9 @@
 
     # ---   GnuPG   ---
     (
+      # TODO: Extract to separate module and add option to import secret keys from sops.
+      # Probably by a systemd service that runs at user startup.
+      # Will need home-manager things
       moduleWithSystem (
         {pkgs, ...}: {
           programs.gnupg.agent = {
